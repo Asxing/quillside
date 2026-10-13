@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Quillside feather and full note mark" stroke-linecap="round" stroke-linejoin="round">
+  <defs><clipPath id="paper"><rect x="82.0" y="82.0" width="860.0" height="860.0" rx="190.0"/></clipPath></defs>
+  <g clip-path="url(#paper)">
+    <rect x="82.0" y="82.0" width="860.0" height="860.0" fill="#FFFDF9"/>
+    <rect x="82.0" y="82.0" width="860.0" height="230.0" fill="#DFB756"/>
+  </g>
+  <g transform="translate(30.720000000000027,30.720000000000027) scale(0.94)">
+  <path d="M 252 589 L 380 589" fill="none" stroke="#DFB756" stroke-width="20.0"/>
+  <path d="M 252 638 L 373 638" fill="none" stroke="#DFB756" stroke-width="20.0"/>
+  <path d="M 270 883 C 295 809 349 741 407 660 C 414 554 417 472 465 394 C 543 265 713 203 887 126 C 889 222 837 309 763 343 L 841 316 C 804 399 724 459 616 492 L 702 467 C 653 528 577 561 523 582 C 462 650 412 711 381 756 L 378 803 L 270 883 Z" fill="#393E35"/>
+  <path d="M 430 622 C 491 491 640 303 787 232 C 657 329 528 488 430 622 Z" fill="#FFFDF9"/>
+  <path d="M 360 786 C 360 791.523 355.523 796 350 796 C 344.477 796 340 791.523 340 786 C 340 780.477 344.477 776 350 776 C 355.523 776 360 780.477 360 786 Z" fill="#FFFDF9"/>
+  <path d="M 283 858 L 346 793 L 351 797 Z" fill="#FFFDF9"/>
+  </g>
+</svg>

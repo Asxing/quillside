@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-08",
+  "version": "0.2.0",
+  "installed_path": "/Applications/OpenNotes.app",
+  "sha256": "85278912296ac8c84aaeeb82f232d9988af81655842c90fc8a8aacb9ccf5fc42",
+  "bundle_sha_matches_installed": true,
+  "tests": {
+    "total": 159,
+    "executed_passed": 158,
+    "skipped": 1,
+    "suites": 24,
+    "real_notes_fixture": "Only two synthetic notes created in this turn, actual native encoded bodies; asserted A -> B"
+  },
+  "release_build": "passed",
+  "codesign_verify": "passed_ad_hoc",
+  "runtime": {
+    "native_notes_rich_link_insert": true,
+    "native_notes_undo_insert": true,
+    "native_notes_click_link_opens_target": true,
+    "app_complete_backlink_flow_verified": false,
+    "app_ui_tool_error": "Sky Computer Use native pipe closed before response",
+    "restart_required_for_latest_installed_binary": true
+  },
+  "scope_document": "CURRENT-FEATURES.md",
+  "logs": [
+    "build/scope-verification.log",
+    "build/scope-release.log"
+  ]
+}

@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository-and-site:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+      - name: Check source and third-party notices
+        run: python3 scripts/check-open-source.py
+      - name: Build and check website
+        run: |
+          python3 site/build.py
+          python3 site/check.py
+          node --check site/assets/site.js
+          python3 scripts/test-release.py
+
+  native:
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: runtime/pi/package-lock.json
+      - name: Select the installed developer toolchain
+        run: |
+          echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
+          swift --version
+      - name: Synthetic regression and build
+        run: ./scripts/verify-stage1.sh
+      - name: Check development bundle license delivery
+        env:
+          OPENNOTES_CODE_SIGN_IDENTITY: "-"
+        run: |
+          ./scripts/bundle-app.sh debug
+          python3 scripts/check-open-source.py --bundle build/Quillside.app

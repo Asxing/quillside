@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-09",
+  "version": "0.3.8",
+  "name": "AppleNotesPro",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "binary_sha256": "8c4497fca045efd944dd1142a6f50fcc4b763538b1e70e7ca33f1f22fbc7a780",
+  "tests": {
+    "total": 194,
+    "passed": 193,
+    "skipped": 1,
+    "suites": 30
+  },
+  "release_build": "passed",
+  "codesign": "stable_development_strict_verified",
+  "runtime": [
+    "AI_compact_chooser",
+    "options_expand_collapse",
+    "original_expand_collapse",
+    "more_actions_continue",
+    "generate",
+    "replace",
+    "insert_after",
+    "undo",
+    "template_picker_insert",
+    "backlink_empty_preview"
+  ],
+  "local_fixture_requests": 2,
+  "cleanup": {
+    "fixture_removed": true,
+    "original_default_restored": true,
+    "server_stopped": true
+  },
+  "evidence": "INLINE-UI-0.3.8.md"
+}

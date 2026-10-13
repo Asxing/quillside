@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-09",
+  "version": "0.5.0",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "binary_sha256": "4f1ce4303d53aab9d9d93ffc51027a54ccb4c9fc7a4dd909aba02af9f2f72319",
+  "tests": {
+    "total": 221,
+    "passed": 220,
+    "skipped": 1,
+    "suites": 36
+  },
+  "release_build": "passed",
+  "codesign": "stable_development_strict_verified",
+  "native_verified": [
+    "Notes_original_selection_comment",
+    "multiple_source_comments",
+    "bottom_right_composer",
+    "synthetic_plan_revise_audit",
+    "native_body_apply_preserves_title_and_suffix",
+    "one_native_undo",
+    "three_annotations_restore_after_restart",
+    "visible_marker_scroll_1_0_1",
+    "source_change_pauses_write",
+    "switch_note_hides_session"
+  ],
+  "model_validation": "new_UI_uses_synthetic_protocol_fixture; real_agent_prior_0.4.1",
+  "evidence": "NATIVE-ANNOTATIONS-0.5.0.md",
+  "cleanup": {
+    "original_model_configuration_restored": true,
+    "fixture_connection_removed": true,
+    "fixture_server_stopped": true
+  },
+  "limits": [
+    "local_overlay_not_native_synced_comment",
+    "source_edits_require_restart",
+    "structured_notes_and_multimonitor_not_fully_covered"
+  ]
+}

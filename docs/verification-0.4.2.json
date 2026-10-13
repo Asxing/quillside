@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-09",
+  "version": "0.4.2",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "binary_sha256": "94dcbb160db832b9c29096794de68cedad5ac2cae3ec728795c17a69cdcf2010",
+  "tests": {
+    "total": 216,
+    "passed": 215,
+    "skipped": 1,
+    "suites": 35
+  },
+  "release_build": "passed",
+  "codesign": "stable_development_strict_verified",
+  "native_verified": [
+    "single_column_layout",
+    "physical_drag_selection_action",
+    "in_window_bubble_autofocus",
+    "comment_paste_does_not_edit_candidate",
+    "save_and_cmd_return",
+    "click_underline_reopens",
+    "same_line_group_switch_edit",
+    "summary_overlay",
+    "saved_annotation_restart_restore"
+  ],
+  "real_provider": "new_process_requires_keychain_confirmation_before_request",
+  "unchanged_agent_real_evidence": "real-writing-acceptance-0.4.1.json",
+  "evidence": "INLINE-ANNOTATIONS-0.4.2.md"
+}

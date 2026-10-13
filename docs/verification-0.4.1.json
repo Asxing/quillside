@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-09",
+  "version": "0.4.1",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "binary_sha256": "1797986e7ba286d52193577e2f141043083355368c9cef4672c89b2a3594338c",
+  "tests": {
+    "total": 213,
+    "passed": 212,
+    "skipped": 1,
+    "suites": 34,
+    "appearance_supplement": "build/appearance-0.4.1.log"
+  },
+  "release_build": "passed",
+  "codesign": "stable_development_strict_verified",
+  "native_verified": [
+    "settings_responsive_during_keychain_wait",
+    "real_provider_synthetic_OK",
+    "real_provider_humanizer_ten_annotations",
+    "two_rounds_preserve_ten_annotation_IDs",
+    "numbers_and_corrected_fact_preserved",
+    "real_candidate_RTF_replace",
+    "title_and_suffix_emoji_preserved",
+    "single_native_undo",
+    "authorized_credential_reused_across_rounds"
+  ],
+  "real_provider": "passed_with_configured_local_gateway_codex/gpt-6.1-sol",
+  "previous_writing_evidence": "verification-0.4.0.json",
+  "evidence": "CREDENTIAL-RESPONSE-0.4.1.md",
+  "semantic_quality": "synthetic_case_verified_not_general_quality_guarantee",
+  "real_provider_evidence": "real-writing-acceptance-0.4.1.json"
+}

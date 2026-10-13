@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-08",
+  "version": "0.3.4",
+  "installed_path": "/Applications/OpenNotes.app",
+  "binary_sha256": "9b8810b4915067b519541bcf57a2683f7ad4e63ad6c0042a7cf76e9221234d30",
+  "debug_build": "passed",
+  "release_build": "passed",
+  "codesign": "ad_hoc_verify_passed",
+  "tests": {
+    "total": 183,
+    "passed": 182,
+    "skipped": 1,
+    "suites": 29
+  },
+  "full_runtime_acceptance": "incomplete",
+  "native_evidence": "NATIVE-COMMAND-ACCEPTANCE.md",
+  "permission_signature_check": [
+    {
+      "service": "kTCCServiceAccessibility",
+      "record_present": true,
+      "allowed_in_record": true,
+      "current_signature_matches_allowed_record": true
+    },
+    {
+      "service": "kTCCServiceSystemPolicyAllFiles",
+      "record_present": true,
+      "allowed_in_record": true,
+      "current_signature_matches_allowed_record": true
+    },
+    {
+      "service": "kTCCServiceAppleEvents",
+      "record_present": true,
+      "allowed_in_record": true,
+      "current_signature_matches_allowed_record": false
+    }
+  ],
+  "cleanup": {
+    "temporary_logs_removed": true,
+    "temporary_fixture_connection_removed": true,
+    "local_fixture_service_stopped": true
+  },
+  "logs": [
+    "build/native-commands-verification.log",
+    "build/native-commands-release.log"
+  ]
+}

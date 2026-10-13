@@ -1,0 +1,46 @@
+.build/
+build/
+.DS_Store
+*.local.json
+*-output.log
+site/dist/
+site/__pycache__/
+
+# Local configuration and credentials. Keep only reviewed examples.
+.env
+.env.*
+!.env.example
+!.env.*.example
+credentials.json
+auth.json
+identity.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.csr
+*.mobileprovision
+*.provisionprofile
+*.keychain
+*.keychain-db
+
+# Generated packages, databases and diagnostic output.
+dist/
+*.app/
+*.xcarchive/
+*.dmg
+*.zip
+*.log
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.xcuserstate
+xcuserdata/
+__pycache__/
+*.pyc
+.venv/
+
+# Pi dependency installation and compiled worker
+node_modules/
+runtime/pi/dist/

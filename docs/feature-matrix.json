@@ -1,0 +1,2228 @@
+{
+  "scope": "Historical comparisons retained. Current scope: CURRENT-FEATURES.md; interaction: INLINE-EDITING.md. Settings only configure; use actions beside Notes. Import/export deferred; knowledge/search retired.",
+  "items": [
+    {
+      "id": "PN:TB-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "选择正文后显示近旁浮层（P-WEB/P-UI）",
+        "AX 选区 + 非激活 NSPanel",
+        "**代码实现/待验证**：[FloatingBarWindowController](../src/AppleNotesPro/Features/FloatingBar/FloatingBarWindowController.swift) 99 行起；[AccessibilityBridge](../src/AppleNotesPro/Services/AccessibilityBridge.swift) 144 行起。需检查正文、搜索框、笔记标题不同 AX 元素，不是任意可选文本均可弹格式栏。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Services/AccessibilityBridge.swift",
+        "tests": [],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "工具条 Ask AI（P-UI）",
+        "无；底部笔记动作栏为禁用占位",
+        "**部分**：底部 NoteActionsBar 和菜单可捕获并打开独立工作台；[FloatingBarView](../src/AppleNotesPro/Features/FloatingBar/FloatingBarView.swift) 没有 Ask AI。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.0",
+        "state": "implemented_runtime_permission_pending",
+        "source": "src/AppleNotesPro/Features/InlineAssistant/InlineAssistantController.swift",
+        "tests": [
+          "InlineAssistantTests",
+          "InlineAppearanceTests"
+        ],
+        "details": "All AI entry points share a Notes-adjacent nonactivating panel; no standalone writing workspace. Views rendered; complete live Notes flow requires Accessibility grant."
+      },
+      "product_scope": "current_core",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.1.2",
+          "state": "implemented_runtime_pending",
+          "source": "src/AppleNotesPro/Features/FloatingBar/FloatingBarViewModel.swift",
+          "tests": [
+            "testAIUsesAssistantCallbackWithoutFormattingText"
+          ],
+          "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+        }
+      ]
+    },
+    {
+      "id": "PN:TB-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Font/字体大小入口（P-WEB/P-UI）",
+        "无",
+        "**缺失**：仅 slash/FormattingService 提供标题/正文，无工具条字体控制。不能把等宽按钮当作 Font。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Features/FloatingBar/FloatingBarView.swift",
+        "tests": [
+          "testAddedToolbarItemsReachTheirIntendedNativeOperations"
+        ],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Bold（P-UI）",
+        "`⌘B`",
+        "**代码实现/待验证**：[FormattingService](../src/AppleNotesPro/Services/FormattingService.swift) 75 行起；选中状态来自 AX 字体名称启发式。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Italic（P-UI）",
+        "`⌘I`",
+        "**代码实现/待验证**，与上游一致。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-06",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Underline（P-UI）",
+        "`⌘U`",
+        "**代码实现/待验证**，与上游一致。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-07",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Strikethrough（P-UI）",
+        "`⇧⌘X`",
+        "**代码实现/待验证**，与上游一致。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-08",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Highlight（P-UI/P-RES 15.5+）",
+        "`⇧⌘E`",
+        "**部分**：存在动作但无按系统版本/菜单可用性禁用；macOS 14 部署目标不代表高亮存在。P-UI 未验证颜色选择，不能额外声称原厂存在颜色面板。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-09",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Link 添加/编辑（P-UI/P-RES）",
+        "无",
+        "**缺失**：无添加/编辑链接入口与动作。复制笔记 deeplink 是不同功能。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Services/NativeNotesCommand.swift",
+        "tests": [
+          "localizedLinkAndAlignmentResolveWithEllipsis"
+        ],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-10",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Alignment（P-UI），左/中/右/两端（P-RES）",
+        "无",
+        "**缺失**：无对齐控件、动作和状态。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Services/NativeNotesCommand.swift",
+        "tests": [
+          "localizedLinkAndAlignmentResolveWithEllipsis"
+        ],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-11",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Checklist（P-UI）",
+        "仅 slash/Markdown",
+        "**部分**：FormattingService 有 checklist，但浮动工具条无按钮。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Features/FloatingBar/FloatingBarViewModel.swift",
+        "tests": [
+          "testAddedToolbarItemsReachTheirIntendedNativeOperations"
+        ],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-12",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "工具条项目显示/隐藏（P-UI）",
+        "无",
+        "**缺失**：固定 SwiftUI 三组 HStack；无用户配置模型。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Features/FloatingBar/ToolbarConfiguration.swift",
+        "tests": [
+          "reorderHideAllAndReloadUsePersistedData"
+        ],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-13",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "工具条排序（P-UI）",
+        "无",
+        "**缺失**：没有拖拽/上下移及持久化次序；固定面板 310×34 也未按项目变化适配。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/App/ToolbarCustomizationView.swift",
+        "tests": [
+          "reorderHideAllAndReloadUsePersistedData",
+          "invalidMoveCannotLoseCommands"
+        ],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-14",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "格式状态随选区更新",
+        "有 AX attributed string 分析",
+        "**代码实现/待验证**：[SelectionFormattingAnalyzer](../src/AppleNotesPro/Features/FloatingBar/SelectionFormattingAnalyzer.swift) 对多个 runs 取交集；字体用英文名称识别 bold/italic/mono，高亮以背景色存在判断。没有 quote 状态识别，列表任意非数字/非横线前缀均归类 bullet；不能假设所有原生属性均准确。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TB-15",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "多屏、全屏、切应用隐藏",
+        "有窗口跟踪和坐标转换",
+        "**代码实现/待验证**：继承 WindowTrackService/WindowGeometry；测试覆盖策略和坐标算式，未覆盖实际 Spaces、滚动、缩放、可见性。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:MD-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`# ` → Title",
+        "有",
+        "**代码实现/待验证**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      }
+    },
+    {
+      "id": "PN:MD-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`## ` → Heading",
+        "有",
+        "**代码实现/待验证**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      }
+    },
+    {
+      "id": "PN:MD-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`### ` → Subheading",
+        "有",
+        "**代码实现/待验证**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      }
+    },
+    {
+      "id": "PN:MD-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`[] ` → Checklist",
+        "有",
+        "**代码实现/待验证**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      }
+    },
+    {
+      "id": "PN:MD-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "三反引号 + 空格 → Monostyled",
+        "无",
+        "**缺失**，官网明确稳定功能；设置字符串亦有 `expand-markdown-monostyled`。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      },
+      "product_scope": "current_core",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "state": "implemented_unit_tested_runtime_pending",
+          "test": "testMarkdownCatalogContainsAllSupportedTriggers"
+        }
+      ]
+    },
+    {
+      "id": "PN:MD-06",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`> ` → Block Quote",
+        "有",
+        "**代码实现/待验证**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      }
+    },
+    {
+      "id": "PN:MD-07",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`- ` → Dashed List",
+        "错映射 bullet",
+        "**已修正目录**为 dashList；需实机确认原生动作结果。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      }
+    },
+    {
+      "id": "PN:MD-08",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`* ` → Bulleted List",
+        "有",
+        "**代码实现/待验证**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      }
+    },
+    {
+      "id": "PN:MD-09",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`1. ` → Numbered List",
+        "有",
+        "**代码实现/待验证**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/MarkdownTriggerService.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "删除键盘buffer检测，空格前后核对实际正文、行首、UTF-16光标及相同编辑器；原生Notes已自行转换时不重复操作。"
+      }
+    },
+    {
+      "id": "PN:MD-10",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "已格式化行可转列表（P-WEB）",
+        "只有按键路径",
+        "**待验证**：需在标题/引用/等宽行内分别测试 `- `、`* `、`1. `。Apple Notes 自带普通行转换不能代替此要求。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:MD-11",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Markdown 总开关（P-UI）",
+        "service setter，无 UI 接线",
+        "**缺失用户入口**：setEnabled/loadPreferences 存在，但 App/Settings/Menu 无调用。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "featureDisablePersistsAndMissingPreferenceDefaultsOn"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:MD-12",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "按触发类别开关（P-STR）",
+        "service setter，无 UI 接线",
+        "**机制部分**：8 项 Set 持久化，但没有设置控件；ProNotes 每个字符串对应的可见 UI 尚需复查。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/App/MarkdownTriggerSettingsView.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "快捷键设置现提供9类Markdown触发独立开关；保存到既有偏好，实时更新。"
+      }
+    },
+    {
+      "id": "PN:SC-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/title`、`/h1`",
+        "`title` 无匹配；`h1` → title",
+        "**部分，缺 title alias**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/heading`、`/h2`",
+        "`heading` 同时匹配 h1/h2/h3，默认 selectedIndex=0 → **title**；`h2` 正确",
+        "**错误的精确别名优先级**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/subheading`、`/h3`",
+        "`subheading` 无匹配；`h3` → subheading",
+        "**部分**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/body`",
+        "body",
+        "**代码实现/待验证**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/monostyled`、`/code`",
+        "monostyled 无匹配；code → monostyled shortcut",
+        "**部分**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-06",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/checklist`",
+        "无匹配；仅 `/todo` 可命中",
+        "**缺失原厂 alias**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-07",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/bulletedlist`",
+        "无匹配；名称为 `Bullet List`，含空格、无 `ed`",
+        "**缺失原厂 alias**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-08",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/dashedlist`",
+        "无对应 slash action，虽 FormattingService 有 dashList",
+        "**缺失**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-09",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/numberedlist`",
+        "无匹配；仅 number/Numbered List 子串",
+        "**缺失原厂 alias**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-10",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/quote`、`/blockquote`",
+        "quote 正确；blockquote 无匹配",
+        "**部分**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-11",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "`/table`",
+        "没有 catalog 或格式 action",
+        "**缺失原生表格插入**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "officialAliasesResolveToTheirExactAction"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-12",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "模板通过 slash 插入（P-WEB/P-STR）",
+        "catalog 不连接模板",
+        "**缺失**；工作台模板不满足此交互要求。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.3",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Features/SlashCommand/TemplatePicker.swift",
+        "tests": [
+          "oldTemplateJSONAndNewAliasCatalogRemainCompatible",
+          "failedOrRepeatedSubmissionDoesNotWriteTwice"
+        ],
+        "details": "See TEMPLATES-SEARCH-IMPLEMENTATION.md; real Notes, IME and Carbon behavior remain unverified."
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-13",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "列表上下选择、点击、Esc、Return、Tab",
+        "service 分支俱在；菜单滚动跟随选中",
+        "**部分/待验证**；事件拦截实际只消费上下箭头。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-14",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "slash 总开关（P-UI）",
+        "无 enabled 字段或设置入口",
+        "**缺失**"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "state": "implemented_unit_tested_runtime_pending",
+        "test": "featureDisablePersistsAndMissingPreferenceDefaultsOn"
+      },
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:SC-15",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "搜索/正文/IME 的正确触发边界",
+        "只判断 Notes frontmost",
+        "**缺少边界实现**，详见 R-01/R-02。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/NotesEditorContext.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "根据Notes正文标识/祖先结构区分正文与单元格；读取已提交token；输入法组合状态未知时不吞候选确认键，可点选菜单。"
+      }
+    },
+    {
+      "id": "PN:SC-16",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "顶部字样、空结果、分页定位等显示",
+        "两类别 SwiftUI ScrollView/固定非激活面板",
+        "**代码实现/待验证**；是上游交互，不是对原厂菜单视觉的一比一确认。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TP-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "保存重复片段",
+        "**代码实现（新增）**：[SnippetTemplate](../src/AppleNotesPro/AI/AIConfiguration.swift) 与 [TemplateLibraryView](../src/AppleNotesPro/Workspace/WorkspaceView.swift) 可增删改，JSON 持久化，初始会议/阅读模板。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TP-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "slash 里搜索并插入模板",
+        "**缺失**：工作台只预览，用户须先捕获，再从写作页局部插入/替换。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Features/SlashCommand/TemplatePicker.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "模板仍在Notes旁选择；改为统一原生粘贴写入纯文本；面板独立持有输入隔离，切换应用关闭。"
+      },
+      "product_scope": "current_core",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.1.3",
+          "state": "implemented_runtime_pending",
+          "source": "src/AppleNotesPro/Features/SlashCommand/TemplatePicker.swift",
+          "tests": [
+            "inputMethodOwnsCandidateNavigationAndConfirmation"
+          ],
+          "details": "See TEMPLATES-SEARCH-IMPLEMENTATION.md; real Notes, IME and Carbon behavior remain unverified."
+        }
+      ]
+    },
+    {
+      "id": "PN:TP-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "ProNotes 模板来源及命名协议",
+        "**原厂行为未证实**：[原厂模板文档](https://dexterleng.notion.site/How-to-use-Templates-in-Apple-Notes-with-ProNotes-b35a196d29c54cd8a553723a1289f80f?pvs=4) 本次仍 404。不能将本地独立模板库写成原厂完全相同发现机制。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TP-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "模板变量",
+        "**扩展已实现**：单次 `{date}` 替换；没有任意输入字段、cursor placeholder、脚本执行。原厂具体变量支持未证实。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:TP-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "富文本、表格、附件模板",
+        "**当前缺失/原厂范围未完全证实**：SnippetTemplate 是 String，SelectionTransaction 只写纯文本。需要合成样本确认原厂合同后再评估完整保真。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/NotesPasteTransaction.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "模板使用原生粘贴传入纯文本，不承诺富文本/附件模板；该扩展继续后置。"
+      }
+    },
+    {
+      "id": "PN:SR-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Notes 内快捷键搜索",
+        "**代码实现**：硬编码 `⌘P`，打开大工作台并读取标题/摘要。[AppShortcutMatcher](../src/AppleNotesPro/Services/AppShortcutMatcher.swift)。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      },
+      "product_scope": "removed_by_user_2026_10_08",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.1.3",
+          "state": "implemented_runtime_pending",
+          "source": "src/AppleNotesPro/Services/AppShortcutMatcher.swift",
+          "tests": [
+            "successfulChangeAndClearSurviveReload"
+          ],
+          "details": "See TEMPLATES-SEARCH-IMPLEMENTATION.md; real Notes, IME and Carbon behavior remain unverified."
+        }
+      ]
+    },
+    {
+      "id": "PN:SR-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "系统范围搜索快捷键",
+        "**代码实现**：Carbon 注册 `⌥⌘P`，[GlobalSearchShortcut](../src/AppleNotesPro/Services/GlobalSearchShortcut.swift)；没有注册错误/冲突反馈。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      },
+      "product_scope": "removed_by_user_2026_10_08",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.1.3",
+          "state": "implemented_runtime_pending",
+          "source": "legacy/retired-features/src/AppleNotesPro/Services/GlobalSearchShortcut.swift",
+          "tests": [
+            "conflictingReplacementPreservesOldLiveBindingAndDisk"
+          ],
+          "details": "See TEMPLATES-SEARCH-IMPLEMENTATION.md; real Notes, IME and Carbon behavior remain unverified."
+        }
+      ]
+    },
+    {
+      "id": "PN:SR-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "两个快捷键可自行配置（P-WEB/P-UI）",
+        "**缺失**：Settings 只显示文本。ProNotes 该用户实例曾为 Not set，不应该误读成强制默认热键。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      },
+      "product_scope": "removed_by_user_2026_10_08",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.1.3",
+          "state": "implemented_runtime_pending",
+          "source": "legacy/retired-features/src/AppleNotesPro/App/SearchShortcutEditor.swift",
+          "tests": [
+            "failedPersistenceRemovesOnlyStagedRegistration",
+            "identicalLocalGlobalChordHasOneRouteAndRecordingRestoresIt"
+          ],
+          "details": "See TEMPLATES-SEARCH-IMPLEMENTATION.md; real Notes, IME and Carbon behavior remain unverified."
+        }
+      ]
+    },
+    {
+      "id": "PN:SR-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "键盘友好的命令面板（P-WEB）",
+        "**部分**：Workspace List 无 selection binding、无上下/Return 行为、无打开即聚焦搜索的 FocusState；用户可点行右侧“打开”，这不等同 command palette。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      },
+      "product_scope": "removed_by_user_2026_10_08",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.1.3",
+          "state": "implemented_runtime_pending",
+          "source": "legacy/retired-features/src/AppleNotesPro/Features/Search/NoteSearchPanel.swift",
+          "tests": [
+            "keyboardSelectionOpensOnlyTheCurrentMatchingIdentity"
+          ],
+          "details": "See TEMPLATES-SEARCH-IMPLEMENTATION.md; real Notes, IME and Carbon behavior remain unverified."
+        }
+      ]
+    },
+    {
+      "id": "PN:SR-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "标题、摘要、文件夹搜索",
+        "**代码实现（新增）**：[WorkspaceModel.filteredNotes](../src/AppleNotesPro/Workspace/WorkspaceModel.swift) 对三字段拼接做 case-insensitive contains；数据库顺序为置顶+修改时间，不是标题匹配优先。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      },
+      "product_scope": "removed_by_user_2026_10_08",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.1.3",
+          "state": "implemented_runtime_pending",
+          "source": "legacy/retired-features/src/AppleNotesPro/Features/Search/NoteSearchPanel.swift",
+          "tests": [
+            "titleMatchesWinOverPinnedRecentSnippetMatches"
+          ],
+          "details": "See TEMPLATES-SEARCH-IMPLEMENTATION.md; real Notes, IME and Carbon behavior remain unverified."
+        }
+      ]
+    },
+    {
+      "id": "PN:SR-06",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "全库完整正文搜索",
+        "**缺失**：Notes 搜索仅 metadata；已主动导入的知识库可以搜正文。官网“search notes”未详述字段，不宜把全库 FTS 当成原厂已验证细节。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "removed_by_user_2026_10_08",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      }
+    },
+    {
+      "id": "PN:SR-07",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "新建/改名/删除后搜索刷新",
+        "**部分**：快捷键或“加载 Notes”重新读库；非持续索引/增量更新。"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      },
+      "product_scope": "removed_by_user_2026_10_08",
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.1.3",
+          "state": "implemented_runtime_pending",
+          "source": "legacy/retired-features/src/AppleNotesPro/Features/Search/NoteSearchPanel.swift",
+          "tests": [
+            "cancelledOldLoadCannotReplaceNewResults"
+          ],
+          "details": "See TEMPLATES-SEARCH-IMPLEMENTATION.md; real Notes, IME and Carbon behavior remain unverified."
+        }
+      ]
+    },
+    {
+      "id": "PN:BL-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "原生 note link → 反向来源",
+        "**代码实现（继承）**：attachment token URL 与 gzip/protobuf 链接双路径解析，BacklinkGraphBuilder 排除自己和未知目标。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:BL-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "展示当前笔记的反链",
+        "**代码实现/待验证**：AX 候选标题匹配 + AppleScript 兜底、panel request generation、权限状态；不靠正文纯字符串标题识别链接。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Features/Backlinks/BacklinkDocumentController.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "正文反链RTF与AI/模板共用目标验证和原生粘贴事务；成功后核对链接，去重与修改保护保持。"
+      }
+    },
+    {
+      "id": "PN:BL-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "点击来源回到 Notes",
+        "**代码实现/待验证**：`applenotes:note/<UUID>`，需要 macOS 14/15/26 上确认跳转与独立窗口行为。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:BL-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "链接新增/移除及时更新",
+        "**部分**：缓存 30 秒后按查询重建，有刷新和失效路径；无数据库变更监听。两个 SELECT 阶段不共享显式事务，不能声明一致时点的全库图。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:BL-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "查询失败可区分真正无反链",
+        "**部分**：权限/数据库打开失败有 UI；SQL schema/prepare/step 错误仍可能返回空数组，见 R-07。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:EX-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "复制整篇 Markdown",
+        "**代码实现（继承）**：AppleScript HTML → XMLDocument 转换 → 延迟提交剪贴板；不走新增 NotesBridge decoder。[NoteActionsService](../src/AppleNotesPro/Features/NoteActions/NoteActionsService.swift)。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:EX-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "标题、粗斜体、下划线、删除线、链接、引用、列表、代码",
+        "**代码实现**：converter 处理相应 HTML 标签，有合成 HTML 单测；实际 Notes HTML 表示未实机穷尽。style-only 格式没有专门解析。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:EX-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "清单/表格",
+        "**部分/待验证**：支持合成 `<li data-checked>` 和 `<table>`；不能证明 AppleScript 返回的原生 checklist/table 与这些合成标签相同。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:EX-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "附件/图片导出",
+        "**降级实现**：当前明确输出 `[图片]`/`[附件: 文件名]` 占位，不复制附件、不生成可用资源链接。原厂有 exporter/attachment converter 线索，实际保真水平待采样。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "PN:EX-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "复制 deeplink",
+        "**代码实现/待验证**：UUID 原生链接写 `.string` 和 `.URL` 两种 pasteboard 类型；没有联网分享链接、未创建公开笔记。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:EX-06",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "markdown/链接/反链快捷入口",
+        "**代码实现**：菜单与 Notes event tap；Settings 把若干项称“全局快捷键”，但只有搜索注册 Carbon 全局键，其他 matcher 在 Notes frontmost 才触发。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:AI-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "续写、润色、纠错、摘要/列表摘要/表格摘要、变长、变短、解释（P-UI）",
+        "**代码实现**：9 项语义对应预置指令；额外翻译、自定义、知识问答共 12 项。提示词独立编写，不复制原厂私有文本。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:AI-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "自定义动作与 `{text}`（P-UI）",
+        "**代码实现**：本地增删改 PromptAction，renderer 单次白名单替换；没有对递归正文大括号再执行。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:AI-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "可编辑系统提示词和模型（P-UI）",
+        "**代码实现**：系统提示词、写作偏好、模型 ID、协议和最大输出 token；与原厂曾只显示两个模型的界面不同，是用户要求的扩展。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:AI-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "对选区或整篇笔记工作（P-UI）",
+        "**代码实现/待验证**：有选区用选区，无选区用捕获元素 body；需要确认实际 focused AXTextArea 是否确实整篇而非单元格等子编辑器。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/NotesEditorContext.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "无选区时仅接受已识别正文；表格单元格必须明确选中文字，未知编辑器拒绝，不再将任意AXTextArea称为整篇。"
+      },
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.3.0",
+          "state": "implemented_runtime_permission_pending",
+          "source": "src/AppleNotesPro/Features/InlineAssistant/InlineAssistantController.swift",
+          "tests": [
+            "InlineAssistantTests",
+            "InlineAppearanceTests"
+          ],
+          "details": "All AI entry points share a Notes-adjacent nonactivating panel; no standalone writing workspace. Views rendered; complete live Notes flow requires Accessibility grant."
+        }
+      ]
+    },
+    {
+      "id": "PN:AI-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "原生贴近选区的 AI 体验",
+        "**部分**：捕获后切到 1040×760 独立工作台，没有 FloatingBar 的 Ask AI/内联指令菜单。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.0",
+        "state": "implemented_runtime_permission_pending",
+        "source": "src/AppleNotesPro/Features/InlineAssistant/InlineAssistantController.swift",
+        "tests": [
+          "InlineAssistantTests",
+          "InlineAppearanceTests"
+        ],
+        "details": "All AI entry points share a Notes-adjacent nonactivating panel; no standalone writing workspace. Views rendered; complete live Notes flow requires Accessibility grant."
+      }
+    },
+    {
+      "id": "PN:AI-06",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "流式预览、取消、完整结束校验",
+        "**代码实现（新增）**：[ModelClient](../src/AppleNotesPro/AI/ModelClient.swift)、[WorkspaceModel](../src/AppleNotesPro/Workspace/WorkspaceModel.swift)；源码拒绝截断/提前 EOF，不把已收到部分文本自动应用。真实服务商兼容性需真实连接验证。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/AI/ModelStreamFramer.swift",
+        "tests": [
+          "tests/EditorContextTests.swift",
+          "tests/ModelStreamFramerTests.swift"
+        ],
+        "details": "增加按字节限长组帧：UTF-8、BOM、CR/LF、注释和多行data；EOF不伪造SSE结束；四协议实际localhost服务通过。"
+      },
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.3.0",
+          "state": "implemented_runtime_permission_pending",
+          "source": "src/AppleNotesPro/Features/InlineAssistant/InlineAssistantController.swift",
+          "tests": [
+            "InlineAssistantTests",
+            "InlineAppearanceTests"
+          ],
+          "details": "All AI entry points share a Notes-adjacent nonactivating panel; no standalone writing workspace. Views rendered; complete live Notes flow requires Accessibility grant."
+        }
+      ]
+    },
+    {
+      "id": "PN:AI-07",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "结果替换/插入、切换笔记拒绝写入",
+        "**代码实现/待验证**：PID/窗口/AppleScript identity/全文 equality/UTF-16 选区校验后 AXSelectedText 替换，读回文本。没有实际原生 undo 证据，也没有富文本输入转换。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.3.1",
+        "state": "implemented_tests_passed_runtime_pending",
+        "source": "src/AppleNotesPro/Services/NotesPasteTransaction.swift",
+        "tests": [
+          "tests/EditorContextTests.swift"
+        ],
+        "details": "校验原目标、范围和正文后执行一次Notes粘贴，读回正文/身份；保留可恢复剪贴板；不自动重试；拒绝半个emoji与原生对象替换。"
+      },
+      "history": [
+        {
+          "date": "2026-10-08",
+          "version": "0.3.0",
+          "state": "implemented_runtime_permission_pending",
+          "source": "src/AppleNotesPro/Features/InlineAssistant/InlineAssistantController.swift",
+          "tests": [
+            "InlineAssistantTests",
+            "InlineAppearanceTests"
+          ],
+          "details": "All AI entry points share a Notes-adjacent nonactivating panel; no standalone writing workspace. Views rendered; complete live Notes flow requires Accessibility grant."
+        }
+      ]
+    },
+    {
+      "id": "PN:AI-08",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "表格摘要产生原生 Notes 表格",
+        "**缺失**：指令让模型生成 Markdown table，应用仍纯文本。生成表格语法与插入原生表格是两层要求。原厂此输出端到端亦未验。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:CF-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "服务商/API URL/API Key 自配",
+        "**扩展代码实现**：四协议、多 ModelConnection、Keychain，密钥不进入配置 JSON；是用户明确需求，非原厂已证实功能。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:CF-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "多用途独立模型",
+        "**部分**：每连接仅一个 model，UI 一个默认 selectedConnectionID；没有独立写作/摘要/知识/embedding routing profile。原研究提出此方案，尚未落实。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:CF-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "连接测试/配置导入导出",
+        "**代码实现**：固定合成文本生成，流式结束后提示；导入重建连接 UUID 防止自动继承旧密钥。不能由 mock 测试推断真实账号有效。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "current_core"
+    },
+    {
+      "id": "PN:KB-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "主动选择 Notes/MD/TXT/PDF",
+        "**扩展代码实现**：只导入选中 Notes，PDFKit 提取页文字；无扫描 OCR、图片理解、附件正文递归导入。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "removed_by_user_2026_10_08",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      }
+    },
+    {
+      "id": "PN:KB-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "本地检索和来源",
+        "**扩展代码实现**：SQLite FTS5+NaturalLanguage 分词+短语 substring，800 字片段/100 重叠，最多 8 个命中；来源可打开，`[S1]` 有编号范围验证，不能保证答案与证据语义一致。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "removed_by_user_2026_10_08",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      }
+    },
+    {
+      "id": "PN:KB-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "集合管理",
+        "**部分**：Notes 文件夹名及统一“文件”分组，选择集合检索；没有集合对象增删改、同一来源多集合、用户自定义来源规则。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "removed_by_user_2026_10_08",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      }
+    },
+    {
+      "id": "PN:KB-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "来源变更/删除/锁定清理",
+        "**部分**：用户按“更新 Notes 快照”时同步更新/移除，文件重导入按路径替换；没有后台监听、授权范围持续同步、删除文件自动失效。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "removed_by_user_2026_10_08",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      }
+    },
+    {
+      "id": "PN:KB-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "embedding 模型与向量召回",
+        "**缺失（研究方案中可后置）**：当前 FTS，不是向量 RAG；不要把 NotesBridge 的属性解码或模型选项当成 embedding 配置。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "removed_by_user_2026_10_08",
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "retired_from_build",
+        "details": "See CURRENT-FEATURES.md and legacy/retired-features; user data retained."
+      }
+    },
+    {
+      "id": "NB:A01",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "选中文字后浮动格式栏；选区消失、权限／开关不可用则隐藏。`FloatingFormattingBarController.update` [NB-float]",
+        "`FloatingBarWindowController`、`FloatingBarView`",
+        "已实现同类入口，样式与定位实现不同",
+        "Notes 正文选择／取消选择、切 App、切笔记、权限撤回、真实点击后格式变化和撤销"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A02",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Title、Heading、Subheading、Body；快捷键与菜单优先路径 [NB-format] [NB-executor]",
+        "`FormattingService.setHeading`",
+        "已实现命令；不表示所有语言 Notes 菜单已验证",
+        "4 种段落格式逐个读回，不只检查发出 CGEvent"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A03",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Bold、Strikethrough；上游枚举没有 Italic／Underline [NB-format]",
+        "`FormattingService`、`FloatingBarViewModel`",
+        "已实现，OpenNotes 另有斜体、下划线、高亮",
+        "混合格式选区、连续切换、菜单状态、撤销；不要因为 README 提及 italic 就记作上游实际枚举"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A04",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Checklist、Bulleted、Dashed、Numbered list [NB-format]",
+        "`.todoList/.bulletList/.dashList/.numberedList`",
+        "格式服务已实现；当前 slash 缺 dashed 的入口",
+        "行首／段落中／多行选区、嵌套列表、取消列表、撤销"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A05",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Block Quote、Monostyled [NB-format]",
+        "`.quote/.codeBlock`，另有 monospaced 浮条操作",
+        "已实现同类命令；Monostyled 是 Notes 段落样式，不等于真正的代码编辑器",
+        "中文和英文输入法下应用、跨段落选区及撤销"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A06",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Insert Link：Edit → Add Link 或 ⌘K [NB-format] [NB-executor]",
+        "`FormatAction` 不含 link；复制笔记链接属于不同动作 [ON-format] [ON-actions]",
+        "**缺失原生插入链接命令**",
+        "浮条和 slash 均可打开 Notes 原生链接操作；文本和目标 URL 正确"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Features/SlashCommand/SlashCommandCatalog.swift",
+        "tests": [
+          "officialAliasesResolveToTheirExactAction"
+        ],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A07",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Table：Format → Table 或 ⌥⌘T [NB-format] [NB-executor]",
+        "`FormatAction` 和 slash 目录均无 table [ON-format] [ON-slash]",
+        "**缺失原生插入表格命令**；HTML 转 Markdown 能读表格不能代替创建表格",
+        "`/table` 后真实插入可编辑 Notes 原生表格；邻接正文保持、单步撤销"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A08",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Markdown 行首匹配 9 项：`# `、`## `、`### `、`[] `、三反引号＋空格、`> `、`- `、`* `、`1. ` [NB-markdown]",
+        "`MarkdownTriggerDefinition.all` 8 项 [ON-markdown]",
+        "部分：**缺三反引号＋空格**",
+        "全部模式＋负例：段落中、已格式化列表、中文／emoji 前文、粘贴、快速切窗"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A09",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Markdown 通过 120ms AX 轮询识别已落到编辑器的触发文本，再逐次 Delete [NB-markdown] [NB-executor]",
+        "`KeyboardMonitorService` 事件流；`InlineInputEdit.remove` 验证局部文本再写入",
+        "部分／实现不同；OpenNotes 的局部校验值得保留，不能直接回退成盲删",
+        "准确删除触发串，前后文字不变；AX 写失败不格式化；Unicode 范围和撤销验证"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A10",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "slash 目录为 14 类命令；别名、大小写无关前缀匹配；菜单标题随语言变化，token 不翻译 [NB-catalog]",
+        "当前 13 项，用 ID／英文名／中文说明 contains 搜索 [ON-slash]",
+        "部分：缺 table、link、dashed；上游别名如 `/title`、`/heading`、`/checklist`、`/bulletedlist`、`/numberedlist` 等并非一概可用；OpenNotes 另有 italic、underline",
+        "固定目录表＋所有别名、中文搜索、无命中和选择索引测试，随后实机提交"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A11",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "slash 仅识别空白分隔 token；忽略词内 `hello/title`、URL、未知路径；光标前有换行仍可定位 [NB-parser]",
+        "键盘流看到 `/` 就 activate，执行时再由 `InlineInputEdit` 保护 [ON-slash]",
+        "部分：**菜单触发边界不等价**；不能仅凭最终写入保护说不会误弹",
+        "URL、路径、`a/b` 不弹；段落中空白后 `/` 弹；剪贴／鼠标移动后状态准确"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A12",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "完整别名＋Space 自动提交，并删除 token 和尾空格；或鼠标、Return／Tab／小键盘 Enter 提交 [NB-parser] [NB-slash]",
+        "Return／Tab／Enter／鼠标存在，Space 不执行精确匹配 [ON-slash]",
+        "部分：缺 **exact command + Space**",
+        "匹配时删除范围正确；未知命令保留原文；不同提交键不会多留换行／Tab"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A13",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "↑↓ 循环选择、Escape 关闭；对同一 token 记录 dismiss signature，避免下一轮立即重弹 [NB-slash]",
+        "↑↓、Escape、鼠标存在；基于按键 buffer 生命周期 [ON-slash]",
+        "部分／交互策略不同，当前上游早期 README “鼠标驱动”不完整",
+        "Esc 后不重弹、再次输入可唤起；字符透传、IME 和焦点保持"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A14",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "slash 非激活 NSPanel 可以取得键盘，未知键转发 Notes；不以 Input Monitoring 作为核心功能前提 [NB-panel] [NB-availability]",
+        "CGEvent tap 路径，在 Notes 前台处理按键 [ON-keyboard]",
+        "已有键盘实现，但权限和焦点路径不同；上游不是唯一正确方式",
+        "仅 Accessibility 权限时可用性、事件 tap 失效恢复；不能模拟“权限已授予”代替真实权限运行"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A15",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "浮条逐项显隐、拖拽排序、恢复默认；默认 11 可见／14 可选；存储去重并补回新增命令 [NB-toolbar-settings]",
+        "`FloatingToolbarAction` 固定枚举、`FloatingBarView` 固定布局 [ON-float]",
+        "**缺失自定义配置与 UI**",
+        "拖拽后次序、重启持久化、隐藏全部、旧设置升级、新命令补齐、可访问性"
+      ],
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.1.2",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Features/FloatingBar/ToolbarConfiguration.swift",
+        "tests": [
+          "oldPreferencesKeepOrderAndVisibilityWhileAddingNewItems"
+        ],
+        "details": "See TOOLBAR-IMPLEMENTATION.md; UI/native Notes behavior is not yet verified."
+      },
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A16",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "slash 命令逐项显隐、拖拽排序、恢复默认；隐藏项同时退出精确匹配 [NB-slash-settings] [NB-catalog]",
+        "`allCommands` 固定数组 [ON-slash]",
+        "**缺失配置与 UI**",
+        "隐藏命令既不出现在菜单，也不会用隐藏 alias 偷偷执行；顺序重启后保留"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A17",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "全局行内增强总开关＋浮条／Markdown／slash 独立开关 [NB-settings] [NB-availability]",
+        "Markdown service 有逐触发开关；其余设置须按 AppDelegate 实际绑定复核 [ON-settings]",
+        "部分；“Settings 有 Toggle”不能等于后台服务已停",
+        "每个开关关闭后，不拦按键、不显示浮层、不执行转换；再次开启恢复"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:A18",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "共用面板定位：上下翻转、visibleFrame 限制、0.5px 抖动容差、Space/fullscreen 辅助、透明材质、横向浮条滚动 [NB-surface] [NB-layout]",
+        "WindowTrackService、WindowGeometry、各 WindowController [ON-geometry]",
+        "同类已实现；多屏和焦点行为未由本次研究验证",
+        "主屏上／下／左／右副屏、缩放、全屏、跨 Space、边缘大工具条；无抢焦／闪烁"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B01",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "用户选择 `group.com.apple.notes`，保存 security-scoped bookmark；解析失效回退 path；访问周期中成对 start/stop [NB-app]",
+        "固定根 `NoteStore.sqlite`＋FDA 状态探测 [ON-db]",
+        "部分／授权模型不同；没有可选容器和持久 bookmark 流程",
+        "授权／取消／重启／失效／受限账户目录，显示真实错误；无需为追求同实现强行要求双重授权"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B02",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "扫描 root、LocalAccount、Accounts 下 DB；择可读正文最多的一份，manifest 记录选择供定向加载 [NB-db]",
+        "固定 root DB [ON-db]",
+        "部分：缺候选发现与 schema 适配；注意上游是选一份，**不是所有库合并**",
+        "root 空、account 有数据；两库同 Z_PK；manifest 和正文必须来自一致来源"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B03",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "复制 DB／WAL／SHM 到 Caches 临时目录，只读 SQLite 查询，defer 清理 [NB-db] [NB-sqlite]",
+        "原库使用 `SQLITE_OPEN_READONLY` 与 `FULLMUTEX`，busy timeout，专用串行队列 [ON-db]",
+        "原数据库只读已实现；快照策略不同，不能仅凭“复制了文件”保证并发一致性",
+        "真实编辑并发读取、WAL 创建／轮换；验证读取一致、清理失败及权限错误处理"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B04",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "查询 `z_primarykey` entity ID、PRAGMA 列，优先标题／folder 引用列并回退有数据列 [NB-db]",
+        "SQL 固定 `ZTITLE1/ZTITLE2/ZFOLDER/ZNOTEDATA` [ON-db]",
+        "部分：跨 schema 兼容不足",
+        "合成不同列布局＋实际支持系统版本；缺列应报不支持，不能静默“0 篇”"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B05",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "账户名、父子文件夹、default folder 省略、smart/trash 过滤、共享标记与创建／修改时间 [NB-db] [NB-document]",
+        "NoteInfo 标题／摘要／单 folderName／修改时间／置顶",
+        "部分：无完整账户／层级／共享元数据模型",
+        "同名跨账户 folder、嵌套 folder、默认 folder、Trash、异常父链"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B06",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "gzip＋Protobuf 正文、attribute runs、段落样式、列表缩进、checklist、字重、下划线／上标、链接、附件描述；直接／包裹／递归查找（深度 6） [NB-decoder]",
+        "`NotesBridgeDecoder.swift` 移植对应解码结构 [ON-decoder]",
+        "正文解码已复用；本地另做长度／varint 限制和有上限 gzip 路径",
+        "空、截断、恶意长度、非 BMP、直接与包裹消息、属性长度不匹配，保留失败语义"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B07",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "原生属性 → Markdown：标题、列表、勾选、quote、code fence、粗／斜／粗斜、删除线、外链；段落样式补全、相邻同属性合并 [NB-render]",
+        "知识导入只取 `note.noteText`；“复制 Markdown”走 HTML converter [ON-db] [ON-convert]",
+        "部分：**能解码 attribute 不代表它进入知识库或导出**；原生渲染链未移植",
+        "用同一复杂笔记比对 Notes 视觉、HTML 路径、protobuf 路径与知识片段"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B08",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "转换 attribute 中的内链和内嵌 note-link 为 token；后续导出按目标真实路径解析 [NB-render] [NB-db]",
+        "原生反链有独立 parser/graph；复制链接可用；知识正文未渲染占位 token",
+        "部分：反链图与正文语义材料不是同一实现",
+        "内链显示文字不丢失；UUID／x-coredata 两种目标；目标不存在时可解释降级"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B09",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "hashtag／mention 的 `zalttext`；URL card 读取 title/url [NB-db]",
+        "知识导入未用 attachmentResolver，`noteText` 可能只含对象占位",
+        "部分／缺失内嵌对象文本补全",
+        "文本标签、mention、URL 卡片导入后可检索；不把 U+FFFC 当完整材料"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B10",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "`zmergeabledata1` → CRDT table，解行列排序和 cell note；cell 中换行用 `<br>`、竖线转实体，嵌套链接／附件 token 唯一化 [NB-mergeable]",
+        "HTML converter 支持可见 HTML table；无 mergeable table decoder [ON-convert]",
+        "部分：HTML 中有表格不等于 DB 原生表格已处理；知识库尤其缺此路径",
+        "2×2、空 cell、多行、pipe、嵌套链接／图片、中文、异常 object index；原生表格实际读回"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B11",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "扫描 gallery page IDs → 页预览 JPEG，失败时 media fallback；部分页失败独立诊断 [NB-mergeable] [NB-db]",
+        "无扫描 gallery 解析／OCR",
+        "缺失；上游导出图片，**没有 OCR 识字**",
+        "多页排序、缺页、失败计数、真实文件存在性；OCR 要独立实现验证"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B12",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "modified scan 导出 FallbackPDF；3 类 drawing 导出 fallback JPG/PNG；一般 media 取 filename/generation [NB-db]",
+        "HTML converter 将附件标明占位；知识文件选择可导入有文本 PDF",
+        "部分：没有 Notes 原生附件解析／复制链",
+        "PDF／绘图／音频／视频／普通文件逐类；账户路径与 generation、未下载附件"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:B13",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "锁定笔记不解码，计数；云端缺本地 body 不进入 manifest；异常表格／scan 返回明确占位并累计诊断 [NB-db]",
+        "知识导入跳过 locked/deleted/trash；刷新移除已锁／删快照 [ON-db] [ON-workspace]",
+        "部分：安全过滤存在；当前一种正文解码抛错可终止所选批次，缺逐源诊断",
+        "锁定、删除、坏正文混合批次；可解释每一篇是成功、跳过或失败"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:C01",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "选择 Vault、设置 export folder、自定义 attachment folder、Finder reveal [NB-settings] [NB-vault]",
+        "缺失",
+        "取消选择不改状态，路径可写、冲突处理正确"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C02",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "全量同步；按 folder ID 优先、folder path/name 回退分组，未匹配笔记也进入 fallback group [NB-app]",
+        "缺失",
+        "不漏孤立 folder 笔记；真实导出数量和跳过数量可追溯"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C03",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "manifest＋SyncRecord：时间（容差 1 秒）、名称、路径变化决定增量；未变不解码正文 [NB-plan]",
+        "缺失",
+        "新建／改文／重命名／移动／删除；目标文件丢失恢复，不只对比时间戳"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C04",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "changed IDs 定向加载；缺少预期正文时回退 full sync 并保留原因 [NB-app]",
+        "缺失",
+        "fallback 可复现且不会把未读出的笔记静默算作导出成功"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C05",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "周期自动同步 30 分、1h、6h、1d；旧 5/15 分配置归并到 30 分 [NB-interval] [NB-settings-model]",
+        "缺失",
+        "时间驱动用可控 clock 测试；睡眠／恢复、重启、关开后的计划明确"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C06",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "onChange：2s 轮询 DB/WAL mtime＋默认 5s debounce；持续保存访问 session [NB-watcher] [NB-app]",
+        "缺失",
+        "快速变更多次合并；同步期间变更完成后补跑；原库创建／WAL 新建／替换均可靠"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C07",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "同步进度、当前 folder、added/updated/unchanged/removed/skipped、计时、菜单栏旋转 [NB-progress] [NB-app]",
+        "缺失",
+        "空库 100%、失败清理、变化数与真实文件写入一致"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C08",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "按 folder 层级和干净文件名导出；重名加序号；旧 hash path 迁移、稳定 ID/path alias、从 frontmatter 恢复 [NB-vault] [NB-record]",
+        "缺失",
+        "重名／改名／跨 folder／手动已有文件；路径不得逃逸目标根目录"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C09",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "YAML source、原生 deep link、sync ID、legacy ID、folder、created_at、updated_at、shared [NB-vault]",
+        "缺失",
+        "created_at 来自 Notes；此上游的 updated_at 是**导出更新时间**，不能当作原笔记修改时间"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C10",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Wiki 内链用目标最终路径＋alias，处理碰撞路径、x-coredata fallback；目标缺失降为文字并计数 [NB-vault]",
+        "缺失",
+        "目标重命名后未变来源笔记的链接也要修复；不能只测试初次导出"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C11",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "图片／音频／视频／PDF 为 `![[...]]`，普通文件 `[[...]]`；统一附件根下按笔记层级放置 [NB-vault] [NB-db]",
+        "缺失",
+        "文件真实复制、每个 token 替换正确、同名附件不覆盖"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C12",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "读 `.obsidian/app.json` 的 attachmentFolderPath；不支持当前文件相对目录时降回自定义并警告 [NB-vault]",
+        "缺失",
+        "自定义根、配置损坏、`./`、非标准路径；不得误读配置为具有权限"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C13",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "附件按大小＋时间避免重复复制，清理失效附件；重命名时移动附件目录并迁移旧存储 [NB-vault]",
+        "缺失",
+        "内容变而大小/时间不变、复制中断、权限失败、用户自放文件；清理不误删"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C14",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "source 消失／trash 后 Markdown 和附件移动 `_Removed`；冲突时加序号 [NB-plan] [NB-vault]",
+        "缺失",
+        "重复删除／恢复、同名 removed、既有文件保持；原 Notes 永远不删除"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:C15",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "`settings.json` 和 `sync-index.json` 原子持久化；旧字段 decode 默认／path aliases 迁移 [NB-persistence] [NB-record]",
+        "缺失同步记录；OpenNotes 自己的 AI 配置持久化不等价",
+        "配置损坏可告知、部分导出后重试、一致恢复；批量结果不会只有内存状态"
+      ],
+      "runtime_verified": false,
+      "product_scope": "deferred_import_export"
+    },
+    {
+      "id": "NB:D01",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Swift 6.2、macOS 14、SwiftUI/AppKit 菜单栏 accessory app [NB-package] [NB-main]",
+        "已实现原生 SwiftUI/AppKit；还提供工作台",
+        "对支持最低版本和 Apple Silicon／Intel 明确建立构建与实机矩阵，不能从 target 版本推断已测"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D02",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "EN／简中／FR／system，词典本地化、带参数进度文案 [NB-localization]",
+        "中文 UI＋部分英文，未见完整语言配置与资源层",
+        "部分；UI 本地化与 AI 输出语言是两个配置"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D03",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Accessibility、Input Monitoring、App Management 设置入口；显示 bundle vs CLI、relaunch 为固定 app bundle [NB-permission] [NB-app]",
+        "AX/FDA/Notes Automation 诊断与引导已存在 [ON-settings]",
+        "部分／权限需求不同；真正 bundle 的 TCC 授权与各依赖功能需实机验收"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D04",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "`BuildFlavor.appStore` 关闭行内增强且关闭 Sparkle；directDownload 启用 [NB-flavor] [NB-updating]",
+        "当前只做直接分发，无 App Store flavour",
+        "非 ProNotes 编辑功能必需；不因它存在就增加无需求的发布分支"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D05",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "Sparkle 手动检查、自动检查默认开、自动下载默认关，关闭检查时关下载 [NB-updating]",
+        "缺失，当前本地 zip／ad-hoc 包",
+        "发布级能力：自有 feed、密钥、签名、更新可回滚；不要复制上游公钥/feed 作为自己的更新系统"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D06",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "bundle/release/notarize/appcast/release-notes；嵌 Sparkle framework；CI Xcode test [NB-release] [NB-ci]",
+        "已有自己的 bundle/verify 脚本；无在线发布链",
+        "部分；本报告不证明上游或 OpenNotes 某个 release 真正完成公证或跑过 CI"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D07",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "OSLog 分类、同步诊断、slash 最近 8 条诊断；部分包含光标附近文本 [NB-slash] [NB-log]",
+        "OpenNotes 日志策略声称不记正文／密钥，已有状态展示 [ON-readme]",
+        "不照搬上游正文 snippet 诊断，避免用户知识材料进入日志"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D08",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "HTML→Markdown、Markdown→HTML、AttributedString preview 作为辅助函数 [NB-transform]",
+        "HTML→Markdown 更丰富的独立 converter；AI 插入纯文本",
+        "部分；上游 markdownToHTML 仅有限行解析，没有原生表格／完整 CommonMark 回写能力，也未接通产品"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D09",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "AppleScript/JXA 读 folder/summary/document 和全 body 写回辅助 API [NB-script]",
+        "CurrentNoteResolver＋Automation access＋SelectionTransaction 局部回写",
+        "部分／设计不同；不采用全 body 覆盖来“补齐”AI 选区功能，它会改变原生结构和附件边界"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D10",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "原生 test-launch mode，注入 fixtures、伪更新器／伪数据源、输出状态与窗口就绪文件 [NB-launch]",
+        "模拟模型服务和可选截图测试，原生 UI 实机仍独立",
+        "部分；上游 UI tests 不验证真实 Apple Notes、AX 输入、授权、真实更新网络"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D11",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "NotesBridge 无 LLM／Keychain／RAG／提示词配置模块",
+        "OpenNotes `AIConfiguration`、`ModelClient`、`KnowledgeIndex`、`WorkspaceModel`",
+        "OpenNotes 已新增四协议连接、Keychain、提示词、流式结果、取消、FTS5、来源编号、模板 [ON-ai] [ON-model] [ON-knowledge] [ON-workspace]"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "NB:D12",
+      "source_document": "NOTESBRIDGE-COMPARISON.md",
+      "baseline_columns": [
+        "NotesBridge 无反链 UI、全局搜索、模板、Vim、独立浮动笔记管理",
+        "OpenNotes 已有反链、搜索、模板子集；Vim／独立浮动笔记等仍需整体对标矩阵处理",
+        "**不能凭 NotesBridge 没有它们就从 ProNotes 最终目标排除**"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-01",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "登录启动（P-UI）",
+        "**代码实现**：SMAppService register/unregister；ad-hoc 包实际登录项状态尚需验。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-02",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "菜单栏显示开关（P-UI）",
+        "**缺失**：MenuBarExtra 总是构造，无 isInserted binding。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-03",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "工具条/slash/Markdown 开关（P-UI）",
+        "**缺失用户控制**；初始化获取 AX 权限后全部启动。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-04",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "语言选择（P-UI）",
+        "**缺失**：当前硬编码中文/部分英文；无 String Catalog、本地化资源或语言偏好。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-05",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "权限/数据库连接诊断",
+        "**代码实现**：AX、Automation、Full Disk Access 分开；数据库能 open 不等于私有 schema 可读。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-06",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "自动更新（P-UI/Sparkle 静态线索）",
+        "**缺失**：没有更新 feed、签名更新或检查 UI；公开发布/公证也尚未完成。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-07",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "匿名崩溃报告（P-UI/Sentry 静态线索）",
+        "**未实现远程上报**：目前本地日志、无账户/遥测。无需为开源替代强行复制账号/商业后端，但完整产品差异须披露。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-08",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "原生栈",
+        "**代码实现**：Swift/SwiftUI/AppKit、原生 AX/Carbon/SQLite/Security，没有 Electron web shell。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-09",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "可维护的开源代码/许可",
+        "**文件存在**：MIT 与第三方 notices；公开 GitHub 仓库/release 不是由本次源码审计证明。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "PN:SYS-10",
+      "source_document": "PRONOTES-NOTESPLUS-COMPARISON.md",
+      "baseline_columns": [
+        "Floating notes、Vim（P-WEB 标 WIP）",
+        "**没有实现**；必须继续列在完整对照里，不能伪造稳定合同。实现同类稳定版无需把原厂 WIP 当成已发布能力；若最终用户要求也纳入，须另立明确行为验收。"
+      ],
+      "runtime_verified": false,
+      "product_scope": "reference_or_existing_utility"
+    },
+    {
+      "id": "ON:BL-DOC",
+      "source_document": "CURRENT-FEATURES.md",
+      "baseline_columns": [
+        "用户主动生成和更新 Notes 正文反链区域",
+        "部分覆盖保留旧来源，生成链接不作为新入链",
+        "实现与回归完成，实际 App 完整写入链待验收"
+      ],
+      "product_scope": "current_core",
+      "runtime_verified": false,
+      "update": {
+        "date": "2026-10-08",
+        "version": "0.2.0",
+        "state": "implemented_runtime_pending",
+        "source": "src/AppleNotesPro/Features/Backlinks/BacklinkDocumentController.swift",
+        "tests": [
+          "BacklinkDocumentTests"
+        ],
+        "details": "Native Notes URL paste, undo and navigation tested through CUA; app UI tool fails on OpenNotes."
+      }
+    }
+  ],
+  "current_decisions": "current-parity.json",
+  "current_implementation": "CORE-IMPLEMENTATION-0.3.1.md"
+}

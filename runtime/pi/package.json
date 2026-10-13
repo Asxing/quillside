@@ -1,0 +1,21 @@
+{
+  "name": "quillside-pi-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "1.2.0",
+    "@earendil-works/pi-ai": "1.2.0",
+    "@earendil-works/pi-coding-agent": "1.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  },
+  "scripts": {
+    "test": "node build.mjs && node --test --test-concurrency=1 test/*.test.mjs"
+  }
+}

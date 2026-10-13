@@ -1,0 +1,134 @@
+[
+  {
+    "role": "公众号",
+    "stage": "quick",
+    "annotation_count": 0,
+    "history_count": 0,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "个人笔记",
+    "stage": "quick",
+    "annotation_count": 0,
+    "history_count": 0,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "汇报",
+    "stage": "quick",
+    "annotation_count": 0,
+    "history_count": 0,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "公众号",
+    "stage": "plan",
+    "annotation_count": 1,
+    "history_count": 0,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "公众号",
+    "stage": "revise",
+    "annotation_count": 1,
+    "history_count": 0,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "公众号",
+    "stage": "audit",
+    "annotation_count": 1,
+    "history_count": 0,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "个人笔记",
+    "stage": "plan",
+    "annotation_count": 1,
+    "history_count": 2,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "个人笔记",
+    "stage": "revise",
+    "annotation_count": 1,
+    "history_count": 2,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "个人笔记",
+    "stage": "audit",
+    "annotation_count": 1,
+    "history_count": 2,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "汇报",
+    "stage": "plan",
+    "annotation_count": 1,
+    "history_count": 3,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "汇报",
+    "stage": "revise",
+    "annotation_count": 1,
+    "history_count": 3,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  },
+  {
+    "role": "汇报",
+    "stage": "audit",
+    "annotation_count": 1,
+    "history_count": 3,
+    "skill_names": [
+      "humanizer-zh"
+    ],
+    "has_reader_goal": true,
+    "synthetic_only": true
+  }
+]

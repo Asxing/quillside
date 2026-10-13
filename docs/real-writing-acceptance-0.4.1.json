@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-09",
+  "version": "0.4.1",
+  "configured_model": "codex/gpt-6.1-sol",
+  "protocol": "OpenAI Responses",
+  "material": "synthetic note APN-AGENT-1009 only",
+  "skill_names": [
+    "humanizer-zh"
+  ],
+  "annotation_count": 10,
+  "rounds": [
+    {
+      "round": 1,
+      "candidate": "我们目前认为，当前流程的效率有所提升。\n处理时间从30分钟缩短到10分钟。\n目前流程仍需人工复核。",
+      "assessment_count": 10,
+      "all_original_ids_preserved": true,
+      "statuses": [
+        "addressed"
+      ],
+      "issues": [],
+      "history_count": 2
+    },
+    {
+      "round": 2,
+      "candidate": "我们目前认为，当前流程的效率有所提升。\n处理时间从30分钟缩短到10分钟。\n仍需人工复核。",
+      "assessment_count": 10,
+      "all_original_ids_preserved": true,
+      "statuses": [
+        "addressed"
+      ],
+      "issues": [],
+      "history_count": 3
+    }
+  ],
+  "native_apply": "verified_candidate_matches_and_title_suffix_unchanged",
+  "undo": "one_native_Cmd_Z_restored_source",
+  "credentials": "existing_keychain_authorization_only_no_secret_in_evidence"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "preview",
+  "published_at": null,
+  "download_url": null,
+  "sha256": null,
+  "repository_url": null,
+  "support_email": null,
+  "architecture": "Apple Silicon",
+  "minimum_macos": "14.0",
+  "tested_macos": "26.5.2",
+  "notarized": false,
+  "license": "MIT"
+}

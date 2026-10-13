@@ -1,0 +1,160 @@
+{
+  "scope": "Domain registration lookup only. A 404 does not prove availability, price, trademark clearance or successful registration.",
+  "bootstrap_source": "https://data.iana.org/rdap/dns.json",
+  "checks": [
+    {
+      "domain": "quillside.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/quillside.com",
+      "checked_at_utc": "2026-10-12T08:59:56.660805+00:00",
+      "http_status": 200,
+      "result": "registration_found",
+      "ldh_name": "QUILLSIDE.COM",
+      "status": [
+        "client transfer prohibited"
+      ]
+    },
+    {
+      "domain": "quillside.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/quillside.app",
+      "checked_at_utc": "2026-10-12T08:59:56.661084+00:00",
+      "http_status": 200,
+      "result": "registration_found",
+      "ldh_name": "quillside.app",
+      "status": [
+        "client transfer prohibited",
+        "client update prohibited"
+      ]
+    },
+    {
+      "domain": "marginlet.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/marginlet.com",
+      "checked_at_utc": "2026-10-12T08:59:56.661162+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "marginlet.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/marginlet.app",
+      "checked_at_utc": "2026-10-12T08:59:56.661208+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "notewren.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/notewren.com",
+      "checked_at_utc": "2026-10-12T08:59:57.558957+00:00",
+      "http_status": 200,
+      "result": "registration_found",
+      "ldh_name": "NOTEWREN.COM",
+      "status": [
+        "active"
+      ]
+    },
+    {
+      "domain": "notewren.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/notewren.app",
+      "checked_at_utc": "2026-10-12T08:59:57.590740+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "quillsidenotes.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/quillsidenotes.com",
+      "checked_at_utc": "2026-10-12T09:03:33.080125+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "quillsidenotes.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/quillsidenotes.app",
+      "checked_at_utc": "2026-10-12T09:03:33.080376+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "marginletnotes.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/marginletnotes.com",
+      "checked_at_utc": "2026-10-12T09:03:33.080451+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "marginletnotes.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/marginletnotes.app",
+      "checked_at_utc": "2026-10-12T09:03:33.080497+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "noteswing.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/noteswing.com",
+      "checked_at_utc": "2026-10-12T09:03:34.082345+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "noteswing.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/noteswing.app",
+      "checked_at_utc": "2026-10-12T09:03:34.151534+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "noteslilt.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/noteslilt.com",
+      "checked_at_utc": "2026-10-12T09:03:34.164115+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "noteslilt.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/noteslilt.app",
+      "checked_at_utc": "2026-10-12T09:03:34.199014+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "notesquill.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/notesquill.com",
+      "checked_at_utc": "2026-10-12T09:03:35.129966+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "notesquill.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/notesquill.app",
+      "checked_at_utc": "2026-10-12T09:03:35.220503+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "notessprig.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/notessprig.com",
+      "checked_at_utc": "2026-10-12T09:07:17.983310+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "notessprig.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/notessprig.app",
+      "checked_at_utc": "2026-10-12T09:07:17.983834+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "notesprig.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/notesprig.com",
+      "checked_at_utc": "2026-10-12T09:07:17.983898+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    },
+    {
+      "domain": "notesprig.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/notesprig.app",
+      "checked_at_utc": "2026-10-12T09:07:17.983939+00:00",
+      "http_status": 404,
+      "result": "not_found_in_registry"
+    }
+  ],
+  "current_naming_constraint": "Product name should contain Notes"
+}

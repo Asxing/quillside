@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-09",
+  "version": "0.3.7",
+  "name": "AppleNotesPro",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "binary_sha256": "555a3cbb1c39974c692a0bca20011060f422aed98d885c53f611f897c76194a0",
+  "bundle_id_retained": "com.opennotes.app",
+  "tests": {
+    "total": 193,
+    "passed": 192,
+    "skipped": 1,
+    "suites": 30
+  },
+  "release_build": "passed",
+  "codesign": "stable_local_development_strict_verified",
+  "ui_branding": "verified_settings_about_application_menu",
+  "original_data_fingerprints_unchanged": true,
+  "old_backlink_migration": "regression_passed_no_automatic_note_edits",
+  "third_party_licenses_bundled": true
+}

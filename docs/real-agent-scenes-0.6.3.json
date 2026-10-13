@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-11",
+  "version": "0.6.3",
+  "provider": "existing local gateway / codex/gpt-6.1-sol / OpenAI Responses",
+  "material": "synthetic, same four paragraphs and five comments per role",
+  "case": {
+    "date": "2026-10-11",
+    "material_kind": "synthetic",
+    "source": "这次我们对内部工单整理流程做了一个非常重大的优化。过去整理一份工单平均需要30分钟，现在平均需要10分钟。这个结果来自同一类工单的20次试用。\n整理后的结果仍然需要同事逐项复核。我们还没有统计复核要花多少时间，所以目前还不能判断从接单到完成的总耗时下降了多少。\n大家觉得新流程用起来可能更顺手，但这只是三位参与试用同事的口头反馈，没有做正式问卷。我们不确定其他类型的工单能不能得到同样的结果。\n我们想下一步补记人工复核耗时，再试用另一类工单。暂时还没确定负责人和完成时间。",
+    "comments": [
+      {
+        "quote": "非常重大的优化",
+        "comment": "去掉夸大判断，只描述试用观察，不写成已证明的全面提升。"
+      },
+      {
+        "quote": "30分钟，现在平均需要10分钟",
+        "comment": "保留30分钟、10分钟、同类工单20次试用；不要把整理阶段耗时当成端到端耗时。"
+      },
+      {
+        "quote": "还没有统计复核要花多少时间",
+        "comment": "必须保留复核耗时未统计、端到端改善尚不能判断；不能声称完全自动。"
+      },
+      {
+        "quote": "三位参与试用同事的口头反馈",
+        "comment": "保留三人口头反馈、未做正式问卷、其他工单效果未知；不要增加满意率或推广结论。"
+      },
+      {
+        "quote": "暂时还没确定负责人和完成时间",
+        "comment": "保留负责人和完成时间未定；下一步仍是计划，不得写成承诺或已经完成。"
+      }
+    ],
+    "instruction": "按当前Agent的目标读者和质量标准优化全文，保留全部事实、数字、条件及五条批注。保持4个正文段落，不改标题；每条处理说明简洁。",
+    "roles": [
+      "公众号",
+      "个人笔记",
+      "汇报"
+    ],
+    "checks": [
+      "all five annotation IDs and explanations",
+      "facts 30/10/20/three participants",
+      "manual review and unmeasured review duration",
+      "no invented end-to-end efficiency or satisfaction rate",
+      "owners/dates remain undecided",
+      "four body paragraphs and unchanged title",
+      "native write matches preview",
+      "one undo restores original"
+    ],
+    "style_rubric": {
+      "公众号": "读者视角、解释门槛、自然衔接、克制表述",
+      "个人笔记": "便于回顾、信息层次、保留疑问与不确定性",
+      "汇报": "结论先行、指标口径、边界与下一步、明确待补充"
+    }
+  },
+  "roles": [
+    {
+      "role": "公众号",
+      "prompt_revision": 3,
+      "prompt": "你是一名公众号编辑，站在读者的角度，把材料写成自然、清楚、有依据的短文。从材料中真实的变化或疑问切入，让读者理解为什么值得关心；用证据、解释和自然转折推进，讲清限制。避免笔记标签、空话、标题党和煽情；不虚构故事、数据或引用。尊重作者立场、用户批注和既有段落要求。",
+      "candidate": "这次内部工单整理流程的试用中，整理一份工单的平均耗时从过去的30分钟降到了10分钟。这个结果来自同一类工单的20次试用，记录的是整理阶段的耗时。\n整理后的结果仍然需要同事逐项复核。我们还没有统计人工复核要花多少时间，因此目前还不能判断从接单到完成的总耗时是否有所改善。\n三位参与试用的同事口头反馈，新流程用起来可能更顺手。不过，我们还没有做正式问卷，也不确定其他类型的工单能否得到同样的结果。\n下一步，我们想补记人工复核耗时，再试用另一类工单。这些仍是计划，负责人和完成时间暂时还没有确定。",
+      "paragraphs": 4,
+      "annotation_count": 5,
+      "assessments": [
+        {
+          "annotationID": "577157D0-1723-4330-9637-52DC9B180984",
+          "explanation": "已删除夸大判断，以试用观察切入，未宣称全面提升。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "576412B1-1557-4BDD-873E-CBDBBA6E7460",
+          "explanation": "保留30分钟、10分钟及同类工单20次试用，明确耗时仅对应整理阶段。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "33A75D11-703E-42E6-81C1-18B4D795CCD1",
+          "explanation": "保留逐项人工复核、复核耗时未统计及端到端改善尚不能判断，未声称完全自动。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "9F722B69-A19C-41FD-829D-95AB4FF11701",
+          "explanation": "保留三人口头反馈、未做正式问卷及其他工单效果未知，未增加满意率或推广结论。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "BB67DE8F-C6E9-43C7-BE16-44D98933490B",
+          "explanation": "下一步仍为计划，保留负责人和完成时间未定，未改为承诺或已完成。",
+          "status": "addressed"
+        }
+      ],
+      "issues": [],
+      "style_observation": "自然段解释试用变化与边界，用口语转折衔接；不采用个人笔记标签",
+      "native_write_matches": true,
+      "single_undo_restored": true,
+      "write_attempts": 1,
+      "manual_format_retry": false,
+      "formatting_note": null,
+      "skills": [
+        {
+          "name": "humanizer-zh",
+          "fingerprint": "95627fd4437d886f98032ccc62d79136e6310f1fc04e354bb86431795ff206df"
+        }
+      ]
+    },
+    {
+      "role": "个人笔记",
+      "prompt_revision": 3,
+      "prompt": "你是我的个人笔记助手，帮助未来的我快速回顾和理解材料。用简短标签、短句或分号区分观察、依据、边界、待确认和下一步；只选材料支持的类别，标签放在原有段落同一行。保留个人声音、疑问和不确定性。不要写对外文章式的开场、互动问句或结尾升华，不添加未经证实的结论。",
+      "candidate": "观察：这次我们试用了新的内部工单整理流程，整理一份工单的平均耗时从过去的30分钟变为现在的10分钟；依据：这个结果来自同一类工单的20次试用。\n边界：整理后的结果仍需要同事逐项复核。我们还没有统计复核耗时，所以目前还不能判断从接单到完成的端到端总耗时是否改善、下降了多少。\n反馈：三位参与试用的同事口头反馈，新流程用起来可能更顺手；边界：没有做正式问卷，我们不确定其他类型的工单能不能得到同样的结果。\n下一步：我们想补记人工复核耗时，再试用另一类工单；待确认：负责人和完成时间暂时还没确定。",
+      "paragraphs": 4,
+      "annotation_count": 5,
+      "assessments": [
+        {
+          "annotationID": "5044A1B4-C53A-450B-8958-D0640EB6B61A",
+          "explanation": "已删除夸大判断，以观察和依据限定试用结果，未声称全面提升。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "76C125FA-A272-499E-B491-8BFD1858AAEC",
+          "explanation": "保留平均30分钟、10分钟及同类工单20次试用，明确数据仅指整理阶段。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "FCD9E619-A08D-4A0A-BE98-97F1DC081EE4",
+          "explanation": "保留同事逐项复核、复核耗时未统计及端到端改善尚不能判断，未声称完全自动。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "FFFD2A8E-DA47-4110-882D-21677484D411",
+          "explanation": "保留三位同事的口头反馈、可能更顺手、未做正式问卷及其他类型工单效果未知，未增加满意率或推广结论。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "8C9FCFE7-62AD-4986-B715-42B4FC9A51A2",
+          "explanation": "保留补记复核耗时和试用另一类工单的计划语气，以及负责人和完成时间未定；正文保持四段，标签与正文同一行。",
+          "status": "addressed"
+        }
+      ],
+      "issues": [],
+      "style_observation": "短标签、短句与分号组织成便于回顾的笔记，保留所有事实和未知事项",
+      "native_write_matches": true,
+      "single_undo_restored": true,
+      "write_attempts": 1,
+      "manual_format_retry": false,
+      "formatting_note": null,
+      "skills": [
+        {
+          "name": "humanizer-zh",
+          "fingerprint": "95627fd4437d886f98032ccc62d79136e6310f1fc04e354bb86431795ff206df"
+        }
+      ]
+    },
+    {
+      "role": "汇报",
+      "prompt_revision": 3,
+      "prompt": "你是一名汇报顾问，面向管理者和项目负责人，用专业、简洁、结论先行的表达说明进展。站在整体目标的角度组织已有结果、影响、风险和下一步，讲清指标口径与事实边界。没有依据的目标、收益、风险评级、负责人和日期不得补造；缺失信息明确标为待确认，不机械填满栏目。",
+      "candidate": "内部工单整理流程的试用观察显示，整理阶段每份工单的平均耗时由过去的30分钟降至现在的10分钟；这一结果来自同类工单的20次试用。\n整理后的结果仍需同事逐项复核。人工复核耗时尚未统计，因此目前还不能判断从接单到完成的端到端总耗时是否改善、下降了多少。\n三位参与试用的同事口头反馈，新流程用起来可能更顺手。目前未做正式问卷，其他类型工单能否取得同样效果仍未知。\n我们计划下一步补记人工复核耗时，再试用另一类工单。负责人和完成时间尚未确定。",
+      "paragraphs": 4,
+      "annotation_count": 5,
+      "assessments": [
+        {
+          "annotationID": "0461126B-1686-427E-A843-2F5BA9854545",
+          "explanation": "已删除夸大判断，结果限定为试用观察，未声称全面提升。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "48E9B461-ACF7-4C4B-9A1F-6B7F5ECB15B0",
+          "explanation": "保留30分钟、10分钟及同类工单20次试用，明确指标仅为整理阶段平均耗时。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "344EC6EE-B758-4C85-90F6-1CC6BD125F0A",
+          "explanation": "保留逐项人工复核、复核耗时未统计及端到端改善尚不能判断，未声称完全自动。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "BB13DA32-C43C-49AF-ACF7-698DADBEA269",
+          "explanation": "保留三位同事的口头反馈、未做正式问卷及其他类型工单效果未知，未添加满意率或推广结论。",
+          "status": "addressed"
+        },
+        {
+          "annotationID": "8E5489EF-6E84-4D21-B7A8-7047E846A1DA",
+          "explanation": "下一步仍表述为计划，保留负责人和完成时间尚未确定，未改为承诺或已完成。",
+          "status": "addressed"
+        }
+      ],
+      "issues": [],
+      "style_observation": "试用结果与指标口径先行，语言正式简洁，明确人工复核和下一步边界",
+      "native_write_matches": true,
+      "single_undo_restored": true,
+      "write_attempts": 1,
+      "manual_format_retry": false,
+      "formatting_note": null,
+      "skills": [
+        {
+          "name": "humanizer-zh",
+          "fingerprint": "95627fd4437d886f98032ccc62d79136e6310f1fc04e354bb86431795ff206df"
+        }
+      ]
+    }
+  ],
+  "configuration_unchanged": true,
+  "active_ai_tasks_at_end": 0,
+  "remaining_tcp_connections_at_end": 0,
+  "notes_restored_to_original": 3,
+  "default_agent_selection_restored": true,
+  "scope_limit": "One controlled four-paragraph fixture, not universal writing-quality coverage. Current report returned four paragraphs directly; automatic blank-line repair is separately covered by replay of the previous real failure."
+}

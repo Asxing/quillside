@@ -1,0 +1,1578 @@
+{
+  "date": "2026-10-10",
+  "version": "0.6.0",
+  "note": "Active source inventory; not proof of runtime behavior.",
+  "files": [
+    {
+      "path": "src/Quillside/AI/AIConfiguration.swift",
+      "sha256": "ac7e77a70f2ddc9c5b971e59f50ebba37f99acb04c502a4908fa9ac8ea0435ea",
+      "lines": 365,
+      "symbols": [
+        "ModelProtocol",
+        "ModelConnection",
+        "hasSameCredentialOrigin",
+        "endpoint",
+        "PromptAction",
+        "SnippetTemplate",
+        "TemplateShortcutRules",
+        "normalized",
+        "validate",
+        "AIConfiguration",
+        "migratedForEditing",
+        "validate",
+        "AIError",
+        "PromptRenderer",
+        "render",
+        "AppFiles",
+        "directory",
+        "save",
+        "CredentialAccess",
+        "ConfigurationStore",
+        "save",
+        "commit",
+        "saveConnection",
+        "deleteConnection",
+        "clearCredential",
+        "importConfiguration",
+        "cleanupCredential",
+        "ProviderKeychain",
+        "readAuthorized",
+        "read",
+        "read",
+        "save",
+        "remove"
+      ]
+    },
+    {
+      "path": "src/Quillside/AI/AuthorizedCredentialReader.swift",
+      "sha256": "42adaf5f37a3241c2c8a97e6239ef11b0d7cf0d9d82c3e5c4fd6cae94360587b",
+      "lines": 44,
+      "symbols": [
+        "AuthorizedCredentialReader",
+        "read",
+        "invalidate",
+        "withLock"
+      ]
+    },
+    {
+      "path": "src/Quillside/AI/EditingRequest.swift",
+      "sha256": "24264cdf05f8d119d414e8c38dbcc785fb89285be25ad657423a769eb77e63fc",
+      "lines": 18,
+      "symbols": [
+        "EditingRequest",
+        "render"
+      ]
+    },
+    {
+      "path": "src/Quillside/AI/ModelClient.swift",
+      "sha256": "02b15300d7c294a2e1559639597bc41c2489757cb489abcb43ec2bd1c48b51fc",
+      "lines": 150,
+      "symbols": [
+        "ModelRequestBuilder",
+        "request",
+        "ModelStreamDecoder",
+        "consume",
+        "NoRedirectDelegate",
+        "urlSession",
+        "ModelClient",
+        "generate"
+      ]
+    },
+    {
+      "path": "src/Quillside/AI/ModelStreamFramer.swift",
+      "sha256": "58c72921d63f43f8efe0f83cb7dd07a8b36bc14d7d8556faf631ac42695a3fe7",
+      "lines": 51,
+      "symbols": [
+        "ModelStreamFramer",
+        "consume",
+        "finish",
+        "finishLine"
+      ]
+    },
+    {
+      "path": "src/Quillside/Agents/AgentProfile.swift",
+      "sha256": "e84811d14ca713d680202921897600c8dae74e16983fa4dd762f93ffbe740075",
+      "lines": 115,
+      "symbols": [
+        "AgentOperation",
+        "AgentProfile",
+        "presets",
+        "validate",
+        "AgentSnapshot",
+        "validate",
+        "AgentContextBuilder",
+        "resolve",
+        "skills",
+        "system",
+        "quickSystem"
+      ]
+    },
+    {
+      "path": "src/Quillside/Agents/AgentStore.swift",
+      "sha256": "0bb7663788bd27a05c5bdaf0e1493bab561828c590a482fb9598b8ace10e20f7",
+      "lines": 79,
+      "symbols": [
+        "AgentStore",
+        "Catalog",
+        "validate",
+        "snapshot",
+        "save",
+        "setDefault",
+        "delete",
+        "commit"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/AgentSettingsView.swift",
+      "sha256": "845f5ad7b4473166ffb8f0d08df94163579c733144e10789e2bcdf5ab2411e61",
+      "lines": 98,
+      "symbols": [
+        "AgentSettingsView",
+        "field",
+        "load",
+        "save"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/AppDelegate.swift",
+      "sha256": "4132f3ebd99964313b29d52677e84017e96fda2237140397f35683782c911c1d",
+      "lines": 340,
+      "symbols": [
+        "AppDelegate",
+        "applicationDidFinishLaunching",
+        "applicationShouldHandleReopen",
+        "applicationWillTerminate",
+        "checkAccessibilityPermission",
+        "setupPermissionObserver",
+        "updatePermissionStatus",
+        "refreshPermissionStatus",
+        "refreshNotesProcessStatus",
+        "refreshAutomationAccessStatus",
+        "refreshDatabaseAccessStatus",
+        "applyDatabaseAccessStatus",
+        "requestAccessibilityPermission",
+        "openAccessibilitySettings",
+        "initializeServices",
+        "stopServices",
+        "toggleBacklinksPanel",
+        "performNoteAction"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/AppState.swift",
+      "sha256": "664d3ce051851a5906414a1676de272491f8f648dd83ec1fa5d8835e7ff25d2d",
+      "lines": 87,
+      "symbols": [
+        "NotesDatabaseAccessTransition",
+        "AppState"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/QuillsideApp.swift",
+      "sha256": "0ba0c8eb7336ea6424730be60d0936bac7f7a9cdb748202e4448a3b1c1ae35f6",
+      "lines": 32,
+      "symbols": [
+        "AppleNotesProApp"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/QuillsideStyle.swift",
+      "sha256": "fb1a9565065993cb88abcf02c10dbd1e9aba2c627e8d7b87acd6b3aa81868edc",
+      "lines": 306,
+      "symbols": [
+        "AppleNotesProReduceTransparencyOverrideKey",
+        "AppleNotesProStyle",
+        "utilitySurfaceTint",
+        "utilityOpaqueSurface",
+        "AppleNotesProSurfaceKind",
+        "AppleNotesProBrandIcon",
+        "PermissionStateLabel",
+        "State",
+        "PermissionSettingRow",
+        "FloatingSurface"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/ConnectionEditorState.swift",
+      "sha256": "e95f62fa2165fc7867c14d2e6224f7af783ea74b3e314ded73f388b9393fdb4e",
+      "lines": 23,
+      "symbols": [
+        "ConnectionEditorState",
+        "open",
+        "edit",
+        "create",
+        "selectProtocol",
+        "reconcile"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/ConnectionsView.swift",
+      "sha256": "35bc384d07fa1aa1607c5181c0c8f37ab5d226555e863cd36f24264df46aa126",
+      "lines": 125,
+      "symbols": [
+        "ConnectionsView",
+        "saveConfig",
+        "testConnection",
+        "stopTest",
+        "exportConfiguration",
+        "importConfiguration"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/ContentLibrarySettings.swift",
+      "sha256": "cac780a65665d9dfc2cda01486e930bfc7df9a6d762469c4b9bdd92f1b00d5bc",
+      "lines": 105,
+      "symbols": [
+        "PromptLibraryView",
+        "savePrompt",
+        "deletePrompt",
+        "TemplateLibraryView",
+        "save",
+        "delete"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/InlinePopoverStyle.swift",
+      "sha256": "91dc9fd09ca38548c6056b1977d108dff657452ec4e72511f78364ca0bdfe07f",
+      "lines": 44,
+      "symbols": [
+        "InlinePopoverStyle",
+        "configure",
+        "InlinePopoverSurface",
+        "InlineCloseButton"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/MarkdownTriggerSettingsView.swift",
+      "sha256": "4560d9832389772a37baac8beda71ebb1afc29fc78b7bd59a8dbacaa01248447",
+      "lines": 33,
+      "symbols": [
+        "MarkdownTriggerPreferences",
+        "enabled",
+        "set",
+        "MarkdownTriggerSettingsView"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/MenuBarView.swift",
+      "sha256": "bc36f0d4bc7874b64bac52361562cc42208ba729c7961f2c669560f7529da9ea",
+      "lines": 293,
+      "symbols": [
+        "MenuBarAction",
+        "MenuBarShortcut",
+        "MenuBarEntry",
+        "Kind",
+        "MenuBarContent",
+        "entries",
+        "divider",
+        "statusSymbol",
+        "MenuBarView",
+        "actionView",
+        "actionButton",
+        "perform",
+        "isEnabled",
+        "runDiagnostics",
+        "toggleBacklinksPanel",
+        "performNoteAction",
+        "openSettings"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/OnboardingView.swift",
+      "sha256": "716e5d11fa924357f27f28d7891188c365d4c5b1cb00e71a608606e45ab712ca",
+      "lines": 230,
+      "symbols": [
+        "OnboardingDatabaseAction",
+        "OnboardingView",
+        "performPrimaryAction",
+        "performDatabaseAction",
+        "finishOnboarding"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/SettingsView.swift",
+      "sha256": "2b681efe99795f57ebd9c107e7352a5ff3e37b7c9b32a31557069fb8259a8b25",
+      "lines": 332,
+      "symbols": [
+        "SettingsTab",
+        "SettingsView",
+        "SettingsWindowController",
+        "bind",
+        "show",
+        "windowWillClose",
+        "returnToNotes",
+        "GeneralSettingsTab",
+        "ShortcutsSettingsTab",
+        "ShortcutRow",
+        "MarkdownTriggerRow",
+        "AboutSettingsTab"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/ToolbarCustomizationView.swift",
+      "sha256": "0174eecff876ef1b96395bdcebaa95a65cf4805f574ef425bc54c0c30c37c092",
+      "lines": 35,
+      "symbols": [
+        "ToolbarCustomizationView"
+      ]
+    },
+    {
+      "path": "src/Quillside/App/WritingSkillsSettingsView.swift",
+      "sha256": "f1214f8c30b0cf40bf5abc3e2e8a3569204e23633b11e231a7639a90a2a2ab97",
+      "lines": 52,
+      "symbols": [
+        "SkillLibrarySettingsView",
+        "WritingSkillsSettingsView",
+        "importSkill"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/Backlinks/BacklinkDocument.swift",
+      "sha256": "4e75ac84ac7d10e9f5d1ce992499f5e228b5f860553fad054a03e81086194b03",
+      "lines": 143,
+      "symbols": [
+        "BacklinkDocumentEntry",
+        "BacklinkDocumentRegion",
+        "make",
+        "range",
+        "attributed",
+        "linksMatch",
+        "walk",
+        "BacklinkDocumentPlan",
+        "make",
+        "BacklinkRegionStore",
+        "State",
+        "snapshot",
+        "prepare"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/Backlinks/BacklinkDocumentController.swift",
+      "sha256": "f8b49a80184282d9c00f4d2e6797d585a1671fb4583b4135b85a5df62e8e7b3f",
+      "lines": 127,
+      "symbols": [
+        "BacklinkDocumentController",
+        "present",
+        "dismiss",
+        "windowShouldClose",
+        "apply",
+        "BacklinkDocumentPreview",
+        "pasteBacklinkRegion"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/Backlinks/BacklinksPanelView.swift",
+      "sha256": "b8ee112f7a9ef448c8da0a1875097560f3bbfc26b2161c7e00b0a47023cfe54a",
+      "lines": 304,
+      "symbols": [
+        "BacklinksPanelLayout",
+        "BacklinksPanelView",
+        "openNote",
+        "TrianglePointer",
+        "path",
+        "BacklinkRow"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/Backlinks/BacklinksPanelViewModel.swift",
+      "sha256": "73efca8ce537fcf222db10818c89d4a67946fa0ad56240931d2f13376cdfd3cf",
+      "lines": 98,
+      "symbols": [
+        "BacklinksPanelViewModel",
+        "ResolutionState",
+        "reset",
+        "setCurrentNote",
+        "markCurrentNoteUnavailable",
+        "retry",
+        "forceRefresh",
+        "configureForPreview",
+        "refreshBacklinks"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/Backlinks/BacklinksPanelWindowController.swift",
+      "sha256": "9dbcec2a78288ff1c5035109f0092e3373105a6bd5fb719cc23e2fe98ecdb051",
+      "lines": 430,
+      "symbols": [
+        "RequestGeneration",
+        "begin",
+        "isCurrent",
+        "BacklinksPanelAccessCoordinator",
+        "apply",
+        "BacklinksPanelWindowController",
+        "startNoteChangeHealthCheck",
+        "stopNoteChangeHealthCheck",
+        "handleDatabaseAccess",
+        "stopBacklinksResolution",
+        "beginBacklinksResolution",
+        "installClickMonitor",
+        "removeClickMonitor",
+        "resolveCurrentNoteIdentifier",
+        "checkForNoteChange",
+        "positionAboveAnchor",
+        "show",
+        "show",
+        "show",
+        "positionFallback",
+        "hide",
+        "toggle"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/FloatingBar/FloatingBarView.swift",
+      "sha256": "1b670bb5a5114dfe40bccd26d7483deddc78230aaa7800962498a96bf70a4ea3",
+      "lines": 186,
+      "symbols": [
+        "FloatingBarView",
+        "ToolbarPopUpButton",
+        "Item",
+        "makeCoordinator",
+        "makeNSView",
+        "updateNSView",
+        "Coordinator",
+        "choose",
+        "ToolbarDivider",
+        "ToolbarButton",
+        "FloatingToolbarButtonStyle",
+        "makeBody"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/FloatingBar/FloatingBarViewModel.swift",
+      "sha256": "534ca85ecaceeb0c800cc966a7a88abb60e830444e57dc3fa04352b593557f71",
+      "lines": 152,
+      "symbols": [
+        "FloatingToolbarAction",
+        "FloatingBarViewModel",
+        "toggleBold",
+        "toggleItalic",
+        "toggleUnderline",
+        "toggleStrikethrough",
+        "setHeading",
+        "insertList",
+        "insertBlockQuote",
+        "insertMonospaced",
+        "insertHighlight",
+        "insertCodeBlock",
+        "perform",
+        "align",
+        "changeFontSize",
+        "showFonts",
+        "clearFeedback",
+        "showFeedback",
+        "finishFormat",
+        "dismiss",
+        "resetSelectionState",
+        "updateSelectionState",
+        "HeadingLevel",
+        "ListType"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/FloatingBar/FloatingBarWindowController.swift",
+      "sha256": "69c606b18f624157a2e7baea33a9205767f97026d28d807a2f5bea638feca0ee",
+      "lines": 283,
+      "symbols": [
+        "FloatingBarWindowController",
+        "setupBindings",
+        "checkSelection",
+        "resizePanel",
+        "positionNearSelection",
+        "convertAXToCocoaCoordinates",
+        "show",
+        "hide",
+        "toggle"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/FloatingBar/SelectionFormattingAnalyzer.swift",
+      "sha256": "f223e1971270396c4a6670b031bf0cb6893535991a5e40c5bca2c8dc6f50286a",
+      "lines": 128,
+      "symbols": [
+        "SelectionFormattingAnalyzer",
+        "actions",
+        "actions",
+        "key",
+        "raw",
+        "numberValue",
+        "boolValue",
+        "listPrefix"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/FloatingBar/ToolbarConfiguration.swift",
+      "sha256": "4a279dad62a90417f6e7318a1ee55ec61512a912cdeb3dbc2ba61d1e93be653c",
+      "lines": 130,
+      "symbols": [
+        "ToolbarItemID",
+        "ToolbarItemSetting",
+        "ToolbarConfiguration",
+        "normalized",
+        "moving",
+        "ToolbarSettingsStore",
+        "setVisible",
+        "move",
+        "reset",
+        "save",
+        "ToolbarLayout",
+        "size"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/InlineAssistant/InlineAssistantController.swift",
+      "sha256": "018ac52b0ae9491a5ac2f3b525586d593ef0069e93bf05f82c7bc45bb7450d65",
+      "lines": 177,
+      "symbols": [
+        "InlinePanelOwner",
+        "InlineEventOrder",
+        "belongsToPresentation",
+        "InlineInteractionGate",
+        "setActive",
+        "NotesInlinePanel",
+        "cancelOperation",
+        "InlinePanelPlacement",
+        "frame",
+        "InlineAssistantController",
+        "openRevision",
+        "present",
+        "resize",
+        "startMonitoring",
+        "clickedOutside",
+        "stopMonitoring",
+        "dismiss",
+        "windowShouldClose"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/InlineAssistant/InlineAssistantModel.swift",
+      "sha256": "394c44d96b63e3f8af0e8635f20718a6489e06a73cb3fd3c26f25cfa38565cc0",
+      "lines": 155,
+      "symbols": [
+        "InlineAssistantModel",
+        "Phase",
+        "Target",
+        "configureAgents",
+        "selectAgent",
+        "begin",
+        "run",
+        "runCustom",
+        "retry",
+        "stop",
+        "checkTarget",
+        "invalidate",
+        "targetChanged",
+        "apply",
+        "dismiss"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/InlineAssistant/InlineAssistantView.swift",
+      "sha256": "de434130a62122840db67a40a75e12b48bfe6b16c2fbccf3b9788ee23f9142e0",
+      "lines": 183,
+      "symbols": [
+        "InlineAssistantLayout",
+        "resultHeight",
+        "originalHeight",
+        "size",
+        "InlineAssistantView",
+        "symbol",
+        "InlineActionStyle",
+        "makeBody"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NoteActions/NoteActionsBarView.swift",
+      "sha256": "b1a1f02c93a84ceb9422cfdcb83724078e6d5ba7cb6f2495650f237b7d8d77ea",
+      "lines": 193,
+      "symbols": [
+        "NoteActionsLayout",
+        "NoteActionsBarView",
+        "feedbackCapsule",
+        "feedbackColor",
+        "NoteActionButton",
+        "NoteActionButtonStyle",
+        "makeBody",
+        "foregroundColor",
+        "backgroundColor"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NoteActions/NoteActionsBarViewModel.swift",
+      "sha256": "d11e50068c8939e8b59a4b2d3a89f38b79b4968cf1a0764d68458186333456d1",
+      "lines": 220,
+      "symbols": [
+        "NoteActionsBarViewModel",
+        "Feedback",
+        "Kind",
+        "setCurrentNote",
+        "refreshCurrentNote",
+        "noteContextDidChange",
+        "beginCurrentNoteResolution",
+        "perform",
+        "scheduleResolutionTimeout",
+        "scheduleFeedbackDismissal"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NoteActions/NoteActionsBarWindowController.swift",
+      "sha256": "0320c683e77cac1236362ad7bbdceb1410f213869b88c7d0003f00a6ad69a735",
+      "lines": 210,
+      "symbols": [
+        "NoteActionsPresentationPolicy",
+        "shouldShow",
+        "NoteActionsRefreshPolicy",
+        "shouldRefresh",
+        "NoteActionsBarWindowController",
+        "setupBindings",
+        "handleWindowChange",
+        "positionBar",
+        "show",
+        "hide",
+        "performFromMenu",
+        "actionBarFrame"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NoteActions/NoteActionsService.swift",
+      "sha256": "e964295256d0d6e0da6f454fcb4af0cbfac6fc9c4414ed9cc115e019133782a8",
+      "lines": 289,
+      "symbols": [
+        "NoteActionKind",
+        "NoteActionItem",
+        "isBusy",
+        "NoteActionError",
+        "NoteActionPasteboardPayload",
+        "NoteActionOutcome",
+        "PasteboardWriting",
+        "write",
+        "SystemPasteboardWriter",
+        "write",
+        "NoteActionsServicing",
+        "resolveCurrentNote",
+        "perform",
+        "commitPasteboard",
+        "NoteActionsService",
+        "resolveCurrentNote",
+        "perform",
+        "commitPasteboard",
+        "copyMarkdown",
+        "copyNoteLink",
+        "resolveExpectedNote"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NotesAnnotations/NativeNotesAnnotationController.swift",
+      "sha256": "b08a1fcdc78112dae29ea4b07104abfe0fb8fd78753731ceca08e07d35633d63",
+      "lines": 353,
+      "symbols": [
+        "NativeNotesAnnotationController",
+        "configure",
+        "addSelection",
+        "present",
+        "begin",
+        "restart",
+        "validateCurrent",
+        "setupDock",
+        "resize",
+        "optimize",
+        "openModelSettings",
+        "openComment",
+        "showComment",
+        "editableControl",
+        "hideComment",
+        "resumeComment",
+        "attachTracking",
+        "suspend",
+        "invalidate",
+        "scheduleProjection",
+        "project",
+        "render",
+        "hideMarkers",
+        "cocoa",
+        "close"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NotesAnnotations/NativeNotesAnnotationView.swift",
+      "sha256": "dc797c54374b6c623a0f56eaa58fbe503eb2ab4ade685356c91c76c45ae03479",
+      "lines": 108,
+      "symbols": [
+        "NativeNotesAnnotationView",
+        "NotesAnnotationInputPanel",
+        "becomeKey",
+        "makeFirstResponder",
+        "updateInputGate",
+        "resignKey"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NotesAnnotations/NotesAnnotationGeometry.swift",
+      "sha256": "71916196ccbfbf1a19376614c681e02817ee9487c347b7027cd33b8196d4a24c",
+      "lines": 41,
+      "symbols": [
+        "NotesAnnotationGeometry",
+        "matchesSource",
+        "bodyRange",
+        "localSelection",
+        "absoluteRange",
+        "dockFrame",
+        "visibleMark"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NotesAnnotations/NotesAnnotationPresence.swift",
+      "sha256": "4c8ea1d75f68fdd885c72591ff511b6bd439404f325b70fb6712228926061d44",
+      "lines": 11,
+      "symbols": [
+        "NotesAnnotationPresence",
+        "Effect",
+        "click",
+        "context"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/NotesAnnotations/NotesAnnotationReader.swift",
+      "sha256": "35436bce2018a65e097d455a9a04821e5f542a79cd6c81a37f35b4fac1efb045",
+      "lines": 70,
+      "symbols": [
+        "NotesAnnotationProjection",
+        "NotesAnnotationObservation",
+        "NotesAnnotationReader",
+        "viewport",
+        "bounds",
+        "read"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/SlashCommand/SlashCommandCatalog.swift",
+      "sha256": "99d010bb680bafa04735bddb8bf6979124b7c26f3bec86d6b822f4489102427c",
+      "lines": 41,
+      "symbols": [
+        "SlashCommandCatalog",
+        "commands",
+        "exact",
+        "suggestions"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/SlashCommand/SlashCommandService.swift",
+      "sha256": "9b400a512f3260504f7e0a07800c6ec9665d255782c267e970c59254b9431466",
+      "lines": 247,
+      "symbols": [
+        "SlashCommandCategory",
+        "SlashCommandService",
+        "updateTemplates",
+        "setupSubscriptions",
+        "handleKeyPress",
+        "observeCommittedInput",
+        "observeCommittedInput",
+        "sameEditor",
+        "activate",
+        "deactivate",
+        "updateFilteredCommands",
+        "moveSelection",
+        "selectCommand",
+        "executeSelectedCommand",
+        "SlashCommand",
+        "Kind"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/SlashCommand/SlashMenuView.swift",
+      "sha256": "de6a0473075752e93a917251daaf367f33e80a6bc9d05c76c3959c98db657c24",
+      "lines": 211,
+      "symbols": [
+        "SlashMenuView",
+        "indexedCommands",
+        "scrollToSelection",
+        "CommandRow"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/SlashCommand/SlashMenuWindowController.swift",
+      "sha256": "302ea42533d8224d191b157e0cadfdc3336bf71a0cb18f48bcbfd1954e001b44",
+      "lines": 235,
+      "symbols": [
+        "SlashMenuPanelPresenter",
+        "show",
+        "SlashMenuWindowController",
+        "setupSubscriptions",
+        "show",
+        "hide",
+        "updateContent",
+        "currentMenuSize",
+        "getCaretPosition",
+        "fallbackCaretPosition",
+        "getFocusedUIElement",
+        "calculateMenuOrigin",
+        "convertAXToCocoaPoint"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/SlashCommand/SlashObservedInput.swift",
+      "sha256": "7dc6249f70fa467c61dbe04baac1f14a5d68eed242e4badfaa13519c7e55833a",
+      "lines": 15,
+      "symbols": [
+        "SlashObservedInput",
+        "submission"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/SlashCommand/TemplatePicker.swift",
+      "sha256": "2c34bfef7dfa8f02845c4c460f7df12de9158753657440a8414c2401b4c55b00",
+      "lines": 154,
+      "symbols": [
+        "TemplateCatalog",
+        "matching",
+        "render",
+        "TemplatePickerModel",
+        "begin",
+        "move",
+        "submit",
+        "cancel",
+        "TemplatePickerView",
+        "TemplatePickerController",
+        "present",
+        "showPanel",
+        "cancel",
+        "windowShouldClose"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/WritingSession/AnnotatedTextView.swift",
+      "sha256": "7bc87e37140a8777064f912653a58b8e69553e59f7419b2e4f59fe8330044570",
+      "lines": 265,
+      "symbols": [
+        "AnnotatedTextView",
+        "makeCoordinator",
+        "makeNSView",
+        "updateNSView",
+        "dismantleNSView",
+        "Coordinator",
+        "textDidChange",
+        "textViewDidChangeSelection",
+        "AnnotationTextEditor",
+        "viewDidMoveToWindow",
+        "setFrameSize",
+        "mouseDown",
+        "menu",
+        "scheduleSelectionAction",
+        "offerSelectionAction",
+        "addSelectedComment",
+        "refreshBubbles",
+        "openBubble",
+        "showComments",
+        "presentBubble",
+        "editableControl",
+        "closeAnnotation",
+        "accessibilityChildren",
+        "visibleAnchor"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/WritingSession/InlineAnnotation.swift",
+      "sha256": "9c4cc5b03ecacf3d46ad175c9ba00d2112ad22916b087b3f38a190b87dfab94e",
+      "lines": 23,
+      "symbols": [
+        "InlineAnnotationAnchor",
+        "matches"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/WritingSession/InlineAnnotationBubble.swift",
+      "sha256": "bda3daf1eab4b15bab8211bd584ca8ba7bd5466db25751a2819e0bbd55a1382d",
+      "lines": 61,
+      "symbols": [
+        "InlineAnnotationBubble"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/WritingSession/WritingAgent.swift",
+      "sha256": "b2acbc0235297bc4e8e3c1058207dcc13bfe3746825e105b3acb480665ad6d0a",
+      "lines": 78,
+      "symbols": [
+        "WritingAgent",
+        "Analysis",
+        "ResourceRequest",
+        "Audit",
+        "run",
+        "call",
+        "object",
+        "decode"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/WritingSession/WritingSession.swift",
+      "sha256": "1fcccb022acc81fe4d6bb310d34c72324c4818d568e98f14415d3f862297cc90",
+      "lines": 135,
+      "symbols": [
+        "WritingAnnotation",
+        "WritingAssessment",
+        "WritingVersion",
+        "WritingDraft",
+        "annotate",
+        "changeCandidate",
+        "accept",
+        "restore",
+        "validate",
+        "WritingDraftStore",
+        "url",
+        "load",
+        "save",
+        "remove",
+        "WritingProposal",
+        "validate"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/WritingSession/WritingSessionController.swift",
+      "sha256": "4e489c48d098e74327ff681fc06d8ef96ace3db4b814fff4c98654e1edf2a9e3",
+      "lines": 145,
+      "symbols": [
+        "WritingSessionController",
+        "present",
+        "makeDraft",
+        "startFresh",
+        "addNotesSelection",
+        "current",
+        "validate",
+        "apply",
+        "dismiss",
+        "persistForTermination",
+        "windowShouldClose",
+        "RevisionRichText",
+        "replacing"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/WritingSession/WritingSessionModel.swift",
+      "sha256": "93031499d0a9cecd499ccbbe1a5c86b91d02e2dbe99eb71115fb695a69cd98cd",
+      "lines": 226,
+      "symbols": [
+        "WritingSessionModel",
+        "configureAgents",
+        "selectAgent",
+        "begin",
+        "report",
+        "editCandidate",
+        "updateInstruction",
+        "addComment",
+        "saveInlineComment",
+        "saveSourceComment",
+        "removeComment",
+        "locate",
+        "toggleComment",
+        "changeComment",
+        "restore",
+        "refreshSkills",
+        "run",
+        "stop",
+        "persist",
+        "scheduleSave",
+        "apply",
+        "addOriginalQuote"
+      ]
+    },
+    {
+      "path": "src/Quillside/Features/WritingSession/WritingSessionView.swift",
+      "sha256": "221406545fb0de6c17a2f521a2ac2f988dd8127c921dd142007bdfbb7a550653",
+      "lines": 136,
+      "symbols": [
+        "WritingSessionView",
+        "WritingCommentsPopover"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/AccessibilityBridge.swift",
+      "sha256": "01eaad1d85f89cd2fe64701f753201b88b0af4cc903b6f70158b1e1b3e3a723a",
+      "lines": 321,
+      "symbols": [
+        "AppleNotesTarget",
+        "isFrontmost",
+        "AccessibilityBridge",
+        "requestPermission",
+        "openAccessibilitySettings",
+        "openFullDiskAccessSettings",
+        "getNotesAppPID",
+        "getNotesAppElement",
+        "isNotesRunning",
+        "isNotesFrontmost",
+        "WindowInfo",
+        "getNotesWindows",
+        "getFocusedWindow",
+        "SelectionGeometry",
+        "getSelectionGeometry",
+        "getSelectionFormatting",
+        "getSelectionBounds",
+        "getSelectedText",
+        "getSelectedNoteTextCandidates",
+        "getFocusedUIElement",
+        "elementChildren",
+        "collectSelectedNodes",
+        "textValues",
+        "stringAttribute",
+        "boolAttribute",
+        "getElementFrame",
+        "getElementTitle",
+        "isElementFocused"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/AppShortcutMatcher.swift",
+      "sha256": "1193baa7afddc610fa787741dcde52987479f356473d4c8aa0116834df380e72",
+      "lines": 75,
+      "symbols": [
+        "AppShortcutAction",
+        "AppShortcutMatcher",
+        "action",
+        "fixedAction",
+        "isBacklinksShortcut",
+        "isShortcut"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/AppleNotesAutomationAccess.swift",
+      "sha256": "8ef5de3d4662a4c7d9f56b67439421f83ca5858c6a610662cdc28d77af6b5b58",
+      "lines": 93,
+      "symbols": [
+        "AppleNotesAutomationStatus",
+        "displayStatus",
+        "AppleNotesAutomationAccess",
+        "currentStatus",
+        "requestStatus",
+        "status",
+        "openSettings"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/AppleNotesIdentifierParser.swift",
+      "sha256": "2fd052229b0833e77bd941b6fe5e8e50100dd42ef0f525081b45e72141673472",
+      "lines": 57,
+      "symbols": [
+        "AppleNotesIdentifierParser",
+        "primaryKey",
+        "NativeNoteLinkParser",
+        "identifiers",
+        "identifiers",
+        "isPotentialNoteLink",
+        "SelectedNoteMatcher",
+        "identifier"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/AppleNotesMarkdownConverter.swift",
+      "sha256": "612683d2021169d2ab7896d336418c31a98f49ebc9ab0b4be7d1cda020c7f6d3",
+      "lines": 450,
+      "symbols": [
+        "MarkdownConversionError",
+        "AppleNotesMarkdownConverter",
+        "convert",
+        "renderChildren",
+        "render",
+        "renderList",
+        "checklistState",
+        "renderTable",
+        "padded",
+        "line",
+        "attachmentPlaceholder",
+        "firstElement",
+        "firstBlockPlainText",
+        "descendants",
+        "childElements",
+        "attribute",
+        "inlineText",
+        "rawText",
+        "wrapped",
+        "codeFence",
+        "collapseWhitespace",
+        "trimInline",
+        "normalizeBlocks",
+        "escapeText",
+        "safeLinkDestination",
+        "escapeLinkDestination"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/AppleNotesProtobufLinkParser.swift",
+      "sha256": "8f669c293c2c5bdd74fadeb10b73fb5e9665b44f57eda8cc3aa4a3fb420c20dd",
+      "lines": 176,
+      "symbols": [
+        "AppleNotesProtobufLinkParser",
+        "identifiers",
+        "gunzip",
+        "lengthDelimitedFields",
+        "readVarint",
+        "advance"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/BacklinksService.swift",
+      "sha256": "e2c04f5ebd7c6ad8dd86e8876baa73bbdcfa7f858d3b8dbad6ff549321e36872",
+      "lines": 169,
+      "symbols": [
+        "BacklinkGraphBuilder",
+        "canonicalNotes",
+        "build",
+        "sourceNoteIDs",
+        "BacklinksBuildCommitPolicy",
+        "canCommit",
+        "BacklinksIdentifierRefreshPolicy",
+        "shouldRequestBuild",
+        "BacklinksQueryPhase",
+        "BacklinksQuery",
+        "BacklinksService",
+        "State",
+        "BacklinkInfo",
+        "buildLinkGraph",
+        "lookup",
+        "invalidateCache"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/CurrentNoteResolver.swift",
+      "sha256": "8af95044a58a5441c853b7dc8dbc4e971d1982123bee869d5b2bfe398edd6860",
+      "lines": 404,
+      "symbols": [
+        "ResolvedCurrentNote",
+        "refersToSameNote",
+        "ResolvedCurrentNoteContent",
+        "AppleNotesSelection",
+        "CurrentNoteResolutionError",
+        "AppleNotesSelectionProviding",
+        "selectedNote",
+        "CurrentNoteResolverEnvironment",
+        "CurrentNoteResolver",
+        "resolve",
+        "resolveContent",
+        "preflightError",
+        "resolve",
+        "SystemAppleNotesSelectionProvider",
+        "authorizationStatus",
+        "selectedNote"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/EditorFeaturePreferences.swift",
+      "sha256": "5ec820207f5b728478776401c229fca8ac462ea1da2c0536ac43435cf5b3f15f",
+      "lines": 23,
+      "symbols": [
+        "EditorFeaturePreferences",
+        "enabled",
+        "SlashInputContext",
+        "token"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/EditorInputObserver.swift",
+      "sha256": "c44a4a124fbca08a94daa353606143862dea24bc0718efc424dce7c2fc5f3baa",
+      "lines": 118,
+      "symbols": [
+        "EditorInputProbe",
+        "needsSnapshot",
+        "CoalescedObservation",
+        "request",
+        "cancel",
+        "EditorInputObserver",
+        "request",
+        "readCandidate"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/FormattingService.swift",
+      "sha256": "70878b5e59b4f35c4c961b81213111db32863c753c03ee4bb776351bccac9660",
+      "lines": 78,
+      "symbols": [
+        "FormattingServicing",
+        "toggleBold",
+        "toggleItalic",
+        "toggleUnderline",
+        "toggleStrikethrough",
+        "setHeading",
+        "insertList",
+        "insertBlockQuote",
+        "insertMonospaced",
+        "insertHighlight",
+        "insertCodeBlock",
+        "insertLink",
+        "align",
+        "changeFontSize",
+        "showFonts",
+        "insertTable",
+        "NoteAlignment",
+        "FormattingService",
+        "applyFormat",
+        "toggleBold",
+        "toggleItalic",
+        "toggleUnderline",
+        "toggleStrikethrough",
+        "setHeading",
+        "insertList",
+        "insertBlockQuote",
+        "insertMonospaced",
+        "insertCodeBlock",
+        "insertHighlight",
+        "insertLink",
+        "align",
+        "changeFontSize",
+        "showFonts",
+        "insertTable"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/InlineInputEdit.swift",
+      "sha256": "e74f392e3431e32c3c25f87301e4d0dc5fbff36253fe862b950065138b787e43",
+      "lines": 62,
+      "symbols": [
+        "InlineInputEdit",
+        "mayRestoreTrigger",
+        "currentSlashToken",
+        "range",
+        "removeThenApply"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/KeyboardMonitorService.swift",
+      "sha256": "169a0e9ce4e563f8f352a514d0e15f9545f8f05b48ff307d887bbc98e234640f",
+      "lines": 251,
+      "symbols": [
+        "KeyboardEventRoutingPolicy",
+        "shouldHandle",
+        "KeyboardMonitorService",
+        "KeyPressEvent",
+        "start",
+        "stop",
+        "bind",
+        "setSlashCommandActive",
+        "setSlashCommandToken",
+        "updateEditorContext",
+        "handleKeyEvent",
+        "KeyCode"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/MarkdownTriggerService.swift",
+      "sha256": "161c73b6b3037b657bced09b2d1cae03e6d916d8a162b8bde2881c54ae675439",
+      "lines": 126,
+      "symbols": [
+        "MarkdownTriggerDefinition",
+        "MarkdownTriggerService",
+        "setEnabled",
+        "setTriggerEnabled",
+        "isTriggerEnabled",
+        "setupSubscriptions",
+        "handleKeyPress",
+        "observeCommittedInput",
+        "loadPreferences",
+        "savePreferences"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/NativeNotesCommand.swift",
+      "sha256": "6133bb7f70334fee3f64494c4fab28915e32c8f1ef20cfc7614f54282ca61011",
+      "lines": 261,
+      "symbols": [
+        "NativeNotesCommand",
+        "NotesMenuItemDescription",
+        "NotesMenuResolution",
+        "NotesMenuMatcher",
+        "normalize",
+        "resolve",
+        "eventFlags",
+        "canPostShortcut",
+        "NotesFormatFailure",
+        "NotesMenuExecutor",
+        "LiveItem",
+        "EditorAnchor",
+        "capture",
+        "stillMatches",
+        "perform",
+        "readMenu",
+        "walk"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/NotesBacklinksSnapshot.swift",
+      "sha256": "9e96ab048a6dc7f50d6f99b240f121d532adfe4cbff5cb964db6da49b885cc2d",
+      "lines": 74,
+      "symbols": [
+        "BacklinksCoverage",
+        "merge",
+        "NotesBacklinksSnapshot",
+        "NativeLinkAttachment",
+        "ActiveNoteLinkExtractor",
+        "Result",
+        "extract"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/NotesBridgeDecoder.swift",
+      "sha256": "db7b58681a57a17c4ffd9d0f1529c185e310e17391b211100a3e0f6f97fc8cfe",
+      "lines": 371,
+      "symbols": [
+        "AppleNotesDecodedNote",
+        "AppleNotesDecodedAttributeRun",
+        "AppleNotesDecodedParagraphStyle",
+        "AppleNotesDecodedChecklist",
+        "AppleNotesDecodedAttachmentInfo",
+        "AppleNotesDecodedNoteMatch",
+        "AppleNotesNoteDecodingError",
+        "AppleNotesNoteProtoDecoder",
+        "decodeDocument",
+        "decodeDocumentMessage",
+        "decodeNoteStoreProtoMessage",
+        "searchForDocument",
+        "decodeNoteMessage",
+        "decodeAttributeRunMessage",
+        "decodeParagraphStyleMessage",
+        "decodeChecklistMessage",
+        "decodeAttachmentInfoMessage",
+        "ProtobufField",
+        "ProtobufReader",
+        "nextField",
+        "readLengthDelimited",
+        "readString",
+        "readInt32",
+        "skipField",
+        "readVarint"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/NotesDBReader.swift",
+      "sha256": "fa60c248dd5a220051a480a7ec1d7253c87821921daee8920aa776218f18e490",
+      "lines": 536,
+      "symbols": [
+        "NotesReadFailure",
+        "NotesDatabaseAccessIssue",
+        "NotesDatabaseAccessStatus",
+        "NotesDBReader",
+        "NoteInfo",
+        "open",
+        "accessStatus",
+        "close",
+        "closeAsync",
+        "getAllNotes",
+        "readAllNotes",
+        "readBacklinksSnapshot",
+        "readAllNotesUnsafe",
+        "readIdentifierByPK",
+        "readNoteByIdentifier",
+        "buildNoteURL",
+        "NoteLinkData",
+        "getAllNoteLinks",
+        "getIdentifierByPK",
+        "getNoteByIdentifier",
+        "getIdentifierByPKUnsafe",
+        "getNoteByIdentifierUnsafe",
+        "getAllNoteLinksUnsafe",
+        "openNote",
+        "openUnsafe",
+        "accessStatusUnsafe",
+        "closeUnsafe",
+        "getAllNotesUnsafe",
+        "parseNoteRow"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/NotesEditorContext.swift",
+      "sha256": "464b2b77c325fe2663b482643e5b9a2f27e069b1ef9498d7d0c6d4e9d7edd7bb",
+      "lines": 126,
+      "symbols": [
+        "NotesEditorScope",
+        "NotesEditorNode",
+        "NotesEditorPolicy",
+        "scope",
+        "canCapture",
+        "mayConsumeNavigation",
+        "NotesEditorContext",
+        "read",
+        "stillMatches",
+        "inputMethodActive",
+        "mayConsumeNavigation",
+        "NotesEditorFocus",
+        "read",
+        "MarkdownInputContext",
+        "committedTrigger",
+        "trigger"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/NotesNativeLinks.swift",
+      "sha256": "1136e0697059181f36dd15588ff2921252ba975f2e5061303d8630fbd2c9dfce",
+      "lines": 49,
+      "symbols": [
+        "NotesNativeLinks",
+        "identifiers",
+        "destination",
+        "nativeLinksMatch"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/NotesPasteTransaction.swift",
+      "sha256": "16a7acbfc1eb91c184b02b4949fb913e8921c6e77063690cca0ccfb1b0dc7b5f",
+      "lines": 89,
+      "symbols": [
+        "NotesPasteContent",
+        "pasteboardItem",
+        "UTF16TextRange",
+        "valid",
+        "boundary",
+        "NotesPastePlan",
+        "expected",
+        "mayRestoreClipboard",
+        "paste"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/NotesSnapshotReader.swift",
+      "sha256": "a5f9d608cc72fdb33ac9ecf2b3e8b14e0611730a92f5169ba9ac2f8919307f78",
+      "lines": 80,
+      "symbols": [
+        "NotesSnapshotReader",
+        "columns",
+        "prepare",
+        "text",
+        "integer",
+        "backlinks"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/SQLiteReadStep.swift",
+      "sha256": "600032ccfa90ff069d2c14094541a946073ad6fa3eee8eafca0d05e01acab9e8",
+      "lines": 13,
+      "symbols": [
+        "SQLiteReadStep",
+        "next"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/SelectionSnapshotReader.swift",
+      "sha256": "0a79e7f71d70d93af0e65f835a7e368f692c867e53684406906c7779748a8ba8",
+      "lines": 55,
+      "symbols": [
+        "SelectionSnapshotReader",
+        "Request",
+        "request",
+        "cancel",
+        "drainGeometry",
+        "drainStyle"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/TextFingerprint.swift",
+      "sha256": "42cc5ab14af1f29c738e5be37c9bf8afe3823608e35dfc8b225d5ce4a91e568b",
+      "lines": 8,
+      "symbols": [
+        "TextFingerprint",
+        "hash"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/WindowGeometry.swift",
+      "sha256": "ddf79363747972f80da029fca5e4257118a42a91a0728f2f32b228c27b27316b",
+      "lines": 124,
+      "symbols": [
+        "WindowGeometry",
+        "cocoaRect",
+        "cocoaPoint",
+        "targetScreenFrame",
+        "noteActionsOrigin",
+        "backlinksOrigin"
+      ]
+    },
+    {
+      "path": "src/Quillside/Services/WindowTrackService.swift",
+      "sha256": "53885061d854913b3ba077cf7578bb68e5d41c4b4f7b56c98b9a7d74b10a5cf6",
+      "lines": 574,
+      "symbols": [
+        "appleNotesProAXObserverCallback",
+        "AXObserverLifecycleAction",
+        "AXObserverLifecyclePolicy",
+        "action",
+        "WindowHealthCheckPolicy",
+        "requiresFullSnapshot",
+        "WindowTrackService",
+        "Event",
+        "Snapshot",
+        "start",
+        "stop",
+        "selectionSnapshot",
+        "cancelSelectionSnapshot",
+        "refreshSnapshot",
+        "apply",
+        "handleAXNotification",
+        "debounceRefresh",
+        "installAXObserverIfPossible",
+        "registerDynamicNotifications",
+        "register",
+        "keepObserved",
+        "unregisterDynamicNotifications",
+        "axElementsEqual",
+        "removeAXObserver",
+        "startHealthCheck",
+        "performHealthCheck",
+        "stopHealthCheck",
+        "startRecoveryProbe",
+        "stopRecoveryProbe",
+        "setupWorkspaceObservers",
+        "removeWorkspaceObservers",
+        "handleWorkspaceChange"
+      ]
+    },
+    {
+      "path": "src/Quillside/Skills/WritingSkill.swift",
+      "sha256": "d0109d3c613461c42210ef079b79f77672e0f7267b888a24f6406bc3145d1d9e",
+      "lines": 109,
+      "symbols": [
+        "WritingSkill",
+        "WritingSkillLoader",
+        "read",
+        "readText",
+        "WritingSkillStore",
+        "Catalog",
+        "setEnabled",
+        "importFolder",
+        "remove",
+        "save"
+      ]
+    },
+    {
+      "path": "src/Quillside/Workspace/KeyboardSearchField.swift",
+      "sha256": "3bb742dc5c8ccf68cad26058fdc1542dbcb8f19b5aabf26ac9d05914351ce8ac",
+      "lines": 80,
+      "symbols": [
+        "PickerKeyAction",
+        "PickerKeyPolicy",
+        "action",
+        "KeyboardSearchField",
+        "Coordinator",
+        "controlTextDidChange",
+        "control",
+        "makeCoordinator",
+        "makeNSView",
+        "updateNSView",
+        "PickerSelection",
+        "next",
+        "retained"
+      ]
+    },
+    {
+      "path": "src/Quillside/Workspace/SelectionTransaction.swift",
+      "sha256": "e2ed217ce3f3187ecbf422e16e95fe7451e5b7ff9fb28dac6f54ca8cfe64f426",
+      "lines": 120,
+      "symbols": [
+        "SelectionGuard",
+        "allowsWrite",
+        "SelectionTransaction",
+        "value",
+        "capture",
+        "replacingTrigger",
+        "selectionRange",
+        "validateEditor",
+        "validateForWrite",
+        "activateForWrite",
+        "apply"
+      ]
+    }
+  ],
+  "product_name": "AppleNotesPro"
+}

@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-09",
+  "version": "0.3.6",
+  "binary_sha256": "393330745f570bab27e2832a5954e693848b48f7ee690c3995efc24a6c43d643",
+  "installed_path": "/Applications/OpenNotes.app",
+  "tests": {
+    "total": 192,
+    "passed": 191,
+    "skipped": 1,
+    "suites": 30
+  },
+  "performance": {
+    "before": {
+      "mainThreadSamples": 3347,
+      "timerPathSamples": 2319,
+      "timerPathPercent": 69.29,
+      "eventWaitSamples": 1019,
+      "eventWaitPercent": 30.45,
+      "note": "8-second wall-clock stack sampling; not CPU or keystroke latency"
+    },
+    "after": {
+      "mainThreadSamples": 3383,
+      "timerPathSamples": 19,
+      "timerPathPercent": 0.56,
+      "eventWaitSamples": 3357,
+      "eventWaitPercent": 99.23,
+      "note": "8-second wall-clock stack sampling; not CPU or keystroke latency"
+    }
+  },
+  "connection_edit_runtime": "save_restart_edit_save_restart_verified",
+  "original_connection_preserved": true,
+  "temporary_connection_removed": true,
+  "stable_development_signature": true,
+  "native_regressions": [
+    "long_note_slash_title",
+    "long_note_slash_block",
+    "long_note_markdown_heading",
+    "template_meeting",
+    "selection_toolbar_underline",
+    "AI_panel_capture",
+    "200_continuous_digits_exact_readback"
+  ],
+  "evidence": "PERFORMANCE-0.3.6.md"
+}

@@ -1,0 +1,156 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag matching VERSION, for example v0.7.4
+        required: true
+        type: string
+      distribution:
+        description: Source preview, unnotarized tester build, or official notarized build
+        type: choice
+        options: [source, preview, notarized]
+        default: source
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      tag: ${{ steps.metadata.outputs.tag }}
+      version: ${{ steps.metadata.outputs.version }}
+      commit: ${{ steps.metadata.outputs.commit }}
+      distribution: ${{ steps.metadata.outputs.distribution }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+      - name: Validate tag and distribution mode
+        id: metadata
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+          RELEASE_DISTRIBUTION: ${{ inputs.distribution || vars.RELEASE_DISTRIBUTION || 'source' }}
+        run: python3 scripts/release.py prepare --tag "$RELEASE_TAG" --distribution "$RELEASE_DISTRIBUTION"
+      - name: Check source, release guards and website
+        run: |
+          python3 scripts/check-open-source.py
+          python3 scripts/test-release.py
+          python3 site/build.py
+          python3 site/check.py
+          node --check site/assets/site.js
+          python3 scripts/package-source.py
+          cp build/Quillside-*-source.zip build/Quillside-*-source.zip.sha256 build/release/
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: release-source
+          path: build/release/
+          if-no-files-found: error
+
+  native:
+    needs: prepare
+    runs-on: macos-26
+    timeout-minutes: 40
+    environment: release-signing
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ needs.prepare.outputs.commit }}
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: runtime/pi/package-lock.json
+      - name: Select toolchain and run synthetic regression
+        run: |
+          export DEVELOPER_DIR="$(xcode-select -p)"
+          echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
+          ./scripts/verify-stage1.sh
+      - name: Build unnotarized tester preview
+        if: needs.prepare.outputs.distribution == 'preview'
+        env:
+          OPENNOTES_CODE_SIGN_IDENTITY: '-'
+          RELEASE_VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          ./scripts/bundle-app.sh release
+          python3 scripts/check-open-source.py --bundle build/Quillside.app
+          mkdir -p build/release-app
+          ditto -c -k --sequesterRsrc --keepParent build/Quillside.app "build/release-app/Quillside-$RELEASE_VERSION-UNNOTARIZED-macOS-arm64.zip"
+      - name: Configure official signing
+        if: needs.prepare.outputs.distribution == 'notarized'
+        env:
+          DEVELOPER_ID_P12_BASE64: ${{ secrets.DEVELOPER_ID_P12_BASE64 }}
+          DEVELOPER_ID_P12_PASSWORD: ${{ secrets.DEVELOPER_ID_P12_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: bash scripts/configure-release-signing.sh
+      - name: Build, notarize and verify official distribution
+        if: needs.prepare.outputs.distribution == 'notarized'
+        env:
+          RELEASE_VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          ./scripts/package-dmg.sh
+          python3 scripts/check-open-source.py --bundle build/Quillside.app
+          codesign --verify --deep --strict build/Quillside.app
+          codesign -dv --verbose=4 build/Quillside.app/Contents/Resources/PiRuntime/node 2>&1 | grep 'runtime'
+          mkdir -p build/release-app
+          cp "dist/Quillside-$RELEASE_VERSION-macOS-arm64.dmg" "dist/Quillside-$RELEASE_VERSION-macOS-arm64.dmg.sha256" dist/notarization.json build/release-app/
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: needs.prepare.outputs.distribution != 'source'
+        with:
+          name: release-app
+          path: build/release-app/
+          if-no-files-found: error
+      - name: Remove temporary signing material
+        if: always() && needs.prepare.outputs.distribution == 'notarized'
+        run: |
+          security delete-keychain "$RUNNER_TEMP/quillside-signing/release.keychain-db" || true
+          rm -rf "$RUNNER_TEMP/quillside-signing"
+
+  publish:
+    needs: [prepare, native]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ needs.prepare.outputs.commit }}
+          persist-credentials: false
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          pattern: release-*
+          merge-multiple: true
+          path: build/release
+      - name: Publish verified artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_REPOSITORY: ${{ github.repository }}
+        run: python3 scripts/release.py publish --repository "$RELEASE_REPOSITORY"
+
+  website:
+    needs: [prepare, publish]
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml
+    with:
+      release_tag: ${{ needs.prepare.outputs.tag }}

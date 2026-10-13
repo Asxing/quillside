@@ -1,0 +1,11 @@
+{
+  "version": "0.1.1",
+  "bundle_id": "com.opennotes.app",
+  "installed_path": "/Applications/OpenNotes.app",
+  "binary_sha256": "178c0dbbfd681c82f518b8c673d9745f9ceda596e31c72878d86e0d30e2dfbcf",
+  "passed": 119,
+  "skipped": 2,
+  "app_zip_bytes": 1414085,
+  "gui_verified": false,
+  "goal_complete": false
+}

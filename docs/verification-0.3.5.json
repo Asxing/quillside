@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-08",
+  "version": "0.3.5",
+  "installed_path": "/Applications/OpenNotes.app",
+  "binary_sha256": "5772c1d54c2d3493cc47eff803761a173c2552ea8f33b43ae2185de9cebb417a",
+  "debug_build": "passed",
+  "release_build": "passed",
+  "codesign": "local_development_certificate_strict_verify_passed",
+  "signer_sha1": "9F39E87C70295CF5B89225E2CB136421D4FF584D",
+  "trust_scope": "current_user_CodeSigning_only",
+  "signing_upgrade_proof": {
+    "differentBinaries": true,
+    "sameDesignatedRequirement": true,
+    "bothVerifyAgainstFirstRequirement": true,
+    "requirement": "identifier \"com.opennotes.signing-proof\" and certificate leaf = H\"9f39e87c70295cf5b89225e2cb136421d4ff584d\""
+  },
+  "permission_signature_check": [
+    {
+      "service": "kTCCServiceAccessibility",
+      "record_present": true,
+      "allowed_in_record": true,
+      "current_signature_matches_allowed_record": true
+    },
+    {
+      "service": "kTCCServiceSystemPolicyAllFiles",
+      "record_present": true,
+      "allowed_in_record": true,
+      "current_signature_matches_allowed_record": true
+    },
+    {
+      "service": "kTCCServiceAppleEvents",
+      "record_present": true,
+      "allowed_in_record": true,
+      "current_signature_matches_allowed_record": false
+    }
+  ],
+  "automation_runtime": "repeated_current_note_identity_and_body_reads_succeeded; historical_TCC_row_still_mismatched",
+  "tests": {
+    "total": 187,
+    "passed": 186,
+    "skipped": 1,
+    "suites": 29
+  },
+  "full_runtime_acceptance": "core_flows_verified_on_this_Mac; physical_keyboard_IME_and_environment_edges_not_fully_verified",
+  "native_evidence": "NATIVE-ACCEPTANCE-0.3.5.md",
+  "local_model_requests": 16,
+  "cleanup": {
+    "temporary_logs_removed": true,
+    "temporary_fixture_connection_removed": true,
+    "temporary_template_removed": true,
+    "toolbar_defaults_restored": true,
+    "slash_and_markdown_enabled": true,
+    "local_fixture_service_stopped": true
+  },
+  "logs": [
+    "build/final-verification-0.3.5.log",
+    "build/runtime-settings-fixed-build.log"
+  ]
+}

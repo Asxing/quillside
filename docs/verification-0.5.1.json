@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-10",
+  "version": "0.5.1",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "binary_sha256": "02ea2d229fc56964d30c572af00eeb78db66be0d719a29e5153283289bf773e7",
+  "tests": {
+    "total": 224,
+    "passed": 223,
+    "skipped": 1,
+    "suites": 37
+  },
+  "release_build": "passed",
+  "codesign": "stable_development_strict_verified",
+  "native_verified": [
+    "same_note_blank_click_keeps_open_comment",
+    "same_note_date_click_keeps_unsaved_text",
+    "other_note_hides_markers",
+    "return_to_original_note_restores_four_markers_and_dock",
+    "unsaved_comment_survives_temporary_suspension"
+  ],
+  "original_repro": "0.5.0_return_to_original_note_false;0.5.1_return_true",
+  "model_requests": "none_required_for_visibility_change",
+  "evidence": "PERSISTENT-ANNOTATIONS-0.5.1.md"
+}

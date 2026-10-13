@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-09",
+  "status": "design_only_not_implemented",
+  "baseline_version": "0.3.9",
+  "notes_sdef_sha256": "2485c3e87dbfa0baf09fcfa6d2f6b2c16e4eccc1371db01a2ab8c3d35ef4e65d",
+  "code_baseline": {
+    "src/AppleNotesPro/AI/ModelClient.swift": "02b15300d7c294a2e1559639597bc41c2489757cb489abcb43ec2bd1c48b51fc",
+    "src/AppleNotesPro/Features/InlineAssistant/InlineAssistantModel.swift": "e1a9c6d444791ae81bb45d88ecb1d968543db3e785cbbae213a0c3e04dfdf344",
+    "src/AppleNotesPro/Workspace/SelectionTransaction.swift": "e2ed217ce3f3187ecbf422e16e95fe7451e5b7ff9fb28dac6f54ca8cfe64f426"
+  },
+  "documents": [
+    "docs/WRITING-AGENT-DESIGN.md",
+    "docs/research/WRITING-SKILLS-2026-10-09.md"
+  ]
+}

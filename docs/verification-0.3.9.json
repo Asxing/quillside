@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-09",
+  "version": "0.3.9",
+  "status": "installed_native_selection_verified_user_confirmed_mouse_stable",
+  "binary_sha256": "3dada563d0414c40fe5735e4d984c4a40b4d296174d04b10cbe14d6197fe7dae",
+  "tests": {
+    "total": 196,
+    "passed": 195,
+    "skipped": 1,
+    "suites": 31
+  },
+  "release_build": "passed",
+  "codesign": "stable_local_development_strict_verified",
+  "diagnostic_instrumentation_in_source": "removed",
+  "native_after_fix_verification": [
+    "short_selection_show_and_hide",
+    "multi_line_selection_show_and_hide",
+    "keyboard_shift_down_selection",
+    "multi_line_bold_and_undo"
+  ],
+  "evidence": "SELECTION-RESPONSE-0.3.9.md",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "physical_mouse_latency": {
+    "status": "passed_user_confirmation",
+    "date": "2026-10-09",
+    "feedback": "明显更快，连续拖选也稳定"
+  },
+  "automation_drag_limitation": "Notes crashed on second CUA drag even with AppleNotesPro not running; stopped that automation path",
+  "permissions": "AX_FDA_signature_match_automation_runtime_available"
+}

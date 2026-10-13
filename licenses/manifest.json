@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "project_license": "MIT",
+  "reviewed_on": "2026-10-12",
+  "components": [
+    {
+      "name": "NotesPlus",
+      "revision": "518886fc42118ec913d44694d69549f38e3d9e4c",
+      "license": "MIT",
+      "license_file": "licenses/NotesPlus-MIT.txt",
+      "license_url": "https://raw.githubusercontent.com/sunhuaian2026/NotesPlus/518886fc42118ec913d44694d69549f38e3d9e4c/LICENSE",
+      "sha256": "5b155607005802b49bfc8fb482b31271575abf68c7edab1892d64f91b3dae4ae",
+      "usage": "source-adaptation"
+    },
+    {
+      "name": "NotesBridge",
+      "revision": "91bccb0d34205d9813508de8146ea07540ac161f",
+      "license": "MIT",
+      "license_file": "licenses/NotesBridge-MIT.txt",
+      "license_url": "https://raw.githubusercontent.com/peizh/NotesBridge/91bccb0d34205d9813508de8146ea07540ac161f/LICENSE",
+      "sha256": "02e5ff37ea0172022d89b161a5af667eb50e68b53e403833dc748d9673814581",
+      "usage": "source-adaptation"
+    },
+    {
+      "name": "Yams",
+      "revision": "f4d4d6827d36092d151ad7f6fef1991c1b7192f6",
+      "license": "MIT",
+      "license_file": "licenses/Yams-MIT.txt",
+      "license_url": "https://raw.githubusercontent.com/jpsim/Yams/f4d4d6827d36092d151ad7f6fef1991c1b7192f6/LICENSE",
+      "sha256": "0354b0ea403d2e78059c5ae0510a2cfae9f8eb306fcef094ac9fff5b47e20bed",
+      "usage": "swift-package-6.0.2"
+    },
+    {
+      "name": "LibYAML",
+      "revision": "bundled-with-Yams-6.0.2",
+      "license": "MIT",
+      "license_file": "licenses/LibYAML-MIT.txt",
+      "license_url": "https://raw.githubusercontent.com/yaml/libyaml/acd6f6f/License",
+      "sha256": "c40112449f254b9753045925248313e9270efa36d226b22d82d4cc6c43c57f29",
+      "usage": "transitive-vendored-cyaml"
+    },
+    {
+      "name": "Humanizer-zh",
+      "revision": "f4518a8eab97b8bfebc66a89d34320a89bef6930",
+      "license": "MIT",
+      "license_file": "licenses/Humanizer-zh-MIT.txt",
+      "license_url": "https://raw.githubusercontent.com/op7418/Humanizer-zh/f4518a8eab97b8bfebc66a89d34320a89bef6930/LICENSE",
+      "sha256": "aa00e74769e1b9d8e7fa7094dbfcca9b129a0ded6dce1cf4da050b99146d2fa7",
+      "usage": "bundled-skill"
+    }
+  ]
+}

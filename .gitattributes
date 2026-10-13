@@ -1,0 +1,18 @@
+* text=auto
+*.swift text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.png binary
+*.jpg binary
+*.icns binary
+
+# Preserve the exact bytes verified against upstream license hashes.
+licenses/** -text
+resources/Skills/**/LICENSE -text

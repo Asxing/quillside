@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-08",
+  "version": "0.3.0",
+  "installed_path": "/Applications/OpenNotes.app",
+  "binary_sha256": "0afc746a3b159b823000fdd0da5d560d55200edc8be6ebf6e025d26a713e86c9",
+  "codesign": "ad_hoc_verify_passed",
+  "debug_build": "passed",
+  "release_build": "passed",
+  "tests": {
+    "total": 167,
+    "passed": 166,
+    "skipped": 1,
+    "suites": 26,
+    "skipped_names": [
+      "testGenerateReadmeScreenshots"
+    ]
+  },
+  "validation": {
+    "settings_categories": "verified_via_CUA",
+    "prompt_and_template_editors": "verified_via_CUA",
+    "inline_views": "rendered_with_synthetic_data_and_visually_checked",
+    "inline_full_notes_loop": "pending_accessibility_permission",
+    "four_protocols": "local_synthetic_server",
+    "native_link_parser": "two_synthetic_notes_actual_encoded_bodies"
+  },
+  "permissions_observed": {
+    "accessibility": false,
+    "full_disk_access": false,
+    "notes_automation": true
+  },
+  "logs": [
+    "build/inline-verification.log",
+    "build/inline-release.log"
+  ]
+}

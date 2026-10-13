@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-09",
+  "version": "0.4.0",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "binary_sha256": "b011c895f3988496bdec524fd9150dcb770115a01b7c2dd4327be41512166017",
+  "tests": {
+    "total": 208,
+    "passed": 207,
+    "skipped": 1,
+    "suites": 33
+  },
+  "release_build": "passed",
+  "codesign": "stable_development_strict_verified",
+  "native_verified": [
+    "10_individual_annotations",
+    "skill_in_context",
+    "plan_revise_audit",
+    "historical_comments_in_followup",
+    "restart_restore",
+    "RTF_selection_replace",
+    "one_undo",
+    "reject_changed_notes_body",
+    "keychain_noninteractive_failure",
+    "provider_switch_recovery"
+  ],
+  "semantic_quality": "real_provider_blocked_before_request_by_keychain; fixture_not_quality_evidence",
+  "skill_support": "SKILL.md_YAML_instructions_bounded_text_resources_no_scripts",
+  "native_note_overlay": "not_implemented_candidate_annotations_supported",
+  "cleanup": {
+    "test_connection_removed": true,
+    "original_configuration_preserved": true,
+    "fixture_server_stopped": true
+  },
+  "evidence": "WRITING-AGENT-0.4.0.md"
+}

@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-08",
+  "version": "0.3.1",
+  "installed_path": "/Applications/OpenNotes.app",
+  "binary_sha256": "75882bb66090a31b716eb3feea54b6538df1d2f709fcf319aaa19394f69173bf",
+  "debug_build": "passed",
+  "release_build": "passed",
+  "codesign": "ad_hoc_verify_passed",
+  "tests": {
+    "total": 177,
+    "passed": 176,
+    "skipped": 1,
+    "suites": 28,
+    "skipped_names": [
+      "testGenerateReadmeScreenshots"
+    ]
+  },
+  "core_changes": [
+    "live_editor_markdown_and_slash_context",
+    "body_vs_cell_scope",
+    "conservative_IME_key_routing",
+    "per_trigger_preferences",
+    "separate_panel_keyboard_ownership",
+    "single_native_paste_and_clipboard_restore",
+    "UTF16_surrogate_boundaries",
+    "bounded_multiline_SSE_and_NDJSON"
+  ],
+  "runtime": {
+    "new_notes_edit_flows": "not_verified",
+    "admin_authentication": "pending",
+    "final_ui_attempt": "Mac locked; automatic unlock unavailable",
+    "user_accessibility_authorization": "already_given"
+  },
+  "logs": [
+    "build/core-verification.log",
+    "build/core-release.log"
+  ],
+  "authorization_diagnosis": {
+    "system_switch": "on",
+    "tcc_records_allow": true,
+    "saved_code_requirement_matches_installed": false,
+    "services": [
+      "Accessibility",
+      "SystemPolicyAllFiles",
+      "AppleEvents_to_Notes"
+    ],
+    "cause": "ad_hoc_code_hash_changed_since_permission_grant",
+    "system_readd_state": "admin_authentication_pending",
+    "binary_unchanged": true,
+    "reference": "AUTHORIZATION-DIAGNOSIS.md"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-11",
+  "version": "0.6.3",
+  "source_sha256": "3d20a92924712ba5f561b9a3e23d0d56dc78c50c3c979c5e7dce3aa1c81f6d18",
+  "translated_from": "zh-CN",
+  "source": "We made a very significant improvement to our internal ticket-organizing workflow. It used to take an average of 30 minutes to organize a ticket; it now takes 10 minutes. This result comes from 20 trials with the same ticket type.\nThe organized results still require item-by-item review by colleagues. We have not measured review time, so we cannot yet tell how much total time from receiving a ticket to completion has fallen.\nPeople think the new workflow may be easier to use, but this is only verbal feedback from three participating colleagues, without a formal survey. We do not know whether other ticket types would show the same result.\nNext, we want to measure human review time and try another ticket type. An owner and completion date have not yet been decided.",
+  "roles": [
+    {
+      "role": "Public articles",
+      "prompt": "You are an editor for public-facing articles. Write from the reader’s perspective, turning the material into a natural, clear, evidence-based short article. Start with a real change or question in the source and explain why it matters. Develop the piece through evidence, explanation, and natural transitions, with clear limitations. Avoid note-style labels, empty language, clickbait, and emotional exaggeration. Do not invent stories, data, or quotations. Respect the author’s position, user comments, and paragraph requirements.",
+      "candidate": "In this trial of an internal ticket-organizing workflow, the average time spent organizing each ticket fell from 30 minutes to 10 minutes. The result comes from 20 trials with the same ticket type and measures only the organizing stage.\nThe organized results still need item-by-item human review. We have not measured how long that review takes, so we cannot yet determine whether total time from receiving a ticket to completion has improved.\nThree participating colleagues said the new workflow might be easier to use. However, we have not conducted a formal survey and do not know whether other ticket types would produce the same result.\nNext, we want to measure human review time and try another ticket type. These remain plans; an owner and completion date have not yet been decided."
+    },
+    {
+      "role": "Personal notes",
+      "prompt": "You are my personal note assistant. Help my future self quickly review and understand the material. Use short labels, sentences, or semicolons to separate observations, evidence, limitations, open questions, and next steps. Use only categories supported by the source, placing labels on the same line as existing paragraphs. Keep my voice, questions, and uncertainty. Avoid public-article introductions, audience-engagement questions, or grand conclusions. Do not add unsupported claims.",
+      "candidate": "Observation: We tried a new internal ticket-organizing workflow. Average organizing time per ticket changed from 30 minutes to 10 minutes. Evidence: The result comes from 20 trials with the same ticket type.\nLimitation: The organized results still need item-by-item review by colleagues. Review time has not been measured, so we cannot yet determine whether end-to-end completion time improved, or by how much.\nFeedback: Three participating colleagues said the new workflow might be easier to use. Limitation: There was no formal survey, and we do not know whether other ticket types would show the same result.\nNext: Measure human review time and try another ticket type. To confirm: An owner and completion date have not yet been decided."
+    },
+    {
+      "role": "Reports",
+      "prompt": "You are a reporting adviser writing for managers and project owners. Explain progress professionally and concisely, leading with conclusions. Organize existing results, impact, risks, and next steps around the overall goal, making metric definitions and factual limits clear. Do not invent goals, benefits, risk ratings, owners, or dates. Mark missing information as unconfirmed rather than mechanically filling every category.",
+      "candidate": "Trial observations for the internal ticket-organizing workflow show that average organizing time per ticket fell from 30 minutes to 10 minutes. This result comes from 20 trials with the same ticket type.\nThe organized results still require item-by-item review by colleagues. Human review time has not been measured, so it is not yet possible to determine whether end-to-end completion time improved, or by how much.\nThree participating colleagues said the new workflow might be easier to use. No formal survey has been conducted, and results for other ticket types remain unknown.\nThe planned next steps are to measure human review time and try another ticket type. An owner and completion date have not yet been decided."
+    }
+  ]
+}

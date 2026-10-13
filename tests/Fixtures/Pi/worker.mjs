@@ -1,0 +1,3 @@
+import readline from 'node:readline';
+const input=readline.createInterface({input:process.stdin});
+input.on('line',line=>{const r=JSON.parse(line);if(r.method==='cancel'){process.exit(0);}if(r.method==='echo'){process.stdout.write(JSON.stringify({type:'delta',text:'中'})+'\n');process.stdout.write(JSON.stringify({type:'result',result:{text:'中文🙂'}})+'\n');process.exit(0);}if(r.method==='exit'){process.exit(0);}if(r.method==='bad'){process.stdout.write('not-json\n');process.exit(0);}if(r.method==='secret'){process.stderr.write('secret must never reach UI');process.stdout.write(JSON.stringify({type:'error',message:'safe error'})+'\n');process.exit(0);}});

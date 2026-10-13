@@ -1,0 +1,581 @@
+{
+  "basis": "esbuild included package inputs plus bundled Node; package-lock pins all npm resolution",
+  "components": [
+    {
+      "name": "@anthropic-ai/sdk",
+      "version": "0.129.0",
+      "license": "MIT",
+      "source": "npm package @anthropic-ai/sdk@0.129.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/-anthropic-ai-sdk-0.129.0.txt",
+          "sha256": "8bf96984ff8bcfae7e48cae76a529e8a25317ba9e02abf7fd3cc64fdf95657a6"
+        }
+      ]
+    },
+    {
+      "name": "@earendil-works/pi-agent-core",
+      "version": "1.2.0",
+      "license": "MIT",
+      "source": "https://github.com/earendil-works/pi/blob/7d75a0e3eb273dff753d49c066ea29fbe7b3b6f6/LICENSE",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/-earendil-works-pi-agent-core-1.2.0.txt",
+          "sha256": "0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48"
+        }
+      ]
+    },
+    {
+      "name": "@earendil-works/pi-ai",
+      "version": "1.2.0",
+      "license": "MIT",
+      "source": "https://github.com/earendil-works/pi/blob/7d75a0e3eb273dff753d49c066ea29fbe7b3b6f6/LICENSE",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/-earendil-works-pi-ai-1.2.0.txt",
+          "sha256": "0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48"
+        }
+      ]
+    },
+    {
+      "name": "@earendil-works/pi-coding-agent",
+      "version": "1.2.0",
+      "license": "MIT",
+      "source": "https://github.com/earendil-works/pi/blob/7d75a0e3eb273dff753d49c066ea29fbe7b3b6f6/LICENSE",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/-earendil-works-pi-coding-agent-1.2.0.txt",
+          "sha256": "0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48"
+        }
+      ]
+    },
+    {
+      "name": "@google/genai",
+      "version": "2.21.0",
+      "license": "Apache-2.0",
+      "source": "npm package @google/genai@2.21.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/-google-genai-2.21.0.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+      ]
+    },
+    {
+      "name": "@stablelib/base64",
+      "version": "1.0.1",
+      "license": "MIT",
+      "source": "npm package @stablelib/base64@1.0.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/-stablelib-base64-1.0.1.txt",
+          "sha256": "1605b77bebe018db1fc27bd22fbcdeed1335c617937a124299a8b042b42b0fb6"
+        }
+      ]
+    },
+    {
+      "name": "base64-js",
+      "version": "1.5.1",
+      "license": "MIT",
+      "source": "npm package base64-js@1.5.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/base64-js-1.5.1.txt",
+          "sha256": "5b37224c080cdcc97c871ada971c224e9926370fe74f11b539aa1cf9f3b1aca1"
+        }
+      ]
+    },
+    {
+      "name": "bignumber.js",
+      "version": "9.3.1",
+      "license": "MIT",
+      "source": "npm package bignumber.js@9.3.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/bignumber.js-9.3.1.txt",
+          "sha256": "def75ba75d6426f1c3f02addf8e175fbe6e0d8a82e541cbdffc16d2bd8fd7d6a"
+        }
+      ]
+    },
+    {
+      "name": "buffer-equal-constant-time",
+      "version": "1.0.1",
+      "license": "BSD-3-Clause",
+      "source": "npm package buffer-equal-constant-time@1.0.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/buffer-equal-constant-time-1.0.1.txt",
+          "sha256": "751d0e80fb5c828f8c3de198cc760e1e05377e47c8263ab6ee2f10cdc19ba658"
+        }
+      ]
+    },
+    {
+      "name": "cross-spawn",
+      "version": "7.0.6",
+      "license": "MIT",
+      "source": "npm package cross-spawn@7.0.6",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/cross-spawn-7.0.6.txt",
+          "sha256": "aaa78451b6fecd1b9c4594c796c133c0e90cad100372ff8bc6de615e9ef9adf1"
+        }
+      ]
+    },
+    {
+      "name": "data-uri-to-buffer",
+      "version": "4.0.1",
+      "license": "MIT",
+      "source": "npm package data-uri-to-buffer@4.0.1 README license section",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/data-uri-to-buffer-4.0.1.txt",
+          "sha256": "3072ef4a004c4f92b37eae61cdc3e27225c0a7d2f5e144700e40b9c5a5a7a9b9"
+        }
+      ]
+    },
+    {
+      "name": "debug",
+      "version": "4.4.3",
+      "license": "MIT",
+      "source": "npm package debug@4.4.3",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/debug-4.4.3.txt",
+          "sha256": "3a61c6c96caf5c1d9b623fb9b04c822b783dfcb78aa7e49c76a3f643e6ed7f95"
+        }
+      ]
+    },
+    {
+      "name": "ecdsa-sig-formatter",
+      "version": "1.0.11",
+      "license": "Apache-2.0",
+      "source": "npm package ecdsa-sig-formatter@1.0.11",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/ecdsa-sig-formatter-1.0.11.txt",
+          "sha256": "50a6b24f8defc31a078aa9799a91d776f83948071574854f12473362aee74d0d"
+        }
+      ]
+    },
+    {
+      "name": "extend",
+      "version": "3.0.2",
+      "license": "MIT",
+      "source": "npm package extend@3.0.2",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/extend-3.0.2.txt",
+          "sha256": "97af7428f93afbab9bf79cd09254da1357161794f4255eb1b4599f04dd2d2e7c"
+        }
+      ]
+    },
+    {
+      "name": "fast-sha256",
+      "version": "1.3.0",
+      "license": "Unlicense",
+      "source": "npm package fast-sha256@1.3.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/fast-sha256-1.3.0.txt",
+          "sha256": "88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd"
+        }
+      ]
+    },
+    {
+      "name": "fetch-blob",
+      "version": "3.2.0",
+      "license": "MIT",
+      "source": "npm package fetch-blob@3.2.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/fetch-blob-3.2.0.txt",
+          "sha256": "a5edccac92c3aa845694dcfaa72a0c098c1ae40d5ca6a37e4e59d778cf8e29bd"
+        }
+      ]
+    },
+    {
+      "name": "formdata-polyfill",
+      "version": "4.0.10",
+      "license": "MIT",
+      "source": "npm package formdata-polyfill@4.0.10",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/formdata-polyfill-4.0.10.txt",
+          "sha256": "435a6437e47e5e479942255680e7fbe5f333d55234ada1c35f6115ca641d5bb4"
+        }
+      ]
+    },
+    {
+      "name": "gaxios",
+      "version": "7.3.1",
+      "license": "Apache-2.0",
+      "source": "npm package gaxios@7.3.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/gaxios-7.3.1.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+      ]
+    },
+    {
+      "name": "agent-base",
+      "version": "7.1.4",
+      "license": "MIT",
+      "source": "npm package agent-base@7.1.4",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/agent-base-7.1.4.txt",
+          "sha256": "8d8c55319c7729d57be811c747452636688d54f19701ee0752b6b15ad3771d9a"
+        }
+      ]
+    },
+    {
+      "name": "https-proxy-agent",
+      "version": "7.0.6",
+      "license": "MIT",
+      "source": "npm package https-proxy-agent@7.0.6",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/https-proxy-agent-7.0.6.txt",
+          "sha256": "8d8c55319c7729d57be811c747452636688d54f19701ee0752b6b15ad3771d9a"
+        }
+      ]
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "8.1.2",
+      "license": "Apache-2.0",
+      "source": "npm package gcp-metadata@8.1.2",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/gcp-metadata-8.1.2.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+      ]
+    },
+    {
+      "name": "google-auth-library",
+      "version": "10.9.1",
+      "license": "Apache-2.0",
+      "source": "npm package google-auth-library@10.9.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/google-auth-library-10.9.1.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+      ]
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "1.1.3",
+      "license": "Apache-2.0",
+      "source": "npm package google-logging-utils@1.1.3",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/google-logging-utils-1.1.3.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+      ]
+    },
+    {
+      "name": "graceful-fs",
+      "version": "4.2.11",
+      "license": "ISC",
+      "source": "npm package graceful-fs@4.2.11",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/graceful-fs-4.2.11.txt",
+          "sha256": "f65c5d9f22a317b2a10803bd1868461ce6499c2ed7217bc80c0cc772a748789c"
+        }
+      ]
+    },
+    {
+      "name": "isexe",
+      "version": "2.0.0",
+      "license": "ISC",
+      "source": "npm package isexe@2.0.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/isexe-2.0.0.txt",
+          "sha256": "4ec3d4c66cd87f5c8d8ad911b10f99bf27cb00cdfcff82621956e379186b016b"
+        }
+      ]
+    },
+    {
+      "name": "json-bigint",
+      "version": "1.0.0",
+      "license": "MIT",
+      "source": "npm package json-bigint@1.0.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/json-bigint-1.0.0.txt",
+          "sha256": "def82c085d05e795fe6a9cb5b70c48e022212355afc0e91d4de047cade28df06"
+        }
+      ]
+    },
+    {
+      "name": "jwa",
+      "version": "2.0.1",
+      "license": "MIT",
+      "source": "npm package jwa@2.0.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/jwa-2.0.1.txt",
+          "sha256": "3320319f8a5f42bc4254e65471eca7a5ea4dc8c883c4c24b4868e36b14890bcf"
+        }
+      ]
+    },
+    {
+      "name": "jws",
+      "version": "4.0.1",
+      "license": "MIT",
+      "source": "npm package jws@4.0.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/jws-4.0.1.txt",
+          "sha256": "3320319f8a5f42bc4254e65471eca7a5ea4dc8c883c4c24b4868e36b14890bcf"
+        }
+      ]
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "license": "MIT",
+      "source": "npm package ms@2.1.3",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/ms-2.1.3.txt",
+          "sha256": "1662fae9b5314d11cf51284e2dcd1f006a354f7343f08712a730fcff9a359801"
+        }
+      ]
+    },
+    {
+      "name": "node-domexception",
+      "version": "1.0.0",
+      "license": "MIT",
+      "source": "npm package node-domexception@1.0.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/node-domexception-1.0.0.txt",
+          "sha256": "8ec1386f7f078b0c7cd25341cd80f332df902371cda9f40c10ec2b4007b420b7"
+        }
+      ]
+    },
+    {
+      "name": "node-fetch",
+      "version": "3.3.2",
+      "license": "MIT",
+      "source": "npm package node-fetch@3.3.2",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/node-fetch-3.3.2.txt",
+          "sha256": "3e2c11dcf3f17ab585baab8faba54772d7872f1c6e026022acd4b4006665efb0"
+        }
+      ]
+    },
+    {
+      "name": "openai",
+      "version": "7.19.0",
+      "license": "Apache-2.0",
+      "source": "npm package openai@7.19.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/openai-7.19.0.txt",
+          "sha256": "636eb7d79da9bb6d515a4b3fd417aa26679eb3cf16396ddab4bc55fa74e616e4"
+        }
+      ]
+    },
+    {
+      "name": "p-retry",
+      "version": "4.6.2",
+      "license": "MIT",
+      "source": "npm package p-retry@4.6.2",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/p-retry-4.6.2.txt",
+          "sha256": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0"
+        }
+      ]
+    },
+    {
+      "name": "partial-json",
+      "version": "0.1.7",
+      "license": "MIT",
+      "source": "npm package partial-json@0.1.7",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/partial-json-0.1.7.txt",
+          "sha256": "cd519ad3d7e012427f978dfb2e3b92ee403d189d7b859ba6bf68fd7e12ca456f"
+        }
+      ]
+    },
+    {
+      "name": "path-key",
+      "version": "3.1.1",
+      "license": "MIT",
+      "source": "npm package path-key@3.1.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/path-key-3.1.1.txt",
+          "sha256": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0"
+        }
+      ]
+    },
+    {
+      "name": "proper-lockfile",
+      "version": "4.1.2",
+      "license": "MIT",
+      "source": "npm package proper-lockfile@4.1.2",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/proper-lockfile-4.1.2.txt",
+          "sha256": "aaa78451b6fecd1b9c4594c796c133c0e90cad100372ff8bc6de615e9ef9adf1"
+        }
+      ]
+    },
+    {
+      "name": "retry",
+      "version": "0.12.0",
+      "license": "MIT",
+      "source": "npm package retry@0.12.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/retry-0.12.0.txt",
+          "sha256": "01ad164273e8e095abc9dbd1c21e194594a671af7d528cb43ee7b4c903ba7da3"
+        }
+      ]
+    },
+    {
+      "name": "retry",
+      "version": "0.13.1",
+      "license": "MIT",
+      "source": "npm package retry@0.13.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/retry-0.13.1.txt",
+          "sha256": "01ad164273e8e095abc9dbd1c21e194594a671af7d528cb43ee7b4c903ba7da3"
+        }
+      ]
+    },
+    {
+      "name": "safe-buffer",
+      "version": "5.2.1",
+      "license": "MIT",
+      "source": "npm package safe-buffer@5.2.1",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/safe-buffer-5.2.1.txt",
+          "sha256": "c7cc929b57080f4b9d0c6cf57669f0463fc5b39906344dfc8d3bc43426b30eac"
+        }
+      ]
+    },
+    {
+      "name": "shebang-command",
+      "version": "2.0.0",
+      "license": "MIT",
+      "source": "npm package shebang-command@2.0.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/shebang-command-2.0.0.txt",
+          "sha256": "69dee148a2cc470554dfa7142e830662062394d0fe67cddd379aba90dc60d6b3"
+        }
+      ]
+    },
+    {
+      "name": "shebang-regex",
+      "version": "3.0.0",
+      "license": "MIT",
+      "source": "npm package shebang-regex@3.0.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/shebang-regex-3.0.0.txt",
+          "sha256": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0"
+        }
+      ]
+    },
+    {
+      "name": "signal-exit",
+      "version": "3.0.7",
+      "license": "ISC",
+      "source": "npm package signal-exit@3.0.7",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/signal-exit-3.0.7.txt",
+          "sha256": "e05b1eaf5b5f99b7ad75cd1f38858ff9a311780b97715ead67936d60bf96aa7e"
+        }
+      ]
+    },
+    {
+      "name": "standardwebhooks",
+      "version": "1.1.1",
+      "license": "MIT",
+      "source": "https://github.com/standard-webhooks/standard-webhooks/blob/b4d2c14fc5b4ccff3ff271e3b087dff812254c59/libraries/LICENSE",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/standardwebhooks-1.1.1.txt",
+          "sha256": "5ec8c7b26b64d881a6706617bed25c049f97f2f35de034c756de8546fd6dbe27"
+        }
+      ]
+    },
+    {
+      "name": "typebox",
+      "version": "1.3.27",
+      "license": "MIT",
+      "source": "npm package typebox@1.3.27",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/typebox-1.3.27.txt",
+          "sha256": "e8a7cc256941a26ba8234f04390165243a4d42f74fd6491934140605bf7eae2d"
+        }
+      ]
+    },
+    {
+      "name": "web-streams-polyfill",
+      "version": "3.3.3",
+      "license": "MIT",
+      "source": "npm package web-streams-polyfill@3.3.3",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/web-streams-polyfill-3.3.3.txt",
+          "sha256": "81008a3fb78f69f3c4a72a9e005c8582342ab62864371b3ab8e1b6af9041e080"
+        }
+      ]
+    },
+    {
+      "name": "which",
+      "version": "2.0.2",
+      "license": "ISC",
+      "source": "npm package which@2.0.2",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/which-2.0.2.txt",
+          "sha256": "4ec3d4c66cd87f5c8d8ad911b10f99bf27cb00cdfcff82621956e379186b016b"
+        }
+      ]
+    },
+    {
+      "name": "ws",
+      "version": "8.22.0",
+      "license": "MIT",
+      "source": "npm package ws@8.22.0",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/ws-8.22.0.txt",
+          "sha256": "2b29dcfe0d6471f7e8c92c5fb38c9f93edee10330937055440192f1832b1ecef"
+        }
+      ]
+    },
+    {
+      "name": "Node.js",
+      "version": "22.23.2",
+      "license": "MIT and bundled third-party notices",
+      "source": "https://nodejs.org/dist/v22.23.2/",
+      "notices": [
+        {
+          "file": "licenses/pi-runtime/Node-v22.23.2.txt",
+          "sha256": "c738ae413cf561f174e34f6961f8ca458aae2369a73640dda6234c629b98bcc4"
+        }
+      ]
+    }
+  ]
+}

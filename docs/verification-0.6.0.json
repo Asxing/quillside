@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-10",
+  "version": "0.6.0",
+  "installed_path": "/Applications/AppleNotesPro.app",
+  "binary_sha256": "f2bf582cf252781ffd84d3c18a851006a08a7d1f894e366d5b3908b9171a45ad",
+  "tests": {
+    "total": 231,
+    "passed": 230,
+    "skipped": 1,
+    "suites": 38,
+    "role_regression_rerun": 7
+  },
+  "release_build": "passed",
+  "codesign": "stable_development_strict_verified",
+  "native_verified": [
+    "separate_model_agent_skill_settings",
+    "legacy_configuration_preserved",
+    "three_roles_in_quick_AI",
+    "quick_to_notes_role_handoff",
+    "three_roles_in_native_annotation_revision",
+    "one_annotation_retained_across_roles",
+    "history_contains_role_snapshots",
+    "native_apply_and_one_undo",
+    "personal_note_role_and_annotation_restore_after_restart"
+  ],
+  "provider_validation": "real configured model: all three final annotation/write/undo cases passed; report needed formatting retry; public/personal style distinction mild",
+  "evidence": "AGENT-ROLES-0.6.0.md",
+  "cleanup": {
+    "temporary_connection_removed": true,
+    "original_default_connection_restored": true,
+    "fixture_server_stopped": true
+  },
+  "real_provider_evidence": "REAL-AGENT-SCENES-0.6.0.md",
+  "real_scene_validation": {
+    "functional": "three_final_cases_passed",
+    "style": "partial_distinction",
+    "report_first_write": "safely_rejected_extra_blank_lines",
+    "report_retry": "real_model_format_only_then_write_and_undo_passed"
+  }
+}

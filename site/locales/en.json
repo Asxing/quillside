@@ -198,14 +198,11 @@
     "使用文档及模型、角色和 Skill 的配置说明。": "User documentation and model, role, and Skill configuration instructions.",
     "本机签名私钥、模型密钥、个人笔记、私有配置和内部诊断材料不属于公开源码。": "Private signing keys, model credentials, personal notes, private settings, and internal diagnostics are excluded from the public source.",
     "让反馈容易复现": "Make feedback reproducible",
-    "公开问题入口将随首次发布开放。报告问题时，提供下面的信息会更有帮助：": "The public issue tracker will open with the first release. Useful reports include:",
     "应用版本、macOS 版本、芯片架构及 Notes 界面语言。": "App version, macOS version, chip architecture, and Notes interface language.",
     "从打开笔记到出现问题的具体步骤、预期和实际结果。": "Steps from opening the note to the problem, with expected and actual behavior.",
     "是否每次出现，是否涉及输入法、多窗口、表格或附件。": "How often it happens, and whether it involves input methods, multiple windows, tables, or attachments.",
     "一份可以安全公开的最小示例。截图中先隐藏私人内容与凭据。": "A minimal example that is safe to share. Hide private content and credentials in screenshots first.",
-    "涉及笔记写回或数据安全的问题，应先使用合成材料复现。正式发布前会明确私密安全报告渠道。": "Reproduce note-writeback or data-safety issues with synthetic material first. A private security-reporting channel will be documented before public release.",
     "协作方式": "Working together",
-    "公开前会确定贡献规则、Issue 模板与维护范围。优先欢迎可复现的问题、使用文档与翻译建议；涉及 Notes 写回、权限及数据迁移的改动，需要专门验收。": "Contribution rules, issue templates, and maintenance scope will be clarified before release. Reproducible bugs, documentation, and translation suggestions are welcome. Changes to Notes writeback, permissions, or data migration need dedicated validation.",
     "当前目标集中在 Notes 内编辑体验。独立知识库、独立搜索和后台双向同步不属于项目方向；MCP / Tools 与完整文件导入导出仍在后续范围。": "The project focuses on editing inside Notes. A separate knowledge base, separate search, and background two-way sync are outside its direction. MCP, tools, and full file import/export remain future work.",
     "从你熟悉的 Notes 开始。": "Start in the Notes you know.",
     "安装一次，配置好需要的能力。之后的编辑、批注和 AI 修改，都在笔记旁完成。": "Install once and configure what you need. Then edit, comment, and revise beside your notes.",
@@ -312,7 +309,6 @@
     "删除 App 不一定同时删除本地配置、草稿或钥匙串条目。为兼容已有版本，当前数据目录仍为": "Deleting the app may leave local settings, drafts, and Keychain entries. For compatibility, the data directory remains ",
     "。若计划移除数据，请先备份需要保留的配置与修订内容；卸载不会自动删除 Apple Notes 中的原始笔记。": ". Back up any settings and revision content you want to keep before removing data. Uninstalling does not automatically delete original notes in Apple Notes.",
     "联系方式": "Contact",
-    "正式支持邮箱与公开反馈入口尚未配置，将在首次公开发布前补齐。不要在公开 Issue 中提交完整笔记、API Key、密码或未经脱敏的诊断信息。": "The support address and public feedback channel are not yet configured. They will be added before the first public release. Do not post full notes, API keys, passwords, or unredacted diagnostics in public issues.",
     "通过 Pi 选择模型，使用 API Key 或受支持的订阅登录。凭据仅保存在本机，保存方式见隐私说明。": "Choose models through Pi, using an API key or a supported subscription sign-in. Credentials stay on your Mac; see the privacy notice for storage details.",
     "来自 {{EXAMPLE_VERSION}} 的中文模型验收": "From a Chinese model test in {{EXAMPLE_VERSION}}",
     "同一原文 · 五条批注 · 示例结果{{EXAMPLE_TRANSLATION_NOTE}}": "Same source · Five comments · Sample result{{EXAMPLE_TRANSLATION_NOTE}}",
@@ -320,7 +316,6 @@
     "说明日期：2026 年 10 月 13 日，适用于当前 {{VERSION}} 开发版。正式发布时需补充发布主体、联系渠道与最终服务条款。": "Notice dated October 13, 2026, for the current {{VERSION}} development build. Publisher details, contact information, and final service terms will be added before public release.",
     "模型连接、角色 Prompt、Skills 和模板保存在本机。新版 Pi 连接的 API Key 与 OAuth 凭据保存在本应用独立的本机凭据文件中；旧兼容连接仍使用 macOS 钥匙串。": "Model settings, role prompts, Skills, and templates stay on your Mac. New Pi connections store API keys and OAuth credentials in this app’s separate local credential file. Existing compatible connections continue to use macOS Keychain.",
     "网站只在本机浏览器保存你选择的语言，不保存演示批注，也不将语言偏好发送给分析服务。清除网站数据即可移除该偏好。": "The website stores only your language choice in this browser. It does not persist demo comments or send your language preference to analytics. Clear site data to remove the preference.",
-    "Quillside 使用 Swift、SwiftUI 和 AppKit 构建原生界面，并内嵌 Pi Agent 与 Node 运行时。我们计划公开源码、构建说明与版本记录，让实现和边界都能被检查。": "Quillside has a native Swift, SwiftUI, and AppKit interface with an embedded Pi Agent and Node runtime. We plan to publish the source, build instructions, and release notes so the implementation and its limits can be examined.",
     "：内嵌模型运行时，保留各组件的原始许可。详见": ": the embedded model runtime, with original component licenses retained. See the ",
     "Pi / Node 许可清单": "Pi / Node license inventory",
     "选择网站语言": "Choose website language",
@@ -360,6 +355,11 @@
     "不会。网站语言只影响这些介绍与演示页面。目前 Mac 应用界面主要为中文；多语言官网不代表应用已经提供同样的界面语言。": "No. The language choice applies to this website and its demos. The Mac app currently has a primarily Chinese interface; website translations do not imply equivalent app localization.",
     "· 本页为中文材料译文，非另一次模型测试": "· Translated from Chinese, not a separate model test",
     "当前静态站点没有接入分析、广告或远程字体。官网计划使用 GitHub Pages 托管；上线后，GitHub 会记录访问者的 IP 地址用于安全目的，具体处理方式见 GitHub 隐私声明。": "This static website has no analytics, advertising, or remote fonts. The website is planned for GitHub Pages. Once deployed, GitHub will log visitors’ IP addresses for security purposes. See the GitHub Privacy Statement for details.",
-    "查看 GitHub 源码与测试版本 ↗": "View source and tester releases on GitHub ↗"
+    "查看 GitHub 源码与测试版本 ↗": "View source and tester releases on GitHub ↗",
+    "Quillside 使用 Swift、SwiftUI 和 AppKit 构建原生界面，并内嵌 Pi Agent 与 Node 运行时。源码、构建说明和版本记录在 GitHub 公开，让实现和边界都能被检查。": "Quillside has a native Swift, SwiftUI, and AppKit interface with an embedded Pi Agent and Node runtime. Source code, build instructions, and release notes are public on GitHub so the implementation and its limits can be examined.",
+    "普通问题通过 GitHub Issues 反馈，安全问题使用仓库的私密报告入口。报告问题时，提供下面的信息会更有帮助：": "Use GitHub Issues for ordinary bugs and the repository’s private reporting channel for security issues. Useful reports include:",
+    "贡献规则、Issue 模板和维护范围已在仓库说明。欢迎可复现的问题、文档与翻译建议；涉及 Notes 写回、权限及数据迁移的改动，需要专门验收。": "Contribution rules, issue templates, and maintenance scope are documented in the repository. Reproducible bugs, documentation, and translation suggestions are welcome. Changes to Notes writeback, permissions, or data migration need dedicated validation.",
+    "维护者为 Asxing。普通反馈使用 GitHub Issues，安全问题使用仓库私密报告入口。不要在公开 Issue 中提交完整笔记、API Key、密码或未经脱敏的诊断信息。": "Maintained by Asxing. Use GitHub Issues for ordinary feedback and the repository’s private reporting channel for security issues. Do not post full notes, API keys, passwords, or unredacted diagnostics in public issues.",
+    "涉及笔记写回或数据安全的问题，应先使用合成材料复现。可利用漏洞请使用 GitHub 私密安全报告，不要在公开问题中披露细节。": "Reproduce note-writeback or data-safety issues with synthetic material. Report exploitable vulnerabilities through GitHub’s private security reporting channel rather than disclosing details in public issues."
   }
 }

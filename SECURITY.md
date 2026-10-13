@@ -4,7 +4,7 @@
 
 ## 私密报告渠道
 
-首次公开仓库前，维护者必须开启 GitHub Private vulnerability reporting。开启后，请从仓库 **Security → Advisories → Report a vulnerability** 提交私密报告。
+`Asxing/quillside`已启用GitHub Private vulnerability reporting。请从仓库 **Security → Advisories → Report a vulnerability** 提交[私密报告](https://github.com/Asxing/quillside/security/advisories/new)。
 
 私密入口以仓库Security页面的实际设置为准。如果没有上述入口，可提交不包含漏洞细节的普通Issue，请求维护者提供私密渠道。不要公开 API Key、笔记正文、认证文件、数据库、可利用载荷或带凭据的日志。
 

@@ -3,7 +3,7 @@
   "published_at": null,
   "download_url": null,
   "sha256": null,
-  "repository_url": null,
+  "repository_url": "https://github.com/Asxing/quillside",
   "support_email": null,
   "architecture": "Apple Silicon",
   "minimum_macos": "14.0",

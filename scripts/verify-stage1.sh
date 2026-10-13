@@ -4,6 +4,8 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_DIR"
 
+command -v rg >/dev/null || { echo 'Install ripgrep before running the source logging check.'; exit 1; }
+
 python3 scripts/check-open-source.py
 
 if rg -n \

@@ -48,6 +48,8 @@ jobs:
         run: |
           echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
           swift --version
+      - name: Install source-check dependency
+        run: brew install ripgrep
       - name: Synthetic regression and build
         run: ./scripts/verify-stage1.sh
       - name: Check development bundle license delivery

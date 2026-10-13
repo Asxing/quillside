@@ -78,6 +78,7 @@ jobs:
           cache-dependency-path: runtime/pi/package-lock.json
       - name: Select toolchain and run synthetic regression
         run: |
+          brew install ripgrep
           export DEVELOPER_DIR="$(xcode-select -p)"
           echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
           ./scripts/verify-stage1.sh

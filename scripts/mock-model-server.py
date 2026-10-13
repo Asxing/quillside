@@ -4,10 +4,19 @@ import argparse
 import json
 import select
 import socket
+from socketserver import TCPServer
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+
+class LocalFixtureServer(ThreadingHTTPServer):
+    def server_bind(self):
+        # This fixture only binds loopback; reverse DNS is unnecessary and can
+        # block cold CI runners before the readiness file is written.
+        TCPServer.server_bind(self)
+        self.server_name = 'localhost'
+        self.server_port = self.server_address[1]
 
 class Handler(BaseHTTPRequestHandler):
     lifecycle = {}
@@ -106,6 +115,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--port-file", required=True)
     args = parser.parse_args()
-    server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+    server = LocalFixtureServer(("127.0.0.1", 0), Handler)
     Path(args.port_file).write_text(str(server.server_port))
     server.serve_forever()

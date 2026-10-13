@@ -1,6 +1,6 @@
 # 自动发版
 
-仓库拟使用个人账号`Asxing/quillside`，官网使用GitHub Pages默认地址。源码公开、官网上线、正式App发行分别验收。维护者配置与本机授权不进入源码。
+仓库使用个人账号[`Asxing/quillside`](https://github.com/Asxing/quillside)，官网使用GitHub Pages默认地址。源码公开、官网上线、正式App发行分别验收。维护者配置与本机授权不进入源码。
 
 ## 触发与产物
 
@@ -28,7 +28,7 @@ git push origin v0.7.4
 
 ## GitHub设置
 
-1. 启用Actions和Pages（Source: GitHub Actions），`github-pages`环境允许默认分支。
+1. 启用Actions和Pages（Source: GitHub Actions），`github-pages`环境允许默认分支与`v*`版本标签（复用workflow的身份来自调用标签）。
 2. 创建`release-signing`环境；当前源码/预览模式不使用Apple秘密，正式发布前可设置维护者审核。
 3. 主分支规则要求`repository-and-site`与`native`检查；允许维护者按项目实际情况管理首个提交。
 4. 启用Security → Private vulnerability reporting。普通Issue用于合成复现；敏感细节只进私密报告。

@@ -4,7 +4,7 @@
 
 **留在 Apple Notes，把想法写清楚。**
 
-[English](README.en.md) · [GitHub](https://github.com/Asxing/quillside) · [使用指南](docs/user/GETTING-STARTED.md) · [开发构建](docs/development/BUILDING.md) · [发布方式](docs/development/RELEASING.md) · [MIT](LICENSE)
+[English](README.en.md) · [GitHub](https://github.com/Asxing/quillside) · [Website](https://asxing.github.io/quillside/) · [Releases](https://github.com/Asxing/quillside/releases) · [使用指南](docs/user/GETTING-STARTED.md) · [开发构建](docs/development/BUILDING.md) · [发布方式](docs/development/RELEASING.md) · [MIT](LICENSE)
 
 Quillside 是原生 macOS Apple Notes 写作伴侣：在原文中划线批注，把多处意见交给 AI 统一处理，检查候选后写回，必要时使用 Notes 原生撤销。笔记仍由 Apple Notes 管理。
 

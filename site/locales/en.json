@@ -56,7 +56,6 @@
     "Swift 原生应用": "Native Swift app",
     "笔记仍在 Apple Notes": "Your notes stay in Apple Notes",
     "模型由你选择": "Choose your model",
-    "MIT 开源计划": "MIT open-source plan",
     "顺着你的思路": "Follow your train of thought",
     "意见落在句子上。": "Comments on the sentence.",
     "修改照顾整篇。": "Revisions across the note.",
@@ -163,7 +162,6 @@
     "写作继续。": "Keep writing.",
     "给熟悉的 Apple Notes，多一点顺手的能力。": "A little more ease for the Apple Notes you know.",
     "查看 Mac 版发布进度": "See Mac release progress",
-    "了解开源计划": "About the open-source plan",
     "{{VERSION}} · {{ARCHITECTURE}} · 正式版本准备中": "{{VERSION}} · {{ARCHITECTURE}} · Official release in preparation",
     "为你熟悉的笔记，补上顺手的工具。": "Useful tools for the notes you already know.",
     "页脚导航": "Footer navigation",
@@ -171,7 +169,6 @@
     "版本与下载": "Releases & downloads",
     "数据与隐私": "Data & privacy",
     "开源与反馈": "Open source & feedback",
-    "独立开发，与 Apple 无隶属关系。官网预览版。": "Independently developed. Not affiliated with Apple. Website preview.",
     "跳至正文": "Skip to content",
     "Quillside Notes 首页": "Quillside Notes home",
     "主导航": "Main navigation",
@@ -191,9 +188,7 @@
     "完整来源及范围见": "For complete sources and scope, see the ",
     "第三方声明": "third-party notices",
     "。本项目不包含 ProNotes 的安装包、图标或原厂提示词。": ". This project does not include ProNotes binaries, icons, or proprietary prompts.",
-    "公开发布将包含什么": "What public releases will include",
     "应用源码、构建步骤与依赖版本。": "App source code, build instructions, and dependency versions.",
-    "已签名、公证的正式安装包及 SHA-256 校验值。": "Signed, notarized app downloads and SHA-256 checksums.",
     "版本变更、实际验证环境、已知限制和反馈模板。": "Release notes, tested environments, known limitations, and feedback templates.",
     "使用文档及模型、角色和 Skill 的配置说明。": "User documentation and model, role, and Skill configuration instructions.",
     "本机签名私钥、模型密钥、个人笔记、私有配置和内部诊断材料不属于公开源码。": "Private signing keys, model credentials, personal notes, private settings, and internal diagnostics are excluded from the public source.",
@@ -360,6 +355,11 @@
     "普通问题通过 GitHub Issues 反馈，安全问题使用仓库的私密报告入口。报告问题时，提供下面的信息会更有帮助：": "Use GitHub Issues for ordinary bugs and the repository’s private reporting channel for security issues. Useful reports include:",
     "贡献规则、Issue 模板和维护范围已在仓库说明。欢迎可复现的问题、文档与翻译建议；涉及 Notes 写回、权限及数据迁移的改动，需要专门验收。": "Contribution rules, issue templates, and maintenance scope are documented in the repository. Reproducible bugs, documentation, and translation suggestions are welcome. Changes to Notes writeback, permissions, or data migration need dedicated validation.",
     "维护者为 Asxing。普通反馈使用 GitHub Issues，安全问题使用仓库私密报告入口。不要在公开 Issue 中提交完整笔记、API Key、密码或未经脱敏的诊断信息。": "Maintained by Asxing. Use GitHub Issues for ordinary feedback and the repository’s private reporting channel for security issues. Do not post full notes, API keys, passwords, or unredacted diagnostics in public issues.",
-    "涉及笔记写回或数据安全的问题，应先使用合成材料复现。可利用漏洞请使用 GitHub 私密安全报告，不要在公开问题中披露细节。": "Reproduce note-writeback or data-safety issues with synthetic material. Report exploitable vulnerabilities through GitHub’s private security reporting channel rather than disclosing details in public issues."
+    "涉及笔记写回或数据安全的问题，应先使用合成材料复现。可利用漏洞请使用 GitHub 私密安全报告，不要在公开问题中披露细节。": "Reproduce note-writeback or data-safety issues with synthetic material. Report exploitable vulnerabilities through GitHub’s private security reporting channel rather than disclosing details in public issues.",
+    "MIT 开源项目": "MIT open-source project",
+    "查看开源项目": "View the open-source project",
+    "源码与发行内容": "Source and release contents",
+    "正式安装包完成签名、公证后再开放；当前可从源码构建。": "Official app downloads will follow signing and notarization. You can currently build from source.",
+    "独立开发，与 Apple 无隶属关系。开发者预览。": "Independently developed. Not affiliated with Apple. Developer preview."
   }
 }

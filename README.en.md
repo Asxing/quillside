@@ -4,7 +4,7 @@
 
 **Stay in Apple Notes. Make your ideas clear.**
 
-[简体中文](README.md) · [GitHub](https://github.com/Asxing/quillside) · [Build instructions](docs/development/BUILDING.md) · [Releases](docs/development/RELEASING.md) · [MIT](LICENSE)
+[简体中文](README.md) · [GitHub](https://github.com/Asxing/quillside) · [Website](https://asxing.github.io/quillside/) · [Releases](https://github.com/Asxing/quillside/releases) · [Build instructions](docs/development/BUILDING.md) · [Releases](docs/development/RELEASING.md) · [MIT](LICENSE)
 
 A native macOS writing companion for Apple Notes. Leave comments beside the original text, revise several passages together, review the draft, and apply it with native undo. Your notes remain in Apple Notes.
 

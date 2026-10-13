@@ -52,9 +52,9 @@ HTML模板中的简体中文是翻译键，`locales/en.json`与`locales/zh-TW.js
 
 Actions通过`scripts/site-release.py`读取已经发布的GitHub版本与元数据，生成临时release.json并传入`site/build.py --release-metadata`。源码或未公证预发布只显示GitHub版本入口；具备正确DMG/校验值与公证回执资产的notarized稳定版才启用正式下载。不会回写源码配置或把预发布默认为正式下载。
 
-GitHub Pages 会记录访问者 IP 用于安全；托管事实已同步到三种语言的隐私说明。第一次部署成功前不把默认地址宣称为已上线。参考：[GitHub Pages 地址与数据记录](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[官方部署工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
+GitHub Pages 会记录访问者 IP 用于安全；托管事实已同步到三种语言的隐私说明。已于2026-10-13部署至 https://asxing.github.io/quillside/ ，实际发布记录见`docs/releases/PUBLICATION-0.7.4.md`。参考：[GitHub Pages 地址与数据记录](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[官方部署工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
 
-当前 `status=preview`，所有页面 `noindex`，没有可下载开发包、虚假仓库地址或占位联系方式。产品主名为 Quillside，官网展示为 Quillside Notes；尚未公开发布。
+当前 `status=preview`，所有页面 `noindex`，没有可下载开发包、虚假仓库地址或占位联系方式。产品主名为Quillside，官网展示为Quillside Notes；源码仓库与官网已公开，App仍为开发者预览。
 
 1. 确定发布者、GitHub 归属及支持邮箱；官网已选择 GitHub Pages 默认地址。
 2. 完成 Developer ID 签名、公证、干净机器安装及升级测试。

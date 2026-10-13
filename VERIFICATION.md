@@ -18,9 +18,16 @@
 
 品牌与网站：[全局Logo](docs/BRAND-SYNC-0.7.3.md)、[多语言网站](docs/WEBSITE-LANGUAGES-2026-10-13.md)。
 
+## 远程发布验收
+
+- 个人仓库[Asxing/quillside](https://github.com/Asxing/quillside)已公开，MIT识别正确，私密安全报告已启用。
+- [CI](https://github.com/Asxing/quillside/actions/runs/38406996913)两个job通过；首次runner缺少ripgrep与模拟服务DNS启动等待问题已修复。
+- [v0.7.4自动发版](https://github.com/Asxing/quillside/actions/runs/38407914028)完成源码发布和Pages联动。Pages环境已允许默认分支与版本标签，失败的部署段重试后成功。
+- [源码Release](https://github.com/Asxing/quillside/releases/tag/v0.7.4)已下载核对，433项文件哈希、归档完整性和tag提交一致；当前没有对外发布未公证App包。
+- [三语言官网](https://asxing.github.io/quillside/)已上线，15页及4项关键资源/许可HTTPS检查通过，实际语言切换保留仓库子路径。
+
 ## 仍需独立确认
 
-- GitHub远程首次CI、Release资产与Pages真实地址，不能用本地脚本通过代替。
 - Developer ID身份、内嵌Node正式签名、公证Accepted与staple票据、浏览器下载后的Gatekeeper验证。
 - 新用户权限、更新后的权限/配置/草稿保留，以及更广泛系统、IME、多屏和文档结构。
 

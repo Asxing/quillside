@@ -7,7 +7,7 @@ import hashlib
 import json
 import re
 import shutil
-from i18n import LANGUAGES, DEFAULT_LANGUAGE, PAGES, UI, Localizer, language_links, alternate_links
+from i18n import LANGUAGES, DEFAULT_LANGUAGE, SOURCE_LANGUAGE, PAGES, UI, Localizer, language_links, alternate_links
 
 SITE = Path(__file__).resolve().parent
 ROOT = SITE.parent
@@ -91,7 +91,7 @@ footer = (SITE / 'templates/footer.html').read_text()
 for locale in LANGUAGES:
     localizer = Localizer(locale)
     localized_examples = examples
-    if locale != DEFAULT_LANGUAGE:
+    if locale != SOURCE_LANGUAGE:
         translation = json.loads((SITE / 'locales' / f'{locale}.examples.json').read_text())
         if translation['version'] != examples['version'] or translation['source_sha256'] != hashlib.sha256(json_script(examples).encode()).hexdigest():
             raise ValueError(f'{locale} example translations need review against the current evidence')
@@ -112,7 +112,7 @@ for locale in LANGUAGES:
                 'LANGUAGE_SWITCH': language_links(locale, page, root_alias),
                 'UI_JSON': json_script(dict(localizer.data(UI), locales=list(LANGUAGES))),
                 'EXAMPLES_JSON': json_script(localized_examples), 'EXAMPLE_VERSION': html.escape(examples['version']),
-                'EXAMPLE_TRANSLATION_NOTE': '' if locale == DEFAULT_LANGUAGE else localizer.text(' · 本页为中文材料译文，非另一次模型测试'),
+                'EXAMPLE_TRANSLATION_NOTE': '' if locale == SOURCE_LANGUAGE else localizer.text(' · 本页为中文材料译文，非另一次模型测试'),
                 'TITLE': html.escape(localizer.text(metadata[page][0])), 'DESCRIPTION': html.escape(localizer.text(metadata[page][1])),
                 'RELEASE_HEADING': html.escape(localizer.text(release_heading)), 'RELEASE_COPY': html.escape(localizer.text(release_copy)),
                 'DOWNLOAD_ACTION': localizer.html(download, prefix), 'REPOSITORY_ACTION': localizer.html(repo_link, prefix),

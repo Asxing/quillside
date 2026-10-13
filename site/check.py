@@ -5,7 +5,7 @@ from pathlib import Path
 from urllib.parse import urlparse, unquote
 import json
 import re
-from i18n import LANGUAGES, DEFAULT_LANGUAGE, PAGES, Localizer, UI
+from i18n import LANGUAGES, DEFAULT_LANGUAGE, SOURCE_LANGUAGE, PAGES, Localizer, UI
 
 BASE = Path(__file__).resolve().parent / 'dist'
 class Page(HTMLParser):
@@ -68,7 +68,7 @@ for path, page in pages.items():
         if path.stem == 'index':
             examples = json.loads(page.scripts['scene-data'])
             if len(examples['roles']) != 3: errors.append(f'{name}: missing scenario examples')
-            if locale != DEFAULT_LANGUAGE and examples.get('translated_from') != DEFAULT_LANGUAGE: errors.append(f'{name}: translated example lacks provenance')
+            if locale != SOURCE_LANGUAGE and examples.get('translated_from') != SOURCE_LANGUAGE: errors.append(f'{name}: translated example lacks provenance')
     except (KeyError, ValueError) as error: errors.append(f'{name}: invalid embedded data ({error})')
     if re.search(r'\{\{[A-Z_]+\}\}', path.read_text()): errors.append(f'{name}: unresolved template marker')
 release = json.loads((BASE / 'release.json').read_text())

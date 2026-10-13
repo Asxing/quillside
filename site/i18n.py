@@ -5,8 +5,11 @@ from pathlib import Path
 import json
 import re
 
-LANGUAGES = {'zh-CN': '简体中文', 'zh-TW': '繁體中文', 'en': 'English'}
-DEFAULT_LANGUAGE = 'zh-CN'
+LANGUAGES = {'en': 'English', 'zh-CN': '简体中文', 'zh-TW': '繁體中文'}
+DEFAULT_LANGUAGE = 'en'
+# Translation keys and original model evidence remain Chinese, independently
+# of which language is served to first-time visitors at the root URL.
+SOURCE_LANGUAGE = 'zh-CN'
 PAGES = ('index', 'guide', 'download', 'privacy', 'open-source')
 CJK = re.compile(r'[\u3400-\u9fff]')
 SITE = Path(__file__).resolve().parent
@@ -28,11 +31,11 @@ UI = {
 class Localizer:
     def __init__(self, locale):
         self.locale = locale
-        self.catalog = {} if locale == DEFAULT_LANGUAGE else json.loads((SITE / 'locales' / f'{locale}.json').read_text())['messages']
+        self.catalog = {} if locale == SOURCE_LANGUAGE else json.loads((SITE / 'locales' / f'{locale}.json').read_text())['messages']
 
     def text(self, text):
         key = text.strip()
-        if not key or self.locale == DEFAULT_LANGUAGE:
+        if not key or self.locale == SOURCE_LANGUAGE:
             return text
         if not CJK.search(key):
             return text.translate(str.maketrans({'。': '.', '，': ', ', '：': ': ', '；': '; '})) if self.locale == 'en' else text

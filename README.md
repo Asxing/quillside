@@ -8,7 +8,7 @@
 
 A native macOS writing companion for Apple Notes. Leave comments beside the original text, revise several passages together, review the draft, and apply it with native undo. Your notes remain in Apple Notes.
 
-**0.7.4 is a developer preview.** Official Developer ID signing, notarization, and clean-machine installation testing are not complete. Build from source, or read the restrictions of any explicitly `UNNOTARIZED` tester assets in Releases.
+**0.7.5 is a developer preview.** Official Developer ID signing, notarization, and clean-machine installation testing are not complete. Download the `UNNOTARIZED` DMG or ZIP from [Releases](https://github.com/Asxing/quillside/releases), or build from source. The DMG installs by dragging Quillside into Applications; no build tools are required.
 
 ## Features
 
@@ -48,7 +48,7 @@ A separate knowledge base, separate search, background synchronization, MCP/tool
 
 See [CONTRIBUTING](CONTRIBUTING.md), [SECURITY](SECURITY.md), [architecture](docs/development/ARCHITECTURE.md), [verification](VERIFICATION.md), and [CHANGELOG](CHANGELOG.md). Use synthetic material for issues and screenshots.
 
-Tag pushes trigger checked releases. The default publishes source only; unnotarized tester builds are prereleases, and official builds must pass signing and notarization. CI checks are not a replacement for real Notes installation and writeback testing.
+Tag pushes trigger checked releases. The default publishes app DMG/ZIP tester packages and source; unnotarized builds are prereleases, and official builds must pass signing and notarization. CI checks are not a replacement for real Notes installation and writeback testing.
 
 ## License
 

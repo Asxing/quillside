@@ -38,7 +38,10 @@ class ReleaseGuardTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             d,_=self.fixture(directory,'preview')
             with self.assertRaisesRegex(ValueError,'missing'):release.inventory(d)
-            (d/'Quillside-1.2.3-UNNOTARIZED-macOS-arm64.zip').write_bytes(b'app')
+            for suffix in ('.zip','.dmg'):
+                filename='Quillside-1.2.3-UNNOTARIZED-macOS-arm64'+suffix
+                (d/filename).write_bytes(b'app')
+                (d/(filename+'.sha256')).write_text(hashlib.sha256(b'app').hexdigest()+'  '+filename)
             m=release.inventory(d);self.assertTrue(m['prerelease'])
             (d/'Quillside-1.2.3-source.zip.sha256').write_text('0'*64+'  Quillside-1.2.3-source.zip')
             with self.assertRaisesRegex(ValueError,'checksum'):release.inventory(d)
@@ -72,8 +75,25 @@ class ReleaseGuardTests(unittest.TestCase):
     def test_previews_never_enable_official_downloads(self):
         for mode in ['source','preview']:
             m,r=self.web_fixture(mode)
+            if mode=='preview':
+                for ext in ('.zip','.dmg'):
+                    name='Quillside-1.2.3-UNNOTARIZED-macOS-arm64'+ext
+                    m['artifacts'][name]='a'*64
+                    r['assets'].append({'name':name,'browser_download_url':f'https://github.com/owner/repo/releases/download/v1.2.3/{name}'})
             result=site.website_release({'download_url':'old','notarized':True},r,m,'owner/repo')
             self.assertEqual(result['status'],'preview');self.assertIsNone(result['download_url']);self.assertFalse(result['notarized'])
+            self.assertEqual(bool(result['preview_download_url']),mode=='preview')
+
+    def test_preview_download_requires_verified_assets_and_hashes(self):
+        m,r=self.web_fixture('preview')
+        with self.assertRaisesRegex(ValueError,'SHA-256'):site.website_release({},r,m,'owner/repo')
+        for ext in ('.zip','.dmg'):
+            name='Quillside-1.2.3-UNNOTARIZED-macOS-arm64'+ext
+            m['artifacts'][name]='b'*64
+            r['assets'].append({'name':name,'browser_download_url':f'https://github.com/owner/repo/releases/download/v1.2.3/{name}'})
+        self.assertIn('UNNOTARIZED',site.website_release({},r,m,'owner/repo')['preview_download_url'])
+        r['assets'][0]['browser_download_url']='https://other.invalid/app.zip'
+        with self.assertRaisesRegex(ValueError,'unexpected URL'):site.website_release({},r,m,'owner/repo')
 
     def test_official_download_needs_exact_asset_and_hash(self):
         m,r=self.web_fixture('notarized')

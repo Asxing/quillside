@@ -7,22 +7,22 @@
 更新`VERSION`、`BUILD_NUMBER`、`CHANGELOG.md`和`docs/releases/<version>.md`，完成提交后推送一致的标签：
 
 ```sh
-git tag v0.7.4
+git tag v0.7.5
 git push origin main
-git push origin v0.7.4
+git push origin v0.7.5
 ```
 
 `.github/workflows/release.yml`由`v*`标签触发；也可手动指定已存在标签。标签必须指向被构建提交且与VERSION完全一致，工作区必须干净。整个流程：源码与网站检查 → 8项Pi及原生合成回归 → 可选App构建 → 校验资产 → GitHub草稿上传 → 确认资产完整后发布 → 调用Pages部署。
 
-默认不需要Apple证书。仓库变量`RELEASE_DISTRIBUTION`决定标签自动发版模式，未设置时为`source`；手动运行可明确选择：
+默认不需要Apple证书。仓库变量`RELEASE_DISTRIBUTION`决定标签自动发版模式，未设置时为`preview`；手动运行可明确选择：
 
 | 模式 | 产物 | GitHub状态 | 所需Apple凭据 |
 |---|---|---|---|
 | `source` | 源码ZIP、文件清单、SHA256SUMS、版本说明 | 预发布，不上传App | 无 |
-| `preview` | 以上内容及`UNNOTARIZED-macOS-arm64.zip` | 预发布，明确未公证 | 无，ad-hoc签名 |
+| `preview` | 以上内容及`UNNOTARIZED-macOS-arm64.dmg`、ZIP、各自SHA-256 | 预发布，明确未公证 | 无，ad-hoc签名 |
 | `notarized` | 源码、Developer ID签名DMG、公证Accepted回执、校验值 | 正常版本为正式发布；带后缀标签仍为预发布 | Developer ID与公证授权 |
 
-无证书时先使用`source`。测试者包不能解决Gatekeeper信任或稳定跨版本权限问题；可信来源的单App打开方式见[用户指南](../user/GETTING-STARTED.md)。正式模式缺少凭据、签名或公证失败会停止，不会回退成未签名App。
+无证书时默认使用`preview`生成可安装测试包；确需仅公开源码时手动选`source`。测试者包不能解决Gatekeeper信任或稳定跨版本权限问题；可信来源的单App打开方式见[用户指南](../user/GETTING-STARTED.md)。正式模式缺少凭据、签名或公证失败会停止，不会回退成未签名App。
 
 已经存在的Release不会被脚本覆盖。如果上传失败，草稿保留供排查；维护者处理草稿后再重试。流水线会再次检查远程标签SHA，阻止构建期间标签被移动后的发布。
 
@@ -34,7 +34,7 @@ git push origin v0.7.4
 4. 启用Security → Private vulnerability reporting。普通Issue用于合成复现；敏感细节只进私密报告。
 5. Pages在默认分支CI成功后自动更新；发版workflow显式调用Pages，因为GITHUB_TOKEN创建Release不会可靠触发另一个发布事件workflow。
 
-Pages只上传`site/dist`，不会上传应用数据、整个工作区或签名目录。源码/测试预发布只提供GitHub版本入口；只有notarized稳定版的公开资产与校验值一致时才启用官网正式下载按钮。网站构建不会写回仓库，避免发布bot循环提交。
+Pages只上传`site/dist`，不会上传应用数据、整个工作区或签名目录。源码预发布只提供GitHub入口；测试预发布提供明确标注“未公证”的DMG/ZIP下载；只有notarized稳定版的公开资产与校验值一致时才启用官网正式下载按钮。网站构建不会写回仓库，避免发布bot循环提交。
 
 ## 正式签名秘密
 

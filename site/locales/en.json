@@ -360,6 +360,12 @@
     "查看开源项目": "View the open-source project",
     "源码与发行内容": "Source and release contents",
     "正式安装包完成签名、公证后再开放；当前可从源码构建。": "Official app downloads will follow signing and notarization. You can currently build from source.",
-    "独立开发，与 Apple 无隶属关系。开发者预览。": "Independently developed. Not affiliated with Apple. Developer preview."
+    "独立开发，与 Apple 无隶属关系。开发者预览。": "Independently developed. Not affiliated with Apple. Developer preview.",
+    "下载测试版 DMG · 未公证": "Download tester DMG · Not notarized",
+    "ZIP 备用下载 ↗": "ZIP alternative ↗",
+    "安装与首次打开说明 ↗": "Installation and first launch ↗",
+    "下载 Quillside 测试版。": "Download the Quillside tester build.",
+    "Apple Silicon 安装包已提供。打开 DMG，将 Quillside 拖入 Applications。本版尚未经过 Apple 公证，首次打开可能需要在系统设置中单独允许；安装包已包含 Pi 和 Node，无需开发工具。": "An Apple Silicon app is available. Open the DMG and drag Quillside into Applications. This build is not notarized by Apple; first launch may require per-app approval in System Settings. Pi and Node are included—no developer tools are needed.",
+    "测试版 · 未经 Apple 公证": "Tester build · Not Apple-notarized"
   }
 }

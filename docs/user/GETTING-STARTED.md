@@ -1,6 +1,6 @@
 # 开始使用
 
-Quillside仍处于开发者预览阶段。默认源码发行不需要Apple Developer会员；自行构建见[构建指南](../development/BUILDING.md)。发布页如提供`UNNOTARIZED`包，它只供愿意承担测试风险的使用者试用，不是已公证正式版。
+Quillside仍处于开发者预览阶段。可下载无需开发工具的`UNNOTARIZED` DMG或ZIP测试包；自行构建见[构建指南](../development/BUILDING.md)。发布页如提供`UNNOTARIZED`包，它只供愿意承担测试风险的使用者试用，不是已公证正式版。
 
 ## 安装与权限
 

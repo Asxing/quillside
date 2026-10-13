@@ -25,7 +25,18 @@ def website_release(base, release, metadata, repository):
     expected_url = f'https://github.com/{repository}/releases/tag/{metadata["tag"]}'
     if release['html_url'] != expected_url: raise ValueError('Unexpected release repository')
     result = dict(base, version=metadata['version'], source_release_url=expected_url, status='preview',
-                  notarized=False, download_url=None, sha256=None, published_at=None)
+                  notarized=False, download_url=None, sha256=None, published_at=None,
+                  preview_download_url=None, preview_zip_url=None, preview_sha256=None, preview_zip_sha256=None)
+    if metadata['distribution'] == 'preview':
+        assets = {x['name']: x for x in release['assets']}
+        for extension, url_key, sha_key in [('.dmg','preview_download_url','preview_sha256'),('.zip','preview_zip_url','preview_zip_sha256')]:
+            filename = f'Quillside-{metadata["version"]}-UNNOTARIZED-macOS-arm64{extension}'
+            digest = metadata['artifacts'].get(filename, '')
+            if not re.fullmatch('[a-f0-9]{64}', digest): raise ValueError('Tester download lacks SHA-256')
+            target = assets.get(filename)
+            url = f'https://github.com/{repository}/releases/download/{metadata["tag"]}/{filename}'
+            if not target or target.get('browser_download_url') != url: raise ValueError('Tester release asset missing or unexpected URL')
+            result[url_key] = url; result[sha_key] = digest
     if metadata['distribution'] == 'notarized' and not metadata['prerelease']:
         filename = f'Quillside-{metadata["version"]}-macOS-arm64.dmg'
         digest = metadata['artifacts'].get(filename, '')

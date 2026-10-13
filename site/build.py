@@ -25,6 +25,12 @@ if release['status'] == 'published':
     if not (release['notarized'] and release['download_url'] and release['download_url'].startswith('https://')
             and re.fullmatch(r'[a-f0-9]{64}', release['sha256'] or '') and release['published_at']):
         raise SystemExit('Published releases require notarization, HTTPS asset, SHA-256 and publication date')
+if release.get('preview_download_url'):
+    if release['status'] != 'preview' or release['notarized']:
+        raise SystemExit('Tester downloads must remain clearly unnotarized previews')
+    for url_key, sha_key in [('preview_download_url','preview_sha256'),('preview_zip_url','preview_zip_sha256')]:
+        if not (str(release.get(url_key, '')).startswith('https://github.com/') and re.fullmatch('[a-f0-9]{64}',release.get(sha_key) or '')):
+            raise SystemExit('Tester downloads require HTTPS asset URLs and SHA-256 values')
 evidence = json.loads((ROOT / 'docs/real-agent-scenes-0.6.3.json').read_text())
 examples = {'date': evidence['date'], 'version': evidence['version'], 'source': evidence['case']['source'],
             'roles': [{key: item[key] for key in ('role', 'prompt', 'candidate', 'style_observation')}
@@ -72,6 +78,13 @@ if release['status'] == 'published':
     download = (f'<a class="button primary" href="{html.escape(release["download_url"], quote=True)}">下载 Mac 版 · {{{{VERSION}}}}</a>'
                 f'<p class="checksum">SHA-256<br><code>{release["sha256"]}</code></p>')
     release_heading, release_copy = '开始在 Notes 中写得更好。', '正式版本已发布。下载后打开安装包，将应用拖入 Applications。'
+elif release.get('preview_download_url'):
+    download = (f'<a class="button primary" href="{html.escape(release["preview_download_url"], quote=True)}">下载测试版 DMG · 未公证</a>'
+                f'<a class="text-link" href="{html.escape(release["preview_zip_url"], quote=True)}">ZIP 备用下载 ↗</a>'
+                '<a class="text-link" href="guide.html#install">安装与首次打开说明 ↗</a>'
+                f'<p class="checksum">DMG SHA-256<br><code>{release["preview_sha256"]}</code></p>')
+    release_heading = '下载 Quillside 测试版。'
+    release_copy = 'Apple Silicon 安装包已提供。打开 DMG，将 Quillside 拖入 Applications。本版尚未经过 Apple 公证，首次打开可能需要在系统设置中单独允许；安装包已包含 Pi 和 Node，无需开发工具。'
 else:
     download = '<span class="button disabled" aria-disabled="true">正式安装包准备中</span><a class="text-link" href="guide.html">先了解如何使用 <span aria-hidden="true">↗</span></a>'
     release_heading, release_copy = '准备好，再交到你手上。', '当前为官网预览。应用已完成本机核心流程验收，正式安装包将在签名、公证与安装测试完成后提供。'
@@ -118,7 +131,7 @@ for locale in LANGUAGES:
                 'DOWNLOAD_ACTION': localizer.html(download, prefix), 'REPOSITORY_ACTION': localizer.html(repo_link, prefix),
                 'ARCHITECTURE': html.escape(release['architecture']), 'MIN_MACOS': html.escape(release['minimum_macos']),
                 'TESTED_MACOS': html.escape(release['tested_macos']),
-                'CURRENT_STAGE': localizer.text('已发布' if release['status'] == 'published' else '开发版 · 正式发布准备中'),
+                'CURRENT_STAGE': localizer.text('已发布' if release['status'] == 'published' else ('测试版 · 未经 Apple 公证' if release.get('preview_download_url') else '开发版 · 正式发布准备中')),
             }
             (destination / f'{page}.html').write_text(render(localizer.html(source, prefix), values))
 (DIST / 'robots.txt').write_text('User-agent: *\nDisallow: /\n' if release['status'] == 'preview' else 'User-agent: *\nAllow: /\n')

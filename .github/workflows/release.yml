@@ -13,7 +13,7 @@ on:
         description: Source preview, unnotarized tester build, or official notarized build
         type: choice
         options: [source, preview, notarized]
-        default: source
+        default: preview
 
 permissions:
   contents: read
@@ -44,7 +44,7 @@ jobs:
         id: metadata
         env:
           RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
-          RELEASE_DISTRIBUTION: ${{ inputs.distribution || vars.RELEASE_DISTRIBUTION || 'source' }}
+          RELEASE_DISTRIBUTION: ${{ inputs.distribution || vars.RELEASE_DISTRIBUTION || 'preview' }}
         run: python3 scripts/release.py prepare --tag "$RELEASE_TAG" --distribution "$RELEASE_DISTRIBUTION"
       - name: Check source, release guards and website
         run: |
@@ -84,14 +84,7 @@ jobs:
           ./scripts/verify-stage1.sh
       - name: Build unnotarized tester preview
         if: needs.prepare.outputs.distribution == 'preview'
-        env:
-          OPENNOTES_CODE_SIGN_IDENTITY: '-'
-          RELEASE_VERSION: ${{ needs.prepare.outputs.version }}
-        run: |
-          ./scripts/bundle-app.sh release
-          python3 scripts/check-open-source.py --bundle build/Quillside.app
-          mkdir -p build/release-app
-          ditto -c -k --sequesterRsrc --keepParent build/Quillside.app "build/release-app/Quillside-$RELEASE_VERSION-UNNOTARIZED-macOS-arm64.zip"
+        run: ./scripts/package-preview.sh
       - name: Configure official signing
         if: needs.prepare.outputs.distribution == 'notarized'
         env:

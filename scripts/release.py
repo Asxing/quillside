@@ -41,7 +41,7 @@ def prepare(tag, mode):
     (out / 'release-metadata.json').write_text(json.dumps(metadata, indent=2) + '\n')
     status = {
         'source': '**Source preview.** Build the app locally; this release contains no app binary. Apple Developer membership is not required to build the source.',
-        'preview': '**Unnotarized tester preview.** The app is ad-hoc signed, not Developer ID signed or Apple-notarized. It may be blocked by Gatekeeper and updates may require permissions again. Prefer a source build if you are not comfortable testing it. See the installation guide; never disable system security globally.',
+        'preview': '**Apple Silicon app download — unnotarized tester preview.** Download the `UNNOTARIZED-macOS-arm64.dmg` below, open it, and drag Quillside into Applications. ZIP is also available. The app includes Pi and Node; no build tools are needed. It is ad-hoc signed, not Apple-notarized, and may require the [per-app Open Anyway flow](https://support.apple.com/en-us/102445). Updates may require permissions again. Never disable system security globally.',
         'notarized': '**Developer ID signed and notarized macOS release.** Check the SHA-256 before installing. Compatibility and known limitations are described below.',
     }[mode]
     (out / 'release-notes.md').write_text(status + '\n\n' + notes.read_text() + f'\n\nSource commit: `{sha}`\n')
@@ -56,7 +56,8 @@ def inventory(directory):
     validate(m['tag'], m['version'], m['distribution'])
     version = m['version']; mode = m['distribution']
     expected = {f'Quillside-{version}-source.zip', f'Quillside-{version}-source.zip.sha256'}
-    if mode == 'preview': expected.add(f'Quillside-{version}-UNNOTARIZED-macOS-arm64.zip')
+    if mode == 'preview':
+        expected |= {f'Quillside-{version}-UNNOTARIZED-macOS-arm64{suffix}' for suffix in ('.zip','.zip.sha256','.dmg','.dmg.sha256')}
     if mode == 'notarized': expected |= {f'Quillside-{version}-macOS-arm64.dmg', f'Quillside-{version}-macOS-arm64.dmg.sha256', 'notarization.json'}
     if not all((directory / p).is_file() for p in expected): raise ValueError('Required release artifacts are missing')
     with zipfile.ZipFile(directory / f'Quillside-{version}-source.zip') as archive:
@@ -108,7 +109,7 @@ def publish(directory, repository):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
-    p = sub.add_parser('prepare'); p.add_argument('--tag', required=True); p.add_argument('--distribution', default='source')
+    p = sub.add_parser('prepare'); p.add_argument('--tag', required=True); p.add_argument('--distribution', default='preview')
     p = sub.add_parser('publish'); p.add_argument('--directory', type=Path, default=Path('build/release')); p.add_argument('--repository', required=True)
     p = sub.add_parser('inventory'); p.add_argument('--directory', type=Path, default=Path('build/release'))
     a = parser.parse_args()

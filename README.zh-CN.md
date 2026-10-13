@@ -8,7 +8,7 @@
 
 Quillside 是原生 macOS Apple Notes 写作伴侣：在原文中划线批注，把多处意见交给 AI 统一处理，检查候选后写回，必要时使用 Notes 原生撤销。笔记仍由 Apple Notes 管理。
 
-当前版本 **0.7.4，开发者预览**。正式 Developer ID 签名、公证和新环境安装验收尚未完成。可以从源码构建；未公证测试包（如 Release 提供）会明确标注 `UNNOTARIZED`，不能视作正式发行。
+当前版本 **0.7.5，开发者预览**。正式 Developer ID 签名、公证和新环境安装验收尚未完成。可从[Releases](https://github.com/Asxing/quillside/releases)下载标注`UNNOTARIZED`的DMG或ZIP测试包，也可从源码构建。打开DMG，将Quillside拖入Applications即可，无需开发工具；测试包不能视作已公证正式发行。
 
 ## 核心能力
 
@@ -60,7 +60,7 @@ open build/Quillside.app
 
 [文档导航](docs/README.md) · [架构](docs/development/ARCHITECTURE.md) · [贡献指南](CONTRIBUTING.md) · [安全报告](SECURITY.md) · [验证记录](VERIFICATION.md) · [更新记录](CHANGELOG.md)
 
-CI 运行合成回归和官网检查。推送与 VERSION 一致的`v*`标签触发自动发布；默认仅生成源码预发布。正式签名、公证失败不会退回未签名包。详见[发布流水线](docs/development/RELEASING.md)。
+CI 运行合成回归和官网检查。推送与 VERSION 一致的`v*`标签触发自动发布；默认生成App的DMG/ZIP测试包及源码。正式签名、公证失败不会退回未签名包。详见[发布流水线](docs/development/RELEASING.md)。
 
 本机测试与真实 Notes 验收分开记录。历史设计与测试记录用于追溯，不等同于当前版本或完整兼容性承诺。
 

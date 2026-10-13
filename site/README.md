@@ -52,7 +52,7 @@ HTML模板中的简体中文是翻译键，`locales/en.json`与`locales/zh-TW.js
 
 网站使用相对路径，语言切换也保留仓库子路径，不需要把源码改成根域名路径。构建包含 `.nojekyll`；不生成 `CNAME`。网站仍可先上线开发版介绍，App 的 `release.json` 在签名、公证和正式下载准备好前维持 `preview`，不会因为网页上线而启用下载按钮。
 
-Actions通过`scripts/site-release.py`读取已经发布的GitHub版本与元数据，生成临时release.json并传入`site/build.py --release-metadata`。源码或未公证预发布只显示GitHub版本入口；具备正确DMG/校验值与公证回执资产的notarized稳定版才启用正式下载。不会回写源码配置或把预发布默认为正式下载。
+Actions通过`scripts/site-release.py`读取已经发布的GitHub版本与元数据，生成临时release.json并传入`site/build.py --release-metadata`。源码预发布只显示GitHub版本入口；未公证预发布显示专门标注的DMG/ZIP测试版按钮和SHA-256；具备正确DMG/校验值与公证回执资产的notarized稳定版才启用正式下载。不会回写源码配置或把预发布默认为正式下载。
 
 GitHub Pages 会记录访问者 IP 用于安全；托管事实已同步到三种语言的隐私说明。已于2026-10-13部署至 https://asxing.github.io/quillside/ ，实际发布记录见`docs/releases/PUBLICATION-0.7.4.md`。参考：[GitHub Pages 地址与数据记录](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[官方部署工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
 

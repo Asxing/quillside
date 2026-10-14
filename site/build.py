@@ -72,8 +72,9 @@ def json_script(value):
 
 
 repo = release['repository_url']
-repo_link = (f'<a class="button primary" href="{html.escape(repo, quote=True)}" rel="noopener noreferrer">在 GitHub 查看源码 ↗</a>'
-             if repo and repo.startswith('https://github.com/') else '<p class="status-note">公开仓库尚未开放，首次发布时将在这里提供入口。</p>')
+if not repo or not re.fullmatch(r'https://github.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repo):
+    raise SystemExit('Website navigation requires a valid GitHub repository URL')
+primary_download = release.get('download_url') or release.get('preview_download_url') or repo + '/releases'
 if release['status'] == 'published':
     download = (f'<a class="button primary" href="{html.escape(release["download_url"], quote=True)}">下载 Mac 版 · {{{{VERSION}}}}</a>'
                 f'<p class="checksum">SHA-256<br><code>{release["sha256"]}</code></p>')
@@ -97,7 +98,6 @@ metadata = {
     'guide': ('快速上手', '从安装与授权，到第一次在原文中完成修改。'),
     'download': ('获取 Quillside', '查看当前版本、支持范围与正式发布进度。'),
     'privacy': ('数据与隐私', '了解 Quillside 在本地保存什么，以及使用远程 AI 时发送什么。'),
-    'open-source': ('开源与反馈', '了解许可证、代码来源、公开计划和反馈方式。'),
 }
 header = (SITE / 'templates/header.html').read_text()
 footer = (SITE / 'templates/footer.html').read_text()
@@ -114,6 +114,15 @@ for locale in LANGUAGES:
         destination.mkdir(exist_ok=True)
         prefix = '' if root_alias else '../'
         for page in PAGES:
+            if page == 'open-source':
+                # Keep old bookmarks working without an intermediate introduction page.
+                target = html.escape(repo, quote=True)
+                (destination / f'{page}.html').write_text(
+                    f'<!doctype html><html lang="{locale}"><head><meta charset="utf-8">'
+                    f'<meta name="robots" content="noindex,nofollow"><meta http-equiv="refresh" content="0;url={target}">'
+                    f'<link rel="canonical" href="{target}"><title>Quillside · GitHub</title></head>'
+                    f'<body><a href="{target}">Quillside · GitHub</a></body></html>')
+                continue
             template = (SITE / 'templates' / ('index.html' if page == 'index' else 'page.html')).read_text()
             source = render(template, {'HEADER': header, 'FOOTER': footer,
                            'BODY': '' if page == 'index' else (SITE / 'content' / f'{page}.html').read_text()}, strict=False)
@@ -128,11 +137,13 @@ for locale in LANGUAGES:
                 'EXAMPLE_TRANSLATION_NOTE': '' if locale == SOURCE_LANGUAGE else localizer.text(' · 本页为中文材料译文，非另一次模型测试'),
                 'TITLE': html.escape(localizer.text(metadata[page][0])), 'DESCRIPTION': html.escape(localizer.text(metadata[page][1])),
                 'RELEASE_HEADING': html.escape(localizer.text(release_heading)), 'RELEASE_COPY': html.escape(localizer.text(release_copy)),
-                'DOWNLOAD_ACTION': localizer.html(download, prefix), 'REPOSITORY_ACTION': localizer.html(repo_link, prefix),
+                'DOWNLOAD_ACTION': localizer.html(download, prefix),
+                'PRIMARY_DOWNLOAD_URL': html.escape(primary_download, quote=True),
+                'REPOSITORY_URL': html.escape(repo, quote=True),
                 'ARCHITECTURE': html.escape(release['architecture']), 'MIN_MACOS': html.escape(release['minimum_macos']),
                 'TESTED_MACOS': html.escape(release['tested_macos']),
                 'CURRENT_STAGE': localizer.text('已发布' if release['status'] == 'published' else ('测试版 · 未经 Apple 公证' if release.get('preview_download_url') else '开发版 · 正式发布准备中')),
             }
             (destination / f'{page}.html').write_text(render(localizer.html(source, prefix), values))
 (DIST / 'robots.txt').write_text('User-agent: *\nDisallow: /\n' if release['status'] == 'preview' else 'User-agent: *\nAllow: /\n')
-print(f'Built {len(LANGUAGES) * len(PAGES)} localized pages + {len(PAGES)} compatible root pages · {version} · {release["status"]}')
+print(f'Built {len(LANGUAGES) * (len(PAGES)-1)} localized pages + {len(PAGES)-1} root pages + {len(LANGUAGES)+1} GitHub redirects · {version} · {release["status"]}')

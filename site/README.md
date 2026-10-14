@@ -16,7 +16,7 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory site/dist
 
 ## 多语言
 
-当前提供English（`/en/`）、简体中文（`/zh-CN/`）、繁體中文（`/zh-TW/`），每种语言包含首页、指南、下载、隐私和开源五页。根路径五页默认使用英文，首次访问无需跳转或等待JavaScript翻译。语言菜单跳转到同一页面并保留当前位置；浏览器只保存用户手动选择的语言，访问根入口时恢复该选择。显式语言链接优先于保存的偏好。无JavaScript或存储不可用时，英文默认页面及各语言链接仍可使用。
+当前提供English（`/en/`）、简体中文（`/zh-CN/`）、繁體中文（`/zh-TW/`），每种语言包含首页、指南、下载说明、隐私四页。开源入口直接打开GitHub，旧的open-source.html地址仅保留自动跳转。根路径四页默认使用英文，首次访问无需跳转或等待JavaScript翻译。语言菜单跳转到同一页面并保留当前位置；浏览器只保存用户手动选择的语言，访问根入口时恢复该选择。显式语言链接优先于保存的偏好。无JavaScript或存储不可用时，英文默认页面及各语言链接仍可使用。
 
 HTML模板中的简体中文是翻译键，`locales/en.json`与`locales/zh-TW.json`维护译文；布局共用，不为每种语言复制HTML。`i18n.py`管理语言列表、文本/属性翻译和交互文案。缺少翻译会使构建失败。语言目录内采用相对链接，兼容部署到子目录；每页输出`lang`和对应页的`hreflang`。
 
@@ -24,7 +24,7 @@ HTML模板中的简体中文是翻译键，`locales/en.json`与`locales/zh-TW.js
 
 `locales/*.examples.json`是中文验收材料的英文译文/繁体转写，页面明确标注它们不是另外一次模型实测。文件记录原始材料摘要，原始证据变化会要求重新审阅译文。原生App截图保留真实中文界面，并标明其语言；官网语言不代表App已完成同样的本地化。
 
-新增语言时，在`i18n.py`的`LANGUAGES`中登记代码与本地名称，补齐消息和示例文件，再运行构建与检查。需另外检查长文字、导航和表格在手机端的呈现。`site/check.py`覆盖15个语言页面及5个根兼容页的链接、语言目标、交互数据与发布状态。
+新增语言时，在`i18n.py`的`LANGUAGES`中登记代码与本地名称，补齐消息和示例文件，再运行构建与检查。需另外检查长文字、导航和表格在手机端的呈现。`site/check.py`覆盖12个语言页面、4个根页面及4个GitHub兼容跳转的链接、语言目标、交互数据与发布状态。
 
 ## 内容与来源
 
@@ -52,7 +52,7 @@ HTML模板中的简体中文是翻译键，`locales/en.json`与`locales/zh-TW.js
 
 网站使用相对路径，语言切换也保留仓库子路径，不需要把源码改成根域名路径。构建包含 `.nojekyll`；不生成 `CNAME`。网站仍可先上线开发版介绍，App 的 `release.json` 在签名、公证和正式下载准备好前维持 `preview`，不会因为网页上线而启用正式版下载按钮。
 
-Actions通过`scripts/site-release.py`读取已经发布的GitHub版本与元数据，生成临时release.json并传入`site/build.py --release-metadata`。源码预发布只显示GitHub版本入口；未公证预发布显示专门标注的DMG/ZIP测试版按钮和SHA-256；具备正确DMG/校验值与公证回执资产的notarized稳定版才启用正式下载。不会回写源码配置或把预发布默认为正式下载。
+Actions通过`scripts/site-release.py`读取已经发布的GitHub版本与元数据，生成临时release.json并传入`site/build.py --release-metadata`。源码预发布只显示GitHub版本入口；未公证预发布显示专门标注的DMG/ZIP测试版按钮和SHA-256；具备正确DMG/校验值与公证回执资产的notarized稳定版才启用正式下载。导航栏、首页首屏和页尾的主下载按钮直接使用当前已发布DMG地址，无需先进入下载说明页；无安装包时回退到仓库Releases。开源链接直达仓库，反馈链接直达Issues。不会回写源码配置或把预发布默认为正式下载。
 
 GitHub Pages 会记录访问者 IP 用于安全；托管事实已同步到三种语言的隐私说明。已于2026-10-13部署至 https://asxing.github.io/quillside/ ，实际发布记录见`docs/releases/PUBLICATION-0.7.4.md`。参考：[GitHub Pages 地址与数据记录](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[官方部署工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
 

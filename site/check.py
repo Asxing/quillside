@@ -13,6 +13,7 @@ class Page(HTMLParser):
         super().__init__()
         self.path = path; self.ids = set(); self.refs = []; self.h1 = 0; self.errors = []
         self.lang = None; self.languages = {}; self.alternates = {}; self.script_id = None; self.scripts = {}
+        self.downloads = []; self.repositories = []; self.redirect = None
         self.feed(path.read_text())
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -21,6 +22,9 @@ class Page(HTMLParser):
             if a['id'] in self.ids: self.errors.append(f'duplicate id {a["id"]}')
             self.ids.add(a['id'])
         if tag == 'h1': self.h1 += 1
+        if tag == 'a' and 'data-download' in a: self.downloads.append(a.get('href'))
+        if tag == 'a' and 'data-repository' in a: self.repositories.append(a.get('href'))
+        if tag == 'meta' and a.get('http-equiv') == 'refresh': self.redirect = a.get('content')
         if tag == 'img' and 'alt' not in a: self.errors.append('image without alt')
         if tag == 'a' and a.get('data-locale'): self.languages[a['data-locale']] = a.get('href')
         if tag == 'link' and a.get('rel') == 'alternate': self.alternates[a.get('hreflang')] = a.get('href')
@@ -37,6 +41,9 @@ class Page(HTMLParser):
             self.errors.append('Untranslated Chinese in English page: ' + text.strip()[:80])
 
 pages = {p.resolve(): Page(p) for p in BASE.rglob('*.html')}
+release = json.loads((BASE / 'release.json').read_text())
+repository = release['repository_url']
+download = release.get('download_url') or release.get('preview_download_url') or repository + '/releases'
 errors = []
 expected_paths = {BASE / f'{page}.html' for page in PAGES}
 expected_paths |= {BASE / locale / f'{page}.html' for locale in LANGUAGES for page in PAGES}
@@ -46,6 +53,16 @@ for path, page in pages.items():
     errors += [f'{name}: {e}' for e in page.errors]
     locale = DEFAULT_LANGUAGE if path.parent == BASE.resolve() else path.parent.name
     if page.lang != locale: errors.append(f'{name}: incorrect html lang')
+    if path.stem == 'open-source':
+        if page.redirect != '0;url=' + repository or set(page.refs) != {repository}:
+            errors.append(f'{name}: legacy open-source page must redirect directly to GitHub')
+        continue
+    if not page.downloads or any(ref != download for ref in page.downloads):
+        errors.append(f'{name}: primary download must link directly to the current release asset')
+    if not page.repositories or any(ref != repository for ref in page.repositories):
+        errors.append(f'{name}: open-source navigation must link directly to GitHub')
+    if any(urlparse(ref).path.endswith('open-source.html') for ref in page.refs):
+        errors.append(f'{name}: navigation must not use the legacy open-source page')
     if page.h1 != 1: errors.append(f'{name}: expected one h1')
     if set(page.languages) != set(LANGUAGES): errors.append(f'{name}: incomplete language menu')
     if set(page.alternates) != set(LANGUAGES) | {'x-default'}: errors.append(f'{name}: incomplete hreflang links')
@@ -71,10 +88,9 @@ for path, page in pages.items():
             if locale != SOURCE_LANGUAGE and examples.get('translated_from') != SOURCE_LANGUAGE: errors.append(f'{name}: translated example lacks provenance')
     except (KeyError, ValueError) as error: errors.append(f'{name}: invalid embedded data ({error})')
     if re.search(r'\{\{[A-Z_]+\}\}', path.read_text()): errors.append(f'{name}: unresolved template marker')
-release = json.loads((BASE / 'release.json').read_text())
 if release['status'] == 'preview':
     if release['download_url']: errors.append('Preview must not advertise a public download')
     for path in pages:
         if 'content="noindex,nofollow"' not in path.read_text(): errors.append(f'{path.name}: preview must be noindex')
 if errors: raise SystemExit('\n'.join(errors))
-print(f'PASS: {len(LANGUAGES)} languages, {len(LANGUAGES) * len(PAGES)} localized pages + {len(PAGES)} root aliases, links/assets/anchors, language targets, translated UI and publication state')
+print(f'PASS: {len(LANGUAGES)} languages, direct app downloads and GitHub navigation, legacy redirects, links/assets/anchors, language targets, translated UI and publication state')

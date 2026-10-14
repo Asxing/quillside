@@ -8,14 +8,15 @@ import time
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 
-PAGES = ('release.json', 'download.html', 'en/download.html', 'zh-CN/download.html', 'zh-TW/download.html')
+PAGES = ('release.json', *(prefix + page for prefix in ('', 'en/', 'zh-CN/', 'zh-TW/')
+                         for page in ('index.html', 'download.html', 'open-source.html')))
 
 
 def expected_pages(artifact):
     with tarfile.open(artifact) as archive:
         members = {member.name.removeprefix('./'): member for member in archive.getmembers() if member.isfile()}
         if not all(name in members for name in PAGES):
-            raise ValueError('Pages artifact is missing release metadata or a localized download page')
+            raise ValueError('Pages artifact is missing release metadata, a home/download page, or a legacy redirect')
         return {name: archive.extractfile(members[name]).read() for name in PAGES}
 
 
@@ -38,7 +39,7 @@ def verify(url, pages, timeout=420, interval=10):
                 actual = fetch(url.rstrip('/') + '/' + name, min(20, remaining))
                 if actual != expected:
                     raise ValueError(f'{name} does not yet match the deployed artifact')
-            print('PASS: public release.json and all four download pages match the deployed artifact')
+            print('PASS: public release.json, localized home/download pages, and legacy redirects match the deployed artifact')
             return
         except (OSError, ValueError) as error:
             last_error = str(error)
@@ -57,7 +58,7 @@ def main():
     if os.environ.get('GITHUB_STEP_SUMMARY'):
         with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
             summary.write(f'Public website verified: [downloads]({args.url.rstrip("/")}/download.html). '
-                          'Release metadata and English, Simplified Chinese, and Traditional Chinese pages match the uploaded artifact.\n')
+                          'Release metadata, localized home/download pages, and legacy redirects match the uploaded artifact.\n')
 
 
 if __name__ == '__main__':

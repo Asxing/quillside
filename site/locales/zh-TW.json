@@ -366,6 +366,7 @@
     "安装与首次打开说明 ↗": "安裝與首次開啟說明 ↗",
     "下载 Quillside 测试版。": "下載 Quillside 測試版。",
     "Apple Silicon 安装包已提供。打开 DMG，将 Quillside 拖入 Applications。本版尚未经过 Apple 公证，首次打开可能需要在系统设置中单独允许；安装包已包含 Pi 和 Node，无需开发工具。": "已提供 Apple Silicon 安裝套件。開啟 DMG，將 Quillside 拖入 Applications。本版尚未經過 Apple 公證，首次開啟可能需要在系統設定中個別允許；套件已包含 Pi 和 Node，無需開發工具。",
-    "测试版 · 未经 Apple 公证": "測試版 · 未經 Apple 公證"
+    "测试版 · 未经 Apple 公证": "測試版 · 未經 Apple 公證",
+    "下载 Mac 版": "下載 Mac 版"
   }
 }

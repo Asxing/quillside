@@ -8,6 +8,8 @@ import json
 import tempfile
 import unittest
 import zipfile
+import subprocess
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -15,6 +17,7 @@ def module(name, path):
     spec=importlib.util.spec_from_file_location(name, ROOT/path); result=importlib.util.module_from_spec(spec);spec.loader.exec_module(result);return result
 release=module('quillside_release','scripts/release.py')
 site=module('quillside_site_release','scripts/site-release.py')
+live_site=module('quillside_live_site','scripts/verify-published-site.py')
 
 class ReleaseGuardTests(unittest.TestCase):
     def test_tag_and_mode_must_match(self):
@@ -109,5 +112,76 @@ class ReleaseGuardTests(unittest.TestCase):
         with self.assertRaises(ValueError):site.website_release({},r,m,'owner/repo')
         r['draft']=False;r['prerelease']=False
         with self.assertRaises(ValueError):site.website_release({},r,m,'owner/repo')
+
+    def app_fixture(self, directory):
+        d,m=self.fixture(directory,'preview')
+        for ext in ('.dmg','.zip'):
+            name='Quillside-1.2.3-UNNOTARIZED-macOS-arm64'+ext
+            (d/name).write_bytes(b'app-package')
+            (d/(name+'.sha256')).write_text(hashlib.sha256(b'app-package').hexdigest()+'  '+name)
+        (d/'release-notes.md').write_text('Reviewed version notes.')
+        return d,m
+
+    def test_publish_adds_downloads_then_checks_uploaded_bytes_before_publication(self):
+        for corrupt in (False, True):
+            with self.subTest(corrupt=corrupt), tempfile.TemporaryDirectory() as directory:
+                d,m=self.app_fixture(directory)
+                commands=[]
+                def run(args, **kwargs):
+                    commands.append(args)
+                    return subprocess.CompletedProcess(args, 1 if args[1:3]==['release','view'] else 0)
+                def output(args, **kwargs):
+                    if '/commits/' in args[2]: return m['commit']
+                    self.assertTrue(any(c[1:3]==['release','upload'] for c in commands))
+                    assets=[{'name':p.name,'size':p.stat().st_size,'state':'uploaded',
+                             'digest':'sha256:'+hashlib.sha256(p.read_bytes()).hexdigest()}
+                            for p in d.iterdir() if p.name!='release-notes.md']
+                    if corrupt: assets[0]['digest']='sha256:'+'0'*64
+                    return json.dumps({'assets':assets,'draft':not any(c[1:3]==['release','edit'] for c in commands),
+                                       'prerelease':True,'body':(d/'release-notes.md').read_text()})
+                with patch.object(release.subprocess,'run',side_effect=run), patch.object(release.subprocess,'check_output',side_effect=output), patch.dict(release.os.environ, {'GITHUB_STEP_SUMMARY':''}):
+                    if corrupt:
+                        with self.assertRaisesRegex(ValueError,'Remote asset verification failed'): release.publish(d,'owner/repo')
+                        self.assertFalse(any(c[1:3]==['release','edit'] for c in commands))
+                    else:
+                        release.publish(d,'owner/repo')
+                        header=(d/'release-notes.md').read_text().split('---')[0]
+                        for ext in ('.dmg','.zip'):
+                            self.assertIn(f'https://github.com/owner/repo/releases/download/v1.2.3/Quillside-1.2.3-UNNOTARIZED-macOS-arm64{ext}',header)
+                        self.assertIn('not notarized',header)
+                        self.assertTrue(any('--prerelease=true' in c for c in commands))
+                        self.assertTrue(any('Quillside 1.2.3 — macOS App (DMG + ZIP)' in c for c in commands))
+
+    def test_source_download_header_never_links_an_app(self):
+        with tempfile.TemporaryDirectory() as directory:
+            d,_=self.fixture(directory)
+            header=release.download_header(release.inventory(d),d,'owner/repo')
+            self.assertIn('source.zip)',header)
+            self.assertNotIn('.dmg',header)
+            self.assertIn('no app binary',header)
+
+    def test_pages_selects_newest_published_preview_and_preserves_stable(self):
+        def record(number, **overrides):
+            return dict({'id':number,'tag_name':f'v1.0.{number}','draft':False,'prerelease':True,
+                         'published_at':f'2026-10-{number:02}T00:00:00Z','assets':[{'name':'release-metadata.json'}]},**overrides)
+        old=record(1); new=record(2)
+        self.assertEqual(site.select_release([old,record(4,draft=True),new,record(3,assets=[])])['tag_name'],'v1.0.2')
+        stable=record(1,prerelease=False)
+        self.assertEqual(site.select_release([new,stable]),stable)
+        self.assertIsNone(site.select_release([record(1,draft=True)]))
+
+    def test_live_site_retries_stale_content_and_checks_every_language(self):
+        pages={name:name.encode() for name in live_site.PAGES}
+        seen=[]
+        def response(url, timeout):
+            name=url.removeprefix('https://owner.github.io/repo/')
+            seen.append(name)
+            return b'old release' if len(seen)==1 else pages[name]
+        with patch.object(live_site,'fetch',side_effect=response):
+            live_site.verify('https://owner.github.io/repo/',pages,timeout=1,interval=0)
+        self.assertEqual(seen,[live_site.PAGES[0],*live_site.PAGES])
+        with patch.object(live_site,'fetch',return_value=b'old release'), patch.object(live_site.time,'sleep'), patch.object(live_site.time,'monotonic',side_effect=[0,0,0,2,2]):
+            with self.assertRaisesRegex(ValueError,'timed out'):
+                live_site.verify('https://owner.github.io/repo/',pages,timeout=1)
 
 if __name__=='__main__':unittest.main(verbosity=2)

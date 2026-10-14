@@ -13,6 +13,14 @@ ROOT = Path(__file__).resolve().parent.parent
 def gh_json(*args):
     return json.loads(subprocess.check_output(['gh', *args], text=True))
 
+def select_release(releases):
+    # Use publication time, not GitHub's tag/commit ordering. A rerun for an old
+    # tag must not roll the website back. Preserve the stable channel if present.
+    valid = [r for r in releases if not r['draft'] and r.get('published_at')
+             and any(x['name'] == 'release-metadata.json' for x in r['assets'])]
+    stable = [r for r in valid if not r['prerelease']]
+    return max(stable or valid, key=lambda r: (r['published_at'], r['id']), default=None)
+
 def website_release(base, release, metadata, repository):
     from importlib.util import spec_from_file_location, module_from_spec
     spec = spec_from_file_location('release_helpers', ROOT / 'scripts/release.py')
@@ -55,16 +63,14 @@ def main():
     if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository): raise SystemExit('Invalid GitHub repository')
     base = json.loads((ROOT / 'site/content/release.json').read_text())
     base['repository_url'] = f'https://github.com/{repository}'
-    # Explicit tag is supplied by the successful Release job. Otherwise prefer
-    # the latest stable release, then the newest preview, without losing a formal download.
+    # --tag is a diagnostic override. Automatic Pages builds always resolve the
+    # current published channel so an old workflow rerun cannot revert downloads.
     if a.tag:
         if not re.fullmatch(r'v[0-9A-Za-z.-]+', a.tag): raise SystemExit('Invalid release tag')
         release = gh_json('api', f'repos/{repository}/releases/tags/{a.tag}')
     else:
-        releases = gh_json('api', f'repos/{repository}/releases?per_page=100')
-        valid = [r for r in releases if not r['draft'] and any(x['name']=='release-metadata.json' for x in r['assets'])]
-        stable = [r for r in valid if not r['prerelease']]
-        release = (stable or valid or [None])[0]
+        pages = gh_json('api', '--paginate', '--slurp', f'repos/{repository}/releases?per_page=100')
+        release = select_release([release for page in pages for release in page])
     if release:
         with tempfile.TemporaryDirectory(prefix='quillside-site-release-') as directory:
             subprocess.run(['gh','release','download',release['tag_name'],'--repo',repository,'--pattern','release-metadata.json','--dir',directory],check=True)

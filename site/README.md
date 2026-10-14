@@ -41,22 +41,22 @@ HTML模板中的简体中文是翻译键，`locales/en.json`与`locales/zh-TW.js
 
 已确定官网先使用 **GitHub Pages 默认域名**，不需要购买域名或配置 DNS。项目站点的地址格式为 `https://<owner>.github.io/<repository>/`；实际地址以仓库归属与 Pages 部署结果为准。
 
-`.github/workflows/pages.yml` 支持手动部署、默认分支CI成功后部署，以及Release流水线显式调用。检查通过后仅上传`site/dist/`，由官方Pages Actions部署。Actions固定提交SHA，构建与部署权限分开；PR本身不发布网站。部署始终检出默认分支的可信网站源码。
+`.github/workflows/pages.yml` 支持手动部署、默认分支CI成功后部署，以及Release流水线成功后自动触发。检查通过后仅上传`site/dist/`，由官方Pages Actions部署。Actions固定提交SHA，构建与部署权限分开；PR本身不发布网站。部署始终检出默认分支的可信网站源码。
 
 首次部署步骤：
 
 1. 确定仓库归属与名称，完成公开内容审阅、首个提交和远程 CI。
 2. 在仓库 **Settings → Pages → Build and deployment** 中选择 **GitHub Actions**。检查 `github-pages` 环境的部署分支限制与默认分支一致。
-3. 等待默认分支CI通过后自动部署，或手动运行 **Deploy website to GitHub Pages**。发版流程在Release发布成功后显式调用同一工作流。
+3. 等待默认分支CI通过后自动部署，或手动运行 **Deploy website to GitHub Pages**。Release成功后通过workflow_run自动触发同一工作流；部署后核对线上版本和三语言下载页。
 4. 取得 deploy job 给出的真实 `page_url`，检查三个语言目录、静态资源、许可文件、语言记忆与链接；随后把该地址填入仓库 About。
 
-网站使用相对路径，语言切换也保留仓库子路径，不需要把源码改成根域名路径。构建包含 `.nojekyll`；不生成 `CNAME`。网站仍可先上线开发版介绍，App 的 `release.json` 在签名、公证和正式下载准备好前维持 `preview`，不会因为网页上线而启用下载按钮。
+网站使用相对路径，语言切换也保留仓库子路径，不需要把源码改成根域名路径。构建包含 `.nojekyll`；不生成 `CNAME`。网站仍可先上线开发版介绍，App 的 `release.json` 在签名、公证和正式下载准备好前维持 `preview`，不会因为网页上线而启用正式版下载按钮。
 
 Actions通过`scripts/site-release.py`读取已经发布的GitHub版本与元数据，生成临时release.json并传入`site/build.py --release-metadata`。源码预发布只显示GitHub版本入口；未公证预发布显示专门标注的DMG/ZIP测试版按钮和SHA-256；具备正确DMG/校验值与公证回执资产的notarized稳定版才启用正式下载。不会回写源码配置或把预发布默认为正式下载。
 
 GitHub Pages 会记录访问者 IP 用于安全；托管事实已同步到三种语言的隐私说明。已于2026-10-13部署至 https://asxing.github.io/quillside/ ，实际发布记录见`docs/releases/PUBLICATION-0.7.4.md`。参考：[GitHub Pages 地址与数据记录](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)、[官方部署工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
 
-当前 `status=preview`，所有页面 `noindex`，没有可下载开发包、虚假仓库地址或占位联系方式。产品主名为Quillside，官网展示为Quillside Notes；源码仓库与官网已公开，App仍为开发者预览。
+当前 `status=preview`，所有页面 `noindex`，提供明确标注未公证的可下载测试包，没有虚假仓库地址或占位联系方式。产品主名为Quillside，官网展示为Quillside Notes；源码仓库与官网已公开，App仍为开发者预览。
 
 1. 确定发布者、GitHub 归属及支持邮箱；官网已选择 GitHub Pages 默认地址。
 2. 完成 Developer ID 签名、公证、干净机器安装及升级测试。

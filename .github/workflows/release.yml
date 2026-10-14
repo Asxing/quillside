@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Existing tag matching VERSION, for example v0.7.4
+        description: Existing tag matching VERSION, for example v0.7.6
         required: true
         type: string
       distribution:
@@ -79,8 +79,9 @@ jobs:
       - name: Select toolchain and run synthetic regression
         run: |
           brew install ripgrep
-          export DEVELOPER_DIR="$(xcode-select -p)"
-          echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
+          DEVELOPER_DIR="$(xcode-select -p)"
+          export DEVELOPER_DIR
+          echo "DEVELOPER_DIR=$DEVELOPER_DIR" >> "$GITHUB_ENV"
           ./scripts/verify-stage1.sh
       - name: Build unnotarized tester preview
         if: needs.prepare.outputs.distribution == 'preview'
@@ -139,12 +140,5 @@ jobs:
           RELEASE_REPOSITORY: ${{ github.repository }}
         run: python3 scripts/release.py publish --repository "$RELEASE_REPOSITORY"
 
-  website:
-    needs: [prepare, publish]
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    uses: ./.github/workflows/pages.yml
-    with:
-      release_tag: ${{ needs.prepare.outputs.tag }}
+  # pages.yml listens for this workflow's successful completion and deploys
+  # from the default branch, using only published release metadata.

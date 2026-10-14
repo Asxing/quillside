@@ -83,6 +83,46 @@ def inventory(directory):
     (directory / 'SHA256SUMS').write_text(''.join(f'{digest}  {name}\n' for name, digest in files.items()))
     return m
 
+def release_title(metadata):
+    if metadata['distribution'] == 'source':
+        return f'Quillside {metadata["version"]} — source preview'
+    formats = 'DMG + ZIP' if metadata['distribution'] == 'preview' else 'DMG'
+    return f'Quillside {metadata["version"]} — macOS App ({formats})'
+
+def download_header(metadata, directory, repository):
+    """Only link artifacts that passed inventory; render before the release notes."""
+    base = f'https://github.com/{repository}/releases/download/{metadata["tag"]}'
+    version = metadata['version']
+    mode = metadata['distribution']
+    if mode == 'source':
+        names = [(f'Quillside-{version}-source.zip', 'Download source ZIP')]
+        introduction = '**Source preview; no app binary is included.**'
+    else:
+        prefix = f'Quillside-{version}-' + ('UNNOTARIZED-' if mode == 'preview' else '') + 'macOS-arm64'
+        names = [(prefix + '.dmg', 'Download DMG · Apple Silicon')]
+        if mode == 'preview': names.append((prefix + '.zip', 'Download ZIP · Apple Silicon'))
+        introduction = ('**Unnotarized tester build.** Ad-hoc signed; not notarized by Apple.' if mode == 'preview'
+                        else '**Developer ID signed and Apple-notarized app.**')
+        introduction += '\n\nOpen the DMG and drag **Quillside.app** into **Applications**. Pi and Node are included; no build tools are needed.'
+    links = []
+    for name, label in names:
+        if name not in metadata['artifacts']: raise ValueError('Download link has no verified artifact')
+        size = (directory / name).stat().st_size / 1024 ** 2
+        links.append(f'**[{label} · {size:.1f} MiB]({base}/{name})**')
+    links.append(f'[SHA-256 checksums]({base}/SHA256SUMS)')
+    heading = 'Download source' if mode == 'source' else 'Download the macOS app'
+    return f'## {heading}\n\n' + '  \n'.join(links) + '\n\n' + introduction + '\n\n---\n\n'
+
+def verify_remote_assets(remote, paths):
+    """Check bytes received by GitHub before making the draft public."""
+    assets = {asset['name']: asset for asset in remote['assets']}
+    if set(assets) != {p.name for p in paths}: raise ValueError('Remote release assets are incomplete; draft retained')
+    for path in paths:
+        asset = assets[path.name]
+        digest = 'sha256:' + hashlib.sha256(path.read_bytes()).hexdigest()
+        if asset.get('state') != 'uploaded' or asset.get('size') != path.stat().st_size or asset.get('digest') != digest:
+            raise ValueError(f'Remote asset verification failed: {path.name}; draft retained')
+
 def publish(directory, repository):
     if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository): raise ValueError('Invalid repository')
     m = inventory(directory)
@@ -92,18 +132,29 @@ def publish(directory, repository):
     exists = subprocess.run(['gh', 'release', 'view', tag, '--repo', repository, '--json', 'isDraft'], capture_output=True, text=True)
     if exists.returncode == 0:
         raise ValueError('Release already exists; do not replace published assets or an unreviewed draft')
+    notes_path = directory / 'release-notes.md'
+    notes = download_header(m, directory, repository) + notes_path.read_text()
+    notes_path.write_text(notes)
     # The API check above already established repository access. Draft creation
     # fails safely if another run created the release in the meantime.
     subprocess.run(['gh', 'release', 'create', tag, '--repo', repository, '--verify-tag', '--draft',
-                    '--title', f'Quillside {m["version"]}' + (' — developer preview' if m['prerelease'] else ''),
-                    '--notes-file', str(directory / 'release-notes.md'),
+                    '--title', release_title(m),
+                    '--notes-file', str(notes_path),
                     *(['--prerelease'] if m['prerelease'] else [])], check=True)
     assets = [str(p) for p in sorted(directory.iterdir()) if p.name != 'release-notes.md']
     subprocess.run(['gh', 'release', 'upload', tag, '--repo', repository, *assets], check=True)
-    remote_names = json.loads(subprocess.check_output(['gh', 'release', 'view', tag, '--repo', repository, '--json', 'assets'], text=True))
-    if {x['name'] for x in remote_names['assets']} != {Path(x).name for x in assets}: raise ValueError('Remote release assets are incomplete; draft retained')
+    endpoint = f'repos/{repository}/releases/tags/{tag}'
+    remote = json.loads(subprocess.check_output(['gh', 'api', endpoint], text=True))
+    verify_remote_assets(remote, [Path(x) for x in assets])
     subprocess.run(['gh', 'release', 'edit', tag, '--repo', repository, '--draft=false',
                     '--prerelease=' + str(m['prerelease']).lower(), '--latest=' + str(not m['prerelease']).lower()], check=True)
+    published = json.loads(subprocess.check_output(['gh', 'api', endpoint], text=True))
+    if published['draft'] or published['prerelease'] != m['prerelease'] or published['body'] != notes:
+        raise ValueError('Published release status or download links differ from the verified draft')
+    verify_remote_assets(published, [Path(x) for x in assets])
+    if os.environ.get('GITHUB_STEP_SUMMARY'):
+        with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+            summary.write(f'[Published {tag}](https://github.com/{repository}/releases/tag/{tag})\n\n' + download_header(m, directory, repository))
     print(f'https://github.com/{repository}/releases/tag/{tag}')
 
 if __name__ == '__main__':

@@ -8,7 +8,7 @@
 
 A native macOS writing companion for Apple Notes. Leave comments beside the original text, revise several passages together, review the draft, and apply it with native undo. Your notes remain in Apple Notes.
 
-**0.7.6 is a developer preview.** Official Developer ID signing, notarization, and clean-machine installation testing are not complete. Download the `UNNOTARIZED` DMG or ZIP from [Releases](https://github.com/Asxing/quillside/releases), or build from source. The DMG installs by dragging Quillside into Applications; no build tools are required.
+**0.7.7 is a developer preview.** Official Developer ID signing, notarization, and clean-machine installation testing are not complete. Download the `UNNOTARIZED` DMG or ZIP from [Releases](https://github.com/Asxing/quillside/releases), or build from source. The DMG installs by dragging Quillside into Applications; no build tools are required.
 
 ## Features
 

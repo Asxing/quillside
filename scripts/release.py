@@ -143,13 +143,19 @@ def publish(directory, repository):
                     *(['--prerelease'] if m['prerelease'] else [])], check=True)
     assets = [str(p) for p in sorted(directory.iterdir()) if p.name != 'release-notes.md']
     subprocess.run(['gh', 'release', 'upload', tag, '--repo', repository, *assets], check=True)
-    endpoint = f'repos/{repository}/releases/tags/{tag}'
+    # gh release view resolves drafts via GraphQL; REST's by-tag endpoint only
+    # resolves published releases. Use the numeric ID for draft and public checks.
+    identity = json.loads(subprocess.check_output(['gh', 'release', 'view', tag, '--repo', repository, '--json', 'databaseId'], text=True))
+    release_id = identity['databaseId']
+    if not isinstance(release_id, int) or release_id <= 0: raise ValueError('Invalid remote release ID')
+    endpoint = f'repos/{repository}/releases/{release_id}'
     remote = json.loads(subprocess.check_output(['gh', 'api', endpoint], text=True))
+    if remote['tag_name'] != tag or not remote['draft']: raise ValueError('Unexpected remote draft identity')
     verify_remote_assets(remote, [Path(x) for x in assets])
     subprocess.run(['gh', 'release', 'edit', tag, '--repo', repository, '--draft=false',
                     '--prerelease=' + str(m['prerelease']).lower(), '--latest=' + str(not m['prerelease']).lower()], check=True)
     published = json.loads(subprocess.check_output(['gh', 'api', endpoint], text=True))
-    if published['draft'] or published['prerelease'] != m['prerelease'] or published['body'] != notes:
+    if published['tag_name'] != tag or published['draft'] or published['prerelease'] != m['prerelease'] or published['body'] != notes:
         raise ValueError('Published release status or download links differ from the verified draft')
     verify_remote_assets(published, [Path(x) for x in assets])
     if os.environ.get('GITHUB_STEP_SUMMARY'):

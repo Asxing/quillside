@@ -132,12 +132,18 @@ class ReleaseGuardTests(unittest.TestCase):
                     return subprocess.CompletedProcess(args, 1 if args[1:3]==['release','view'] else 0)
                 def output(args, **kwargs):
                     if '/commits/' in args[2]: return m['commit']
+                    if args[1:3]==['release','view']:
+                        return json.dumps({'databaseId':42})
+                    # GitHub's tag endpoint does not return an unpublished draft.
+                    if '/releases/tags/' in args[2] and not any(c[1:3]==['release','edit'] for c in commands):
+                        raise subprocess.CalledProcessError(1,args,stderr='HTTP 404')
+                    self.assertEqual(args[2],'repos/owner/repo/releases/42')
                     self.assertTrue(any(c[1:3]==['release','upload'] for c in commands))
                     assets=[{'name':p.name,'size':p.stat().st_size,'state':'uploaded',
                              'digest':'sha256:'+hashlib.sha256(p.read_bytes()).hexdigest()}
                             for p in d.iterdir() if p.name!='release-notes.md']
                     if corrupt: assets[0]['digest']='sha256:'+'0'*64
-                    return json.dumps({'assets':assets,'draft':not any(c[1:3]==['release','edit'] for c in commands),
+                    return json.dumps({'tag_name':'v1.2.3','assets':assets,'draft':not any(c[1:3]==['release','edit'] for c in commands),
                                        'prerelease':True,'body':(d/'release-notes.md').read_text()})
                 with patch.object(release.subprocess,'run',side_effect=run), patch.object(release.subprocess,'check_output',side_effect=output), patch.dict(release.os.environ, {'GITHUB_STEP_SUMMARY':''}):
                     if corrupt:

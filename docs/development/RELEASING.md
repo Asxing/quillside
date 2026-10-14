@@ -7,9 +7,9 @@
 更新`VERSION`、`CHANGELOG.md`和`docs/releases/<version>.md`，按需递增`BUILD_NUMBER`（新版本可从1开始），完成提交后推送一致的标签：
 
 ```sh
-git tag v0.7.6
+git tag v0.7.7
 git push origin main
-git push origin v0.7.6
+git push origin v0.7.7
 ```
 
 `.github/workflows/release.yml`由`v*`标签触发；也可手动指定已存在标签。标签必须指向被构建提交且与VERSION完全一致，工作区必须干净。整个流程：源码与网站检查 → 8项Pi及原生合成回归 → 可选App构建 → 校验资产 → GitHub草稿上传 → 校验GitHub附件名称、大小与SHA-256 → 自动生成顶部下载链接并发布 → Pages在默认分支自动部署 → 核对公开版本与三语言下载页。

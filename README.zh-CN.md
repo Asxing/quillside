@@ -8,7 +8,7 @@
 
 Quillside 是原生 macOS Apple Notes 写作伴侣：在原文中划线批注，把多处意见交给 AI 统一处理，检查候选后写回，必要时使用 Notes 原生撤销。笔记仍由 Apple Notes 管理。
 
-当前版本 **0.7.6，开发者预览**。正式 Developer ID 签名、公证和新环境安装验收尚未完成。可从[Releases](https://github.com/Asxing/quillside/releases)下载标注`UNNOTARIZED`的DMG或ZIP测试包，也可从源码构建。打开DMG，将Quillside拖入Applications即可，无需开发工具；测试包不能视作已公证正式发行。
+当前版本 **0.7.7，开发者预览**。正式 Developer ID 签名、公证和新环境安装验收尚未完成。可从[Releases](https://github.com/Asxing/quillside/releases)下载标注`UNNOTARIZED`的DMG或ZIP测试包，也可从源码构建。打开DMG，将Quillside拖入Applications即可，无需开发工具；测试包不能视作已公证正式发行。
 
 ## 核心能力
 
